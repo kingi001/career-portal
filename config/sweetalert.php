@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timer' => env('SWEET_ALERT_TIMER', 2500),
+    'timer' => env('SWEET_ALERT_TIMER', 1500),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     | for particular modal just use the width() helper method.
     */
 
-    'width' => env('SWEET_ALERT_WIDTH', '32rem'),
+    'width' => env('SWEET_ALERT_WIDTH', '25rem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -129,7 +129,7 @@ return [
     */
 
     'animation' => [
-        'enable' => env('SWEET_ALERT_ANIMATION_ENABLE', false),
+        'enable' => env('SWEET_ALERT_ANIMATION_ENABLE', true),
     ],
 
     'animatecss' => env('SWEET_ALERT_ANIMATECSS', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'),
@@ -198,7 +198,7 @@ return [
     |
     */
 
-    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', false),
+    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', true),
 
     /*
     |--------------------------------------------------------------------------
