@@ -81,7 +81,7 @@
 
         </div>
     </div>
-{{-- Professional Certification Section --}}
+
     <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-x-auto">
         <div class="p-4 bg-white border-b border-gray-100 rounded-lg overflow-x-auto">
 

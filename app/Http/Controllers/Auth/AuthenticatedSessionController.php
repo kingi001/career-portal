@@ -27,7 +27,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        toast('Logged in Successfully','success');
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

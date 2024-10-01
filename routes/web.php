@@ -23,6 +23,7 @@ require __DIR__.'/auth.php';
 Route::middleware('auth',)->group(function () {
 Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
 Route::get('/personal-info', function () { return view('personal-info.personal-info');})->name('personal-info');
+
 Route::get('/education', function () { return view('education.list-education');})->name('education');
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
