@@ -12,7 +12,6 @@ class EducationController extends Controller
         $educations = Auth::user()->educations;
         return view('education.list-education',compact('educations'));    
     }
-
     public function create()
     {
         return view('education.modals.add-education');
@@ -27,7 +26,6 @@ class EducationController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
         ]);
-
         Education::create([
             'user_id' => Auth::id(),
             'institution' => $request->institution,
@@ -37,13 +35,14 @@ class EducationController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
         ]);
+        toast('Education added Successfully!','success');
+        return redirect()->route('education.index');
 
-        return redirect()->route('education.list-education')->toast('success', 'Education added successfully.');
     }
 
     public function edit(Education $education)
     {
-        return view('education.modals.edit-education', compact('education'));
+        return view('education.list-education', compact('education'));
     }
 
     public function update(Request $request, Education $education)
@@ -59,12 +58,15 @@ class EducationController extends Controller
 
         $education->update($request->all());
 
-        return redirect()->route('education.list-education')->toast('success', 'Education updated successfully.');
+        return redirect()->route('education.index');
+        toast('Education Updated Successfully!','success');
     }
 
     public function destroy(Education $education)
     {
         $education->delete();
-        return redirect()->route('education.list-education')->toast('success', 'Education deleted successfully.');
+        return redirect()->route('education.index');
+        toast('Education Deleted Successfully!','success');
+
     }
 }

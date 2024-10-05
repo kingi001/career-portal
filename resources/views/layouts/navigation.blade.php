@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
                         <i class="fas fa-user"></i> -{{ __('Personal Info') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('education')" :active="request()->routeIs('education')">
+                    <x-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
                         <i class="fas fa-graduation-cap"></i> -{{ __('Education') }}
                     </x-nav-link>
                     <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
@@ -105,7 +105,7 @@
             <x-responsive-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
                 {{ __('Personal Info') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('education')" :active="request()->routeIs('education')">
+            <x-responsive-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
                 {{ __('Education') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')">

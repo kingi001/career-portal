@@ -1,9 +1,10 @@
-<x-modal name="add-education" focusable>
-    <form method="post" action="#" class="p-6">
+<x-modal name="edit-education" focusable>
+    <form method="POST" action="{{ route('education.update', $education->id) }} " class="p-6">
         @csrf
+        @method('PUT')
 
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Add Education') }}
+            {{ __('Update Education Information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
@@ -87,48 +88,6 @@
         </div>
     </form>
 </x-modal>
-
-<!-- ADDING EDUCATION MODAL -->
-
-<!-- Modal Structure -->
-<div id="educationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <div class="mt-3 text-center">
-            <h3 class="text-lg font-medium leading-6 text-gray-900"><i class="fas fa-graduation-cap mr-1"></i> Add Education</h3>
-            <div class="mt-2">
-                <form id="educationForm" action=" " method="POST">
-                    @csrf
-                    <!-- Education Level -->
-                    <div class="mt-4">
-                        <label for="level" class="block text-sm font-medium text-gray-700">Education Level</label>
-                        <input type="text" name="level" id="level"
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="e.g., Bachelor's, Master's">
-                    </div>
-                    <!-- Institution Name -->
-                    <div class="mt-4">
-                        <label for="institution" class="block text-sm font-medium text-gray-700">Institution Name</label>
-                        <input type="text" name="institution" id="institution"
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Name of Institution">
-                    </div>
-                    <!-- Year of Graduation -->
-                    <div class="mt-4">
-                        <label for="graduation_year" class="block text-sm font-medium text-gray-700">Year of Graduation</label>
-                        <input type="number" name="graduation_year" id="graduation_year"
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="e.g., 2024">
-                    </div>
-                    <!-- Submit Button -->
-                    <div class="mt-4">
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
-                            <i class="fas fa-save mr-1"></i> Save
-                        </button>
-                        <button type="button" onclick="toggleModal('educationModal')"
-                            class="bg-red-500 text-white px-4 py-2 rounded-md">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     function toggleModal(modalID) {

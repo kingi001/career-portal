@@ -9,14 +9,17 @@
             <p class="mt-2 text-sm text-gray-600">
                 {{ __('Please provide your educational information with the most recent.') }}
             </p>
-           
-            
+
+
+
             @include('education.modals.add-education')
+            
+
 
             {{-- @include("education.responsive-list") --}}
 
             <div class="overflow-auto rounded-lg shadow hidden md:block">
-                
+            
                 <table class="mt-4 min-w-full bg-white border-gray-300 shadow-lg rounded-lg overflow-x-auto">
                     <thead class="bg-gray-50 border-b-2 border-gray-100">
                         <tr>
@@ -31,8 +34,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($educations as $education)
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        @forelse ($educations as $education)   
+                        @include('education.modals.edit-education', ['education' => $education])
+
+                            <tr class="hover:bg-gray-50 transition-colors">
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap"><i class="fas fa-school mr-1"></i> {{ $education->institution }}</td>
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap"><i class="fas fa-graduation-cap mr-1"></i>{{ $education->level_of_study }}</td>
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap"><i class="fas fa-book mr-1"></i> {{ $education->field_of_study }}</td>
@@ -40,16 +45,25 @@
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap">{{$education->start_date}}</td>
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap">{{$education->end_date}}</td>
                             <td class="p-2 text-sm text-gray-700 whitespace-nowrap">
-                                <a href=" " class="text-blue-500 hover:text-blue-700"><i class="fas fa-edit"></i> Edit</a>
+
+                                <a href=" "  class="text-blue-500 hover:text-blue-700" x-data=" "
+            x-on:click.prevent="$dispatch('open-modal', 'edit-education')"><i class="fas fa-edit"></i> Edit</a>
                                 <form action=" " method="POST" class="inline">
                                     <button type="submit" class="text-red-500 hover:text-red-700 ml-2"
                                         onclick="return confirm('Are you sure you want to delete this education?');"><i class="fas fa-trash"></i> Delete</button>
                                 </form>
                             </td>
                         </tr>
-                        @endforeach   
+
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center p-2 text-sm text-gray-700 whitespace-nowrap">No education records found.</td>
+                        </tr>
+                    @endforelse
+                        
                     </tbody>
                 </table>
+                
                
             </div>
             <x-primary-button class="bg-blue-900 h-6 mt-2 align-left justify-end" x-data=""

@@ -24,7 +24,8 @@ Route::middleware('auth',)->group(function () {
 Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
 Route::get('/personal-info', function () { return view('personal-info.personal-info');})->name('personal-info');
 
-Route::get('/education',[EducationController::class, 'index'])->name('education');
+Route::resource('education',EducationController::class);
+
 Route::get('/career', function () { return view('career.career-list');})->name('career');
 Route::get('/referee', function () { return view('referee.index');})->name('referee');
 
