@@ -22,14 +22,11 @@
                 </a>
             </div> 
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-2 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
 
-            <div class="w-full text-gray-900 text-center font-semibold">
-                copyright
-                <a href="#" class="text-blue-900 hover:underline">@quantum solutions</a> 
-            </div>
+            
         </div>
 
          

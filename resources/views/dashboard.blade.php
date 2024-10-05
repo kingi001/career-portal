@@ -1,38 +1,49 @@
 <x-app-layout>
 
-    <div class="py-4 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-
 
             <!-- Main Content -->
             <main class="col-span-4 bg-white p-4 rounded-md shadow">
-                <h2 class="text-xl font-semibold mb-4 uppercase">Welcome to your Dashboard!</h2>
+                <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i>  Welcome to your Dashboard!</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-4 bg-blue-100 rounded-md shadow">
-                        <h3 class="font-bold text-blue-800">Active Applications</h3>
-                        <p class="text-sm mt-2">You have 3 active applications.</p>
+                    <div class="p-4 bg-blue-100 rounded-md shadow flex items-center">
+                        <i class="fas fa-check-circle text-blue-600 mr-2"></i>
+                        <div>
+                            <h3 class="font-bold text-blue-800">Active Applications</h3>
+                            <p class="text-sm mt-2">You have 3 active applications.</p>
+                        </div>
                     </div>
-                    <div class="p-4 bg-green-100 rounded-md shadow">
-                        <h3 class="font-bold text-green-800">Jobs Applied</h3>
-                        <p class="text-sm mt-2">You have 1 Applied jobs.</p>
+                    
+                    <div class="p-4 bg-green-100 rounded-md shadow flex items-center">
+                        <i class="fas fa-clipboard-check text-green-600 mr-2"></i>
+                        <div>
+                            <h3 class="font-bold text-green-800">Jobs Applied</h3>
+                            <p class="text-sm mt-2">You have 1 applied job.</p>
+                        </div>
                     </div>
-                    <div class="p-4 bg-yellow-100 rounded-md shadow">
-                        <h3 class="font-bold text-yellow-800">Status</h3>
-                        <p class="text-sm mt-2">Application Recieved </p>
+                    
+                    <div class="p-4 bg-yellow-100 rounded-md shadow flex items-center">
+                        <i class="fas fa-paper-plane text-yellow-600 mr-2"></i>
+                        <div>
+                            <h3 class="font-bold text-yellow-800">Status</h3>
+                            <p class="text-sm mt-2">Application received</p>
+                        </div>
                     </div>
                 </div>
             </main>
+            
         </div>
     </div>
 
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-3 font-semibold text-gray-900">
+                <div class="p-3 font-semibold text-gray-900 flex items-center">
+                    <i class="fas fa-briefcase text-gray-600 mr-2"></i> <!-- Briefcase icon -->
                     {{ __('Job Listings') }}
-
-
                 </div>
+                
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-100">
@@ -191,6 +202,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-3 font-semibold text-gray-900">
+                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
                     {{ __('Job Applied') }}
                 </div>
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
@@ -258,11 +270,61 @@
                                 >></a>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
+
+
+     <!-- Application Status Tracker -->
+     <div class="py-1">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-3 font-semibold text-gray-900">
+                    <i class="fas fa-tasks text-blue-600 mr-2"></i>
+                    {{ __('Application Status Tracker') }}
+                </div>
+                <div class="overflow-auto rounded-lg shadow">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b-2 border-gray-100">
+                            <tr>
+                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference_No</th>
+                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
+                                <th class="p-3 text-sm font-semibold tracking-wide text-left">Status</th>
+                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="bg-white">
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/ICT_II</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">Interviewed</span>
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <div class="w-full bg-gray-200 rounded-full">
+                                        <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full" style="width: 75%;">75%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/NET_ADMN</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <div class="w-full bg-gray-200 rounded-full">
+                                        <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full" style="width: 25%;">25%</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   
 </x-app-layout>
