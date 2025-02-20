@@ -104,11 +104,9 @@ Contributions are welcome! Please follow these steps:
 3. Commit changes and push to GitHub
 4. Submit a pull request
 
-## License
 
-This project is licensed under the **MIT License**.
 
 ---
 
-🚀 **Developed by Quantum Solutions** | [Your Contact Information]
+🚀 **Developed by khamis kinigi** 
 
