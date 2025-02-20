@@ -7,7 +7,7 @@
             <main class="col-span-4 bg-white p-4 rounded-md shadow">
                 <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i>  Welcome to your Dashboard!</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-4 bg-blue-100 rounded-md shadow flex items-center">
+                    <div class="p-5 bg-blue-100 rounded-md shadow flex items-center">
                         <i class="fas fa-check-circle text-blue-600 mr-2"></i>
                         <div>
                             <h3 class="font-bold text-blue-800">Active Applications</h3>
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     
-                    <div class="p-4 bg-green-100 rounded-md shadow flex items-center">
+                    <div class="p-5 bg-green-100 rounded-md shadow flex items-center">
                         <i class="fas fa-clipboard-check text-green-600 mr-2"></i>
                         <div>
                             <h3 class="font-bold text-green-800">Jobs Applied</h3>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     
-                    <div class="p-4 bg-yellow-100 rounded-md shadow flex items-center">
+                    <div class="p-5 bg-yellow-100 rounded-md shadow flex items-center">
                         <i class="fas fa-paper-plane text-yellow-600 mr-2"></i>
                         <div>
                             <h3 class="font-bold text-yellow-800">Status</h3>
@@ -39,7 +39,7 @@
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-3 font-semibold text-gray-900 flex items-center">
+                <div class="p-2 font-semibold text-gray-900 flex items-center">
                     <i class="fas fa-briefcase text-gray-600 mr-2"></i> <!-- Briefcase icon -->
                     {{ __('Job Listings') }}
                 </div>
@@ -198,7 +198,7 @@
         </div>
     </div>
 
-    <div class="py-4">
+    <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-3 font-semibold text-gray-900">
@@ -326,5 +326,8 @@
             </div>
         </div>
     </div>
+    
+   
+   
    
 </x-app-layout>

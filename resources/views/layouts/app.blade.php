@@ -15,12 +15,16 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
         
     </head>
-    <body class="font-sans antialiased">
-       
-        
-        <div class="min-h-screen bg-gray-100">
+
+    <body class="min-h-screen bg-cobg-gray-100ver bg-center bg-no-repeat">
+        <div class="min-h-screen  overflow-y-auto bg-gray-100">
+
+
             
             @include('layouts.navigation')
             @include('sweetalert::alert')
@@ -28,7 +32,7 @@
 
         <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white shadow">
+                <header class="bg-white shadow overflow-auto">
                     <div class="mt-1 max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 rounded-lg">
                         {{ $header }}
                     </div>
@@ -36,7 +40,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="pb-16">
                 {{ $slot }}
             </main>
 

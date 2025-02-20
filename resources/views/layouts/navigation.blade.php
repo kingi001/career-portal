@@ -1,40 +1,99 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-12">
+        <div class="flex justify-between h-15">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-5 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex " >
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <i class="fas fa-tachometer-alt"></i>-{{ __('Dashboard') }}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-6 h-6 text-blue-600">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" />
+                        </svg> <span class="text-blue-700 uppercase text-sm font-semibold rounded-md ml-1 "
+                           >
+                            {{ __('Dashboard') }}
+                        </span>
                     </x-nav-link>
-                    <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+
+
+                    {{-- <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
                         <i class="fas fa-user"></i> -{{ __('Personal Info') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
-                        <i class="fas fa-graduation-cap"></i> -{{ __('Education') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
-                        <i class="fas fa-briefcase"></i> -{{ __('Career') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
-                        <i class="fas fa-users"></i> -{{ __('Referees') }}
+                    </x-nav-link> --}}
+
+                    <!--personal profile-->
+                    <div class="hidden sm:flex sm:items-center sm:ml-1">
+                        <x-dropdown align="right" width="30">
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <div class="text-blue-700 uppercase text-sm font-semibold rounded-md"
+                                       >
+                                        <i class="fas fa-user"></i>
+                                        Personal Profile
+                                    </div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+                                    <i class="fas fa-user"></i> -{{ __('Personal Details') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('education.index')">
+                                    <i class="fas fa-graduation-cap"></i> -{{ __('Education') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('career')">
+                                    <i class="fas fa-briefcase"></i> -{{ __('Experience/Career') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('referee')">
+                                    <i class="fas fa-users"></i> -{{ __('Referees') }}
+                                </x-dropdown-link>
+
+
+
+
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+
+
+
+                    <x-nav-link :href="route('dashboard')">
+
+                        <div class="text-blue-700 uppercase text-sm font-semibold rounded-md "
+                           >
+                            <i class="fas fa-file-upload"></i>
+
+                            {{ __('Document Upload') }}
+
+                        </div>
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')">
-                        <i class="fas fa-file-upload"></i> -{{ __('Document Upload') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
+                        <div class="text-blue-700 uppercase text-sm font-semibold rounded-md "
+                           >
                         <i class="fas fa-paper-plane"></i> -{{ __('Application') }}
+                        </div>
                     </x-nav-link>
                 </div>
             </div>
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -79,6 +138,7 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">

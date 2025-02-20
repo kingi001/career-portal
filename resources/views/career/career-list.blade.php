@@ -116,6 +116,7 @@
                                 </form>
                             </td>
                         </tr>
+                     
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">6</td>
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Microsoft</td>
