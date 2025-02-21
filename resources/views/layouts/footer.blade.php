@@ -22,7 +22,7 @@
 <footer class="fixed bottom-0 left-0 z-20 w-full bg-white rounded-lg shadow  dark:bg-blue-800 ">
     <div class="w-full mx-auto max-w-screen-xl p-2 md:flex md:items-center md:justify-between">
         <span class="text-sm text-blue-500 sm:text-center dark:text-blue-400 ml-7">© 2025 <a href="https://flowbite.com/"
-                class="hover:underline ml-2">Bandari Maritime Academy</a>. All Rights Reserved.
+                class="hover:underline ml-2">Bandari Maritime Academy Career Portal </a>. All Rights Reserved.
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-blue-500 dark:text-blue-400 sm:mt-0">
             <li>
