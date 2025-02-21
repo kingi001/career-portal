@@ -17,9 +17,9 @@
     <body class="min-h-screen font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-20 sm:pt-0 bg-gray-50 rounded-lg" >
             <div>
-                <a href="/">
+                {{-- <a href="/">
                     <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
-                </a>
+                </a> --}}
             </div> 
 
             <div class="w-full sm:max-w-md mt-2 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">

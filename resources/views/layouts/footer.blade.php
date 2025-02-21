@@ -24,7 +24,7 @@
         <span class="text-sm text-blue-500 sm:text-center dark:text-blue-400 ml-7">© 2025 <a href="https://flowbite.com/"
                 class="hover:underline ml-2">Bandari Maritime Academy Career Portal </a>. All Rights Reserved.
         </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-blue-500 dark:text-blue-400 sm:mt-0">
+        {{-- <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-blue-500 dark:text-blue-400 sm:mt-0">
             <li>
                 <a href="#" class="hover:underline me-4 md:me-6">About</a>
             </li>
@@ -37,6 +37,6 @@
             <li>
                 <a href="#" class="hover:underline mr-5">Contact</a>
             </li>
-        </ul>
+        </ul> --}}
     </div>
 </footer>
