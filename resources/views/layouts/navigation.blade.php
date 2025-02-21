@@ -1,12 +1,12 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-200 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
-            <!-- Left Section: Logo, Title, and Navigation Links -->
+            <!-- Left Section: Logo and Navigation Links -->
             <div class="flex items-center">
-                <!-- Logo and Title -->
+                <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center">
+                    
                     <x-application-logo class="h-8 w-auto text-gray-800" />
-                    <span class="ml-2 text-xl font-semibold text-blue-800">BMA CAREER PORTAL</span>
                 </a>
 
                 <!-- Navigation Links -->
