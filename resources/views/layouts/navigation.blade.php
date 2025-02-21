@@ -1,212 +1,141 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-200 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-15">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-5 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
+        <div class="flex justify-between h-16 items-center">
+            <!-- Left Section: Logo, Title, and Navigation Links -->
+            <div class="flex items-center">
+                <!-- Logo and Title -->
+                <a href="{{ route('dashboard') }}" class="flex items-center">
+                    <x-application-logo class="h-8 w-auto text-gray-800" />
+                    <span class="ml-2 text-xl font-semibold text-blue-800">BMA CAREER PORTAL</span>
+                </a>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex " >
+                <div class="hidden md:flex space-x-6 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="w-6 h-6 text-blue-600">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" />
-                        </svg> <span class="text-blue-700 uppercase text-sm font-semibold rounded-md ml-1 "
-                           >
-                            {{ __('Dashboard') }}
-                        </span>
+                        <i class="fas fa-home text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Dashboard</span>
                     </x-nav-link>
 
-
-                    {{-- <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
-                        <i class="fas fa-user"></i> -{{ __('Personal Info') }}
-                    </x-nav-link> --}}
-
-                    <!--personal profile-->
-                    <div class="hidden sm:flex sm:items-center sm:ml-1">
-                        <x-dropdown align="right" width="30">
-                            <x-slot name="trigger">
-                                <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                    <div class="text-blue-700 uppercase text-sm font-semibold rounded-md"
-                                       >
-                                        <i class="fas fa-user"></i>
-                                        Personal Profile
-                                    </div>
-
-                                    <div class="ml-1">
-                                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <x-dropdown-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
-                                    <i class="fas fa-user"></i> -{{ __('Personal Details') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('education.index')">
-                                    <i class="fas fa-graduation-cap"></i> -{{ __('Education') }}
-                                </x-dropdown-link>
-
-                                <x-dropdown-link :href="route('career')">
-                                    <i class="fas fa-briefcase"></i> -{{ __('Experience/Career') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('referee')">
-                                    <i class="fas fa-users"></i> -{{ __('Referees') }}
-                                </x-dropdown-link>
-
-
-
-
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
-
-
-
-                    <x-nav-link :href="route('dashboard')">
-
-                        <div class="text-blue-700 uppercase text-sm font-semibold rounded-md "
-                           >
-                            <i class="fas fa-file-upload"></i>
-
-                            {{ __('Document Upload') }}
-
-                        </div>
+                    <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+                        <i class="fas fa-user text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Personal Info</span>
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
-                        <div class="text-blue-700 uppercase text-sm font-semibold rounded-md "
-                           >
-                        <i class="fas fa-paper-plane"></i> -{{ __('Application') }}
-                        </div>
+
+                    <x-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
+                        <i class="fas fa-graduation-cap text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Education</span>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('career')">
+                        <i class="fas fa-briefcase text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Experience</span>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('referee')">
+                        <i class="fas fa-users text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Referees</span>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('career')">
+                        <i class="fas fa-file-upload text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Documents</span>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('career')">
+                        <i class="fas fa-paper-plane text-blue-600"></i>
+                        <span class="ml-1 text-sm font-semibold text-gray-700">Application</span>
                     </x-nav-link>
                 </div>
             </div>
 
-
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <!-- Right Section: User Dropdown -->
+            <div class="hidden md:flex items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>
-                                <i class="fas fa-user"></i>
-                                -{{ Auth::user()->name }}
-                            </div>
-
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                        <button class="flex items-center text-gray-700 hover:text-gray-900 focus:outline-none">
+                            <i class="fas fa-user-circle text-xl"></i>
+                            <span class="ml-2 text-sm font-medium">{{ Auth::user()->name }}</span>
+                            <svg class="ml-1 w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
                         </button>
                     </x-slot>
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
                             <i class="fas fa-user-edit"></i>
-                            -{{ __('Profile') }}
+                            <span class="ml-2">Profile</span>
                         </x-dropdown-link>
 
-                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 <i class="fas fa-sign-out-alt"></i>
-
-                                {{ __('Log Out') }}
+                                <span class="ml-2">Logout</span>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
             </div>
 
-
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button @click="open = ! open" class="text-gray-700 hover:text-gray-900 focus:outline-none">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{ 'hidden': open, 'block': !open }" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{ 'hidden': !open, 'block': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+    <!-- Mobile Navigation Menu -->
+    <div :class="{ 'block': open, 'hidden': !open }" class="hidden md:hidden">
+        <div class="pt-2 pb-3 space-y-2">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
-                {{ __('Personal Info') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
-                {{ __('Education') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Career') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Professional Bodies') }}
+                <i class="fas fa-home"></i> Dashboard
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Referees') }}
+            <x-responsive-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+                <i class="fas fa-user"></i> Personal Info
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Document Upload') }}
+
+            <x-responsive-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
+                <i class="fas fa-graduation-cap"></i> Education
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Application') }}
+
+            <x-responsive-nav-link :href="route('career')">
+                <i class="fas fa-briefcase"></i> Experience
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('referee')">
+                <i class="fas fa-users"></i> Referees
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('career')">
+                <i class="fas fa-file-upload"></i> Documents
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('career')">
+                <i class="fas fa-paper-plane"></i> Application
             </x-responsive-nav-link>
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+        <div class="border-t border-gray-200">
+            <div class="px-4 py-3">
+                <div class="font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                <div class="text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
-            <div class="mt-3 space-y-1">
+            <div class="py-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    <i class="fas fa-user-edit"></i>
-                    {{ __('Profile') }}
+                    <i class="fas fa-user-edit"></i> Profile
                 </x-responsive-nav-link>
 
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Logout
                     </x-responsive-nav-link>
                 </form>
             </div>
