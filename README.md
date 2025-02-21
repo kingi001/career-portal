@@ -88,8 +88,8 @@ Then run:
 Then open `http://127.0.0.1:8000` in your browser.
 
 ## Screenshots 
-![Dashboard Screenshot](screenshot1/dashboard.png)
-![Education Section](screenshot2/education.png)
+![Dashboard Screenshot](screenshots/screenshot1.PNG)
+![Education Section](screenshots/screenshot2.PNG)
 
 
 ## Future Enhancements
