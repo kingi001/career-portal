@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureOtpIsVerified;
 use App\Http\Middleware\Verify2FAMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -13,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
-        $middleware->appendToGroup('twofactor',[Verify2FAMiddleware::class,]);
+        $middleware->appendToGroup('twofactorAuthentication',[EnsureOtpIsVerified::class,]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

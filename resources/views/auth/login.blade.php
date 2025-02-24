@@ -9,10 +9,15 @@
             <p class="text-sm font-semibold text-blue-500">Career Portal</p>
         </div>
 
+        <!-- Processing Notification Bar (Hidden by Default) -->
+        <div id="processingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-4">
+            ⏳ Processing... Logging in, please wait.
+        </div>
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('login') }}" class="mt-5">
+        <form method="POST" action="{{ route('login') }}" class="mt-5" id="loginForm">
             @csrf
             
             <!-- Email Address -->
@@ -45,9 +50,9 @@
 
             <!-- Login & Register Buttons -->
             <div class="mt-5 flex flex-col gap-3">
-                <x-primary-button class="w-full">
-                    {{ __('Log in') }}
-                </x-primary-button>
+                <button type="submit" id="loginButton" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700">
+                    Log in
+                </button>
 
                 <a href="{{ route('register') }}" class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50">
                     Create an Account
@@ -55,4 +60,16 @@
             </div>
         </form>
     </div>
+
+    <!-- JavaScript to Show Processing Message -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Show the processing message
+            document.getElementById('processingMessage').classList.remove('hidden');
+
+            // Disable the login button to prevent multiple submissions
+            document.getElementById('loginButton').disabled = true;
+            document.getElementById('loginButton').innerText = 'Logging in...';
+        });
+    </script>
 </x-guest-layout>

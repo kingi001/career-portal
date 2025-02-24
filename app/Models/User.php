@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'otp', 'otp_expires_at',
+    ];
+    protected $casts = [
+        'otp_expires_at' => 'datetime',
     ];
 
     /**

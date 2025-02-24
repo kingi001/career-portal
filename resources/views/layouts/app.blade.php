@@ -48,6 +48,75 @@
         @include('layouts.footer')
     </div>
 
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: "{{ session('success') }}",
+            timer: 3000,
+            showConfirmButton: false
+        });
+    @endif
+
+    @if (session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: "{{ session('error') }}",
+        });
+    @endif
+
+    @if (session('info'))
+        Swal.fire({
+            icon: 'info',
+            title: 'Heads up!',
+            text: "{{ session('info') }}",
+        });
+    @endif
+
+    @if (session('warning'))
+        Swal.fire({
+            icon: 'warning',
+            title: 'Warning!',
+            text: "{{ session('warning') }}",
+        });
+    @endif
+</script> --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function showToast(icon, message) {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: icon,
+            title: message,
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+
+    @if (session('success'))
+        showToast('success', "{{ session('success') }}");
+    @endif
+
+    @if (session('error'))
+        showToast('error', "{{ session('error') }}");
+    @endif
+
+    @if (session('info'))
+        showToast('info', "{{ session('info') }}");
+    @endif
+
+    @if (session('warning'))
+        showToast('warning', "{{ session('warning') }}");
+    @endif
+</script>
+
+
 </body>
 
 </html>

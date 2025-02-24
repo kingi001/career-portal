@@ -1,8 +1,7 @@
 <x-app-layout>
 
-    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-
             <!-- Main Content -->
             <main class="col-span-4 bg-white p-4 rounded-md shadow">
                 <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i>  Welcome to your Dashboard!</h2>
