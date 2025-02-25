@@ -4,7 +4,8 @@
 
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Add Academic Qualifications') }}
-        </h2>
+        </h2>+
+        
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Please provide your educational information with the most recent.') }}

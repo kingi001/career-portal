@@ -63,7 +63,7 @@
                         <tbody class="divide-y divide-gray-100">
                             <tr class="bg-white">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">JKUAT/ICT_II</a></td>
+                                        class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
                                     Science <br>and 2 years experience in a busy ICT working environment
@@ -82,7 +82,7 @@
                             </tr>
                             <tr class="bg-gray-50">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">JKUAT/SNCLOUD_ENG</a></td>
+                                        class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">SENIOR CLOUD ENGINEER</td>
 
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Masters Degree in IT,Computer
@@ -102,7 +102,7 @@
                             </tr>
                             <tr class="bg-white">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">JKUAT/NET_ADMN</a></td>
+                                        class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
 
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
@@ -131,7 +131,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
                     <div class="bg-white p-4 rounded-lg shadow space-y-3">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/ICT_II</a>
+                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
                             </div>
                             <div class="text-gray-500">ICT OFFICER</div>
                             <div> <span
@@ -152,7 +152,7 @@
 
                     <div class="bg-white p-4 rounded-lg shadow space-y-3">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/SNCLOUD_ENG</a>
+                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a>
                             </div>
                             <div class="text-gray-500">Senior Cloud Engineer</div>
                             <div> <span
@@ -173,7 +173,7 @@
 
                     <div class="bg-white p-4 rounded-lg shadow space-y-3">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/NET_ADMN</a>
+                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
                             </div>
                             <div class="text-gray-500">Network Administrator</div>
                             <div> <span
@@ -224,7 +224,7 @@
                         <tbody class="divide-y divide-gray-100">
                             <tr class="bg-white">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">JKUAT/NET_ADMN</a></td>
+                                        class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
 
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
@@ -251,7 +251,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
                     <div class="bg-white p-4 rounded-lg shadow space-y-3">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/ICT_II</a>
+                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
                             </div>
                             <div class="text-gray-500">ICT OFFICER</div>
                             <div> <span
@@ -295,7 +295,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/ICT_II</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">Interviewed</span>
@@ -307,7 +307,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-gray-50">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">JKUAT/NET_ADMN</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
