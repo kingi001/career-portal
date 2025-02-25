@@ -1,10 +1,10 @@
 <x-app-layout>
-
-  <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <!-- Main Content -->
             <main class="col-span-4 bg-white p-4 rounded-md shadow">
-                <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i>  Welcome to your Dashboard!</h2>
+                <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i> Welcome to your Dashboard!
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="p-5 bg-blue-100 rounded-md shadow flex items-center">
                         <i class="fas fa-check-circle text-blue-600 mr-2"></i>
@@ -13,7 +13,7 @@
                             <p class="text-sm mt-2">You have 3 active applications.</p>
                         </div>
                     </div>
-                    
+
                     <div class="p-5 bg-green-100 rounded-md shadow flex items-center">
                         <i class="fas fa-clipboard-check text-green-600 mr-2"></i>
                         <div>
@@ -21,7 +21,7 @@
                             <p class="text-sm mt-2">You have 1 applied job.</p>
                         </div>
                     </div>
-                    
+
                     <div class="p-5 bg-yellow-100 rounded-md shadow flex items-center">
                         <i class="fas fa-paper-plane text-yellow-600 mr-2"></i>
                         <div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </main>
-            
+
         </div>
     </div>
 
@@ -42,7 +42,6 @@
                     <i class="fas fa-briefcase text-gray-600 mr-2"></i> <!-- Briefcase icon -->
                     {{ __('Job Listings') }}
                 </div>
-                
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-100">
@@ -57,9 +56,7 @@
                                 <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Status</th>
                                 <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Action</th>
                             </tr>
-
                         </thead>
-
                         <tbody class="divide-y divide-gray-100">
                             <tr class="bg-white">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
@@ -125,9 +122,7 @@
                     </table>
 
                 </div>
-
-
-                <!-- responsive columns -->
+                <!--------------------------------------------------------------------- Mobile View Resposive Job Listings Columns ----------------------------------------------------------->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
                     <div class="bg-white p-4 rounded-lg shadow space-y-3">
                         <div class="flex items-center space-x-2 text-sm">
@@ -186,17 +181,20 @@
                         <div class="text-sm font-medium text-gray-600">
                             Deadline : 16/10/2024
                         </div>
-                        <div class="text-sm font-medium text-black">
-                            <a href="#" class="font-semibold hover:underline rounded-lg text-blue-900">Apply
-                                >></a>
+                        <div class="text-sm font-medium text-gray-800">
+                            <a href="#"
+                                class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:shadow-lg transition duration-300 ease-in-out">
+                                Apply →
+                            </a>
                         </div>
                     </div>
 
                 </div>
+                <!-----------------------------------------------------------End Of Responsive Columns----------------------------------------------------------------------------------->
             </div>
         </div>
     </div>
-
+    <!----------------------------------------------------------------------------Responsive Mobile view for Job Applied------------------------------------------->
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -273,21 +271,24 @@
             </div>
         </div>
     </div>
+    <!-----------------------------------------------------------------------End of Job Applied Responsive Mobile View------------------------------------------>
 
 
-     <!-- Application Status Tracker -->
-     <div class="py-1">
+    <!-- Application Status Tracker -->
+    <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-3 font-semibold text-gray-900">
                     <i class="fas fa-tasks text-blue-600 mr-2"></i>
                     {{ __('Application Status Tracker') }}
                 </div>
-                <div class="overflow-auto rounded-lg shadow">
+
+                <!-- Table (Hidden on small screens) -->
+                <div class="overflow-auto rounded-lg shadow hidden md:block">
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-100">
                             <tr>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference_No</th>
+                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference No</th>
                                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide text-left">Status</th>
                                 <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Progress</th>
@@ -295,38 +296,99 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
+                                </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">Interviewed</span>
+                                    <span
+                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">
+                                        Interviewed
+                                    </span>
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <div class="w-full bg-gray-200 rounded-full">
-                                        <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full" style="width: 75%;">75%</div>
+                                        <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
+                                            style="width: 75%;">
+                                            75%
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr class="bg-gray-50">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
+                                </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
+                                    <span
+                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">
+                                        Applied
+                                    </span>
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <div class="w-full bg-gray-200 rounded-full">
-                                        <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full" style="width: 25%;">25%</div>
+                                        <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
+                                            style="width: 25%;">
+                                            25%
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
-                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Mobile View -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden p-4">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <div>
+                                <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
+                            </div>
+                            <div class="text-gray-500">ICT OFFICER II</div>
+                            <div>
+                                <span
+                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">
+                                    Interviewed
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full">
+                            <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
+                                style="width: 75%;">
+                                75%
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <div>
+                                <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
+                            </div>
+                            <div class="text-gray-500">NETWORK ADMINISTRATOR</div>
+                            <div>
+                                <span
+                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">
+                                    Applied
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full">
+                            <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
+                                style="width: 25%;">
+                                25%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    
-   
-   
-   
+
+
 </x-app-layout>
