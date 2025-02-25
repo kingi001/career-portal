@@ -243,9 +243,14 @@
                                 </td>
 
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <a href="#"
-                                        class="font-semibold hover:underline rounded-lg text-blue-900">View >></a>
+                                    <a href="#" 
+                                        class="flex items-center space-x-2 font-medium text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
+                                        <span class="underline">View Details</span>
+                                        <i class="fas fa-arrow-right text-blue-500 group-hover:text-blue-700"></i>
+                                    </a>
                                 </td>
+                                
+                                
                             </tr>
 
                         </tbody>
@@ -268,10 +273,14 @@
                         <div class="text-sm font-medium text-gray-600">
                             Deadline : 16/10/2024
                         </div>
-                        <div class="text-sm font-medium text-black">
-                            <a href="#" class="font-semibold hover:underline rounded-lg text-blue-900">View
-                                >></a>
-                        </div>
+                        <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                            <a href="#" 
+                                class="flex items-center space-x-1 font-semibold text-blue-500 hover:underline hover:text-blue-600 transition duration-300">
+                                <span>View Details</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </td>
+                        
                     </div>
                 </div>
             </div>

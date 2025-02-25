@@ -4,12 +4,17 @@
             <!-- Left Section: Logo and Navigation Links -->
             <div class="flex items-center">
                 <!-- Logo -->
-                <a href="{{ route('dashboard') }}" class="flex items-center">
+                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:text-blue-600 transition duration-300 ease-in-out">
+                    <x-application-logo class="h-6 w-auto text-gray-900" />
                     
-                    <x-application-logo class="h-4 w-auto text-gray-800" />
-                    <span class="text-lg font-semibold text-gray-800">CAREER PORTAL</span>
+                    <!-- Show "BMA E-RECRUITMENT" on Mobile -->
+                    <span class="text-base font-bold text-gray-900 tracking-wide sm:hidden">BMA E-RECRUITMENT PORTAL</span>
                     
+                    <!-- Show "E-RECRUITMENT" on Desktop -->
+                    <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT </span>
                 </a>
+                
+                
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-6 ml-10">
