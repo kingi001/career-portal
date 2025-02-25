@@ -162,9 +162,11 @@
                         <div class="text-sm font-medium text-gray-600">
                             Deadline : 16/10/2024
                         </div>
-                        <div class="text-sm font-medium text-black">
-                            <a href="#" class="font-semibold hover:underline rounded-lg text-blue-900">Application
-                                closed</a>
+                        <div class="text-sm font-medium text-gray-800 flex items-center space-x-2">
+                            <i class="fas fa-ban text-red-600"></i>
+                            <span class="px-4 py-2 font-semibold text-red-600 bg-gray-100 rounded-lg shadow-sm">
+                                Application Closed
+                            </span>
                         </div>
                     </div>
 
