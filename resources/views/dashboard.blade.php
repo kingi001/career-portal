@@ -139,9 +139,11 @@
                         <div class="text-sm font-medium text-gray-600">
                             Deadline : 16/10/2024
                         </div>
-                        <div class="text-sm font-medium text-black">
-                            <a href="#" class="font-semibold hover:underline rounded-lg text-blue-900">Apply
-                                >></a>
+                        <div class="text-sm font-medium text-gray-800">
+                            <a href="#"
+                                class="block w-full text-center px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
+                                Apply →
+                            </a>
                         </div>
                     </div>
 
