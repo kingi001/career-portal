@@ -183,10 +183,11 @@
                         </div>
                         <div class="text-sm font-medium text-gray-800">
                             <a href="#"
-                                class="block sm:inline w-full sm:w-auto text-center px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
+                                class="block w-full text-center px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
                                 Apply →
                             </a>
                         </div>
+                        
                         
                     </div>
 
