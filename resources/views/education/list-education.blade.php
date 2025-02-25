@@ -67,7 +67,7 @@
                
             </div>
             <x-primary-button class="bg-blue-900 h-6 mt-2 align-left justify-end" x-data=""
-            x-on:click.prevent="$dispatch('open-modal', 'add-education')"><i class="fas fa-plus mr-2"></i>{{ __('Add Education') }}
+            x-on:click.prevent="$dispatch('open-modal', 'add-education')"><i class="fas fa-plus mr-2"></i>{{ __('Add Education ') }}
         </x-primary-button>
         </div>
      
@@ -241,7 +241,7 @@
                 </table>
             </div>
             <x-primary-button
-                class="bg-blue-900 h-6 mt-2 align-left"><i class="fas fa-plus mr-2"></i>{{ __('Add Professional Certification') }}
+                class="bg-blue-900 h-6 mt-2 align-left"><i class="fas fa-plus mr-2"></i>{{ __('Add Membership Certification') }}
             </x-primary-button>
 
         </div>

@@ -1,5 +1,4 @@
 <x-guest-layout>
-    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
         <div class="text-center">
             <!-- Logo -->
             <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-24 h-24 mb-4">
@@ -53,12 +52,11 @@
         </form>
 
           <!-- Back Button -->
-          <div class="mt-4 text-center">
+          {{-- <div class="mt-4 text-center">
             <a href="{{ route('login') }}" class="text-sm text-gray-500 hover:underline">
                 ← Back
             </a>
-        </div>
-    </div>
+        </div> --}}
 </x-guest-layout>
 
 <script>
