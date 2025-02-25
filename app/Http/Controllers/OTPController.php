@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendOtpMail;
 use Carbon\Carbon;
 
-class OtpController extends Controller
+class OTPController extends Controller
 {
     /**
      * Show the OTP verification form.

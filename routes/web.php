@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EducationController;
-use App\Http\Controllers\OtpController;
+use App\Http\Controllers\OTPController;
 use Illuminate\Support\Facades\Route;
 
 //Guest User Routes
