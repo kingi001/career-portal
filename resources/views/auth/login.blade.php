@@ -5,7 +5,7 @@
 
         <!-- Portal Title -->
         <h2 class="text-xl font-semibold text-gray-700">Bandari Maritime Academy</h2>
-        <p class="text-sm font-semibold text-blue-500">Career Portal</p>
+        <p class="text-sm font-semibold text-blue-500">E-Recruitment Portal</p>
     </div>
 
     <!-- Processing Notification Bar (Hidden by Default) -->

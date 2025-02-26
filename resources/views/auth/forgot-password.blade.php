@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg mt-2">
+
         <div class="text-center">
             <!-- Logo -->
             <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-24 h-24 mb-4">
@@ -41,5 +41,5 @@
                 </a>
             </div>
         </form>
-    </div>
+    
 </x-guest-layout>

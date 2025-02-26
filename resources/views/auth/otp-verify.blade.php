@@ -14,7 +14,7 @@
 
         <!-- Flash Messages -->
         @if (session('message'))
-            <div class="text-green-600 text-sm mt-3">{{ session('message') }}</div>
+            <div class="text-green-600 text-sm mt-3 text-center">{{ session('message') }}</div>
         @endif
 
         @if (session('error'))

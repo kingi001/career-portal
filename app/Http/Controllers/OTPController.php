@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use App\Mail\SendOtpMail;
 use Carbon\Carbon;
 
@@ -16,7 +17,6 @@ class OTPController extends Controller
      */
     public function showOtpForm()
     {
-
         return view('auth.otp-verify');
     }
 
@@ -34,9 +34,9 @@ class OTPController extends Controller
         // Generate a 6-digit OTP
         $otp = random_int(100000, 999999);
 
-        // Store OTP securely
+        // Store hashed OTP securely
         $user->update([
-            'otp' => bcrypt($otp), // Hash the OTP for security
+            'otp' => Hash::make($otp), // Ensure OTP is hashed before storage
             'otp_expires_at' => Carbon::now()->addMinutes(10),
         ]);
 
@@ -65,13 +65,13 @@ class OTPController extends Controller
             return redirect()->route('login')->withErrors(['error' => 'Unauthorized. Please log in first.']);
         }
 
-        // Check if OTP is valid
-        if (!$user->otp || !$user->otp_expires_at) {
-            return back()->withErrors(['otp' => 'No OTP found. Please request a new one.']);
+        // Check if OTP exists and hasn't expired
+        if (!$user->otp || !$user->otp_expires_at || Carbon::now()->greaterThan($user->otp_expires_at)) {
+            return back()->withErrors(['otp' => 'No OTP found or OTP expired. Please request a new one.']);
         }
 
-        // Verify OTP and expiry time
-        if (password_verify($request->otp, $user->otp) && Carbon::now()->lessThanOrEqualTo($user->otp_expires_at)) {
+        // Verify OTP correctly against the hashed version
+        if (Hash::check($request->otp, $user->otp)) {
             // Clear OTP after successful verification
             $user->update([
                 'otp' => null,
@@ -79,11 +79,8 @@ class OTPController extends Controller
             ]);
 
             return redirect()->route('dashboard')->with('success', 'Verification successful!');
-
-           
         }
 
-        return back()->withErrors(['otp' => 'Invalid or expired OTP. Please try again.']);
-
+        return back()->withErrors(['otp' => 'Invalid OTP. Please try again.']);
     }
 }
