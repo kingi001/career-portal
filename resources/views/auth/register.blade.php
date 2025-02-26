@@ -10,7 +10,7 @@
 
     <!-- Processing Notification (Hidden by Default) -->
     <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-4">
-        ⏳ Processing... Creating your account, please wait.
+        <i class="fas fa-spinner fa-spin"></i> Processing... Creating your account, please wait.
     </div>
 
     <!-- Registration Form -->
@@ -18,48 +18,67 @@
         @csrf
 
         <!-- Full Name -->
-        <div>
+        <div class="relative">
             <x-input-label for="name" value="Full Name" class="font-semibold" />
-            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"
-                class="block mt-1 w-full text-sm" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-user"></i>
+                </span>
+                <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"
+                    class="block mt-1 w-full text-sm pl-8" placeholder="Enter your full name" />
+            </div>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="email" value="Email Address" class="font-semibold" />
-            <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username"
-                class="block mt-1 w-full text-sm" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username"
+                    class="block mt-1 w-full text-sm pl-8" placeholder="Enter your email address" />
+            </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password" value="Password" class="font-semibold" />
-            <x-text-input id="password" type="password" name="password" required autocomplete="new-password"
-                class="block mt-1 w-full text-sm" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <x-text-input id="password" type="password" name="password" required autocomplete="new-password"
+                    class="block mt-1 w-full text-sm pl-8" placeholder="Create a strong password" />
+            </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password_confirmation" value="Confirm Password" class="font-semibold" />
-            <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
-                class="block mt-1 w-full text-sm" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-key"></i>
+                </span>
+                <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
+                    class="block mt-1 w-full text-sm pl-8" placeholder="Re-enter your password" />
+            </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <!-- Register & Login Links -->
         <div class="mt-5 flex flex-col gap-3 text-center">
             <!-- Register Button -->
-            <x-primary-button class="w-full text-center">
-                {{ __('Register') }}
-            </x-primary-button>
+            <button type="submit" id="registerButton" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 flex items-center justify-center gap-2">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
 
             <!-- Already Registered? -->
-            <a href="{{ route('login') }}"
-                class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50">
-                Already registered? Log in
+            <a href="{{ route('login') }}" class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50 flex items-center justify-center gap-2">
+                <i class="fas fa-sign-in-alt"></i> Already registered? Log in
             </a>
         </div>
     </form>
@@ -68,6 +87,11 @@
     <script>
         document.getElementById("registerForm").addEventListener("submit", function () {
             document.getElementById("registerProcessingMessage").classList.remove("hidden");
+
+            // Disable the register button to prevent multiple submissions
+            let registerBtn = document.getElementById('registerButton');
+            registerBtn.disabled = true;
+            registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
         });
     </script>
 </x-guest-layout>

@@ -10,7 +10,7 @@
 
     <!-- Processing Notification Bar (Hidden by Default) -->
     <div id="processingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-4 mx-auto max-w-md">
-        ⏳ Processing... Logging in, please wait.
+        <i class="fas fa-spinner fa-spin"></i> Processing... Logging in, please wait.
     </div>
 
     <!-- Session Status -->
@@ -18,18 +18,28 @@
 
     <form method="POST" action="{{ route('login') }}" class="mt-5 mx-auto max-w-md" id="loginForm">
         @csrf
-        
+
         <!-- Email Address -->
-        <div>
+        <div class="relative">
             <x-input-label for="email" :value="__('Email Address')" class="font-semibold" />
-            <x-text-input id="email" class="block mt-1 w-full text-sm" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <x-text-input id="email" class="block mt-1 w-full text-sm pl-8" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password" :value="__('Password')" class="font-semibold" />
-            <x-text-input id="password" class="block mt-1 w-full text-sm" type="password" name="password" required autocomplete="current-password" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <x-text-input id="password" class="block mt-1 w-full text-sm pl-8" type="password" name="password" required autocomplete="current-password" />
+            </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -37,24 +47,24 @@
         <div class="flex items-center justify-between mt-4">
             <label for="remember_me" class="flex items-center text-sm text-gray-600">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2">Remember me</span>
+                <span class="ms-2"><i class="fas fa-check-circle text-indigo-600"></i> Remember me</span>
             </label>
 
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}" class="text-sm text-indigo-600 hover:underline">
-                    Forgot Password?
+                    <i class="fas fa-key"></i> Forgot Password?
                 </a>
             @endif
         </div>
 
         <!-- Login & Register Buttons -->
         <div class="mt-5 flex flex-col gap-3">
-            <button type="submit" id="loginButton" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700">
-                Log in
+            <button type="submit" id="loginButton" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 flex justify-center items-center gap-2">
+                <i class="fas fa-sign-in-alt"></i> Log in
             </button>
 
-            <a href="{{ route('register') }}" class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50">
-                Create an Account
+            <a href="{{ route('register') }}" class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50 flex justify-center items-center gap-2">
+                <i class="fas fa-user-plus"></i> Create an Account
             </a>
         </div>
     </form>
@@ -66,8 +76,9 @@
             document.getElementById('processingMessage').classList.remove('hidden');
 
             // Disable the login button to prevent multiple submissions
-            document.getElementById('loginButton').disabled = true;
-            document.getElementById('loginButton').innerText = 'Logging in...';
+            let loginBtn = document.getElementById('loginButton');
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
         });
     </script>
 </x-guest-layout>
