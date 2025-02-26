@@ -21,7 +21,7 @@
                         <tbody>
                             <tr class="hover:bg-gray-50">
                                 <td class="p-3 text-sm text-gray-700">1</td>
-                                <td class="p-3 text-sm text-gray-700">John Doe</td>
+                                <td class="p-3 text-sm text-gray-700">KhamisKingi</td>
                                 <td class="p-3 text-sm text-gray-700">Software Developer</td>
                                 <td class="p-3 text-sm text-gray-700">2024-10-01</td>
                                 <td class="p-3 text-sm text-gray-700">Received</td>
@@ -54,7 +54,7 @@
                                 <td class="p-3 text-sm text-gray-700">2024-10-05</td>
                                 <td class="p-3 text-sm text-gray-700">Interview Scheduled</td>
                             </tr>
-                        </tbody> 
+                        </tbody>
                     </tbody>
                 </table>
             </div>
