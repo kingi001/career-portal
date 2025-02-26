@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\OTPController;
 use App\Models\User;
 use App\Mail\SendOtpMail;
 use Illuminate\Auth\Events\Registered;
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
-use Carbon\Carbon;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -45,18 +45,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Generate and store OTP
-        $otp = random_int(100000, 999999);
-        $user->update([
-            'otp' => $otp,
-            'otp_expires_at' => now()->addMinutes(10),
-        ]);
-
-        // Send OTP via email
-        Mail::to($user->email)->send(new SendOtpMail($otp));
-
         // Fire registered event
         event(new Registered($user));
+
+        // Generate and send OTP
+        $otpController = new OTPController();
+        $otpController->handleRegistrationOtp($user);
 
         // Log in the user immediately after registration
         Auth::login($user);
@@ -65,12 +59,6 @@ class RegisteredUserController extends Controller
         session(['otp_user_id' => $user->id]);
 
         // Redirect user to OTP verification page
-
-
-
-        return redirect()->route('otp.send')->with('message', 'A verification code has been sent to your email.');
+        return redirect()->route('otp.verify')->with('message', 'A verification code has been sent to your email.');
     }
-
-
 }
-
