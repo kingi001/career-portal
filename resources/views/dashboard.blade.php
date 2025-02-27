@@ -2,352 +2,290 @@
     <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <!-- Main Content -->
-            <main class="col-span-4 bg-white p-4 rounded-md shadow">
-                <h2 class="text-lg font-semibold mb-4 uppercase"> <i class="fas fa-home"></i> Welcome to your Dashboard!
+            <main class="col-span-4 bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-lg font-semibold mb-6 uppercase flex items-center gap-2 text-gray-800">
+                    <i class="fas fa-tachometer-alt text-blue-500 "></i>Welcome to your Dashboard!
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-5 bg-blue-100 rounded-md shadow flex items-center">
-                        <i class="fas fa-check-circle text-blue-600 mr-2"></i>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Active Applications -->
+                    <div
+                        class="p-5 bg-blue-100 rounded-lg shadow-md flex items-center gap-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+                        <i class="fas fa-check-circle text-blue-600 text-2xl"></i>
                         <div>
-                            <h3 class="font-bold text-blue-800">Active Applications</h3>
-                            <p class="text-sm mt-2">You have 3 active applications.</p>
+                            <h3 class="font-bold text-blue-900 text-lg">Active Applications</h3>
+                            <p class="text-sm text-gray-700 mt-1">You have <span class="font-semibold">3</span> active
+                                applications.</p>
                         </div>
                     </div>
 
-                    <div class="p-5 bg-green-100 rounded-md shadow flex items-center">
-                        <i class="fas fa-clipboard-check text-green-600 mr-2"></i>
+                    <!-- Jobs Applied -->
+                    <div
+                        class="p-5 bg-green-100 rounded-lg shadow-md flex items-center gap-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+                        <i class="fas fa-clipboard-check text-green-600 text-2xl"></i>
                         <div>
-                            <h3 class="font-bold text-green-800">Jobs Applied</h3>
-                            <p class="text-sm mt-2">You have 1 applied job.</p>
+                            <h3 class="font-bold text-green-900 text-lg">Jobs Applied</h3>
+                            <p class="text-sm text-gray-700 mt-1">You have <span class="font-semibold">1</span> applied
+                                job.</p>
                         </div>
                     </div>
 
-                    <div class="p-5 bg-yellow-100 rounded-md shadow flex items-center">
-                        <i class="fas fa-paper-plane text-yellow-600 mr-2"></i>
+                    <!-- Application Status -->
+                    <div
+                        class="p-5 bg-yellow-100 rounded-lg shadow-md flex items-center gap-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+                        <i class="fas fa-paper-plane text-yellow-600 text-2xl"></i>
                         <div>
-                            <h3 class="font-bold text-yellow-800">Status</h3>
-                            <p class="text-sm mt-2">Application received</p>
+                            <h3 class="font-bold text-yellow-900 text-lg">Application Status</h3>
+                            <p class="text-sm text-gray-700 mt-1">Application received.</p>
                         </div>
                     </div>
                 </div>
             </main>
-
         </div>
     </div>
-
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-2 font-semibold text-gray-900 flex items-center">
-                    <i class="fas fa-briefcase text-gray-600 mr-2"></i> <!-- Briefcase icon -->
+    <!---------------------------------------------------job listings-------------------------------------->
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="p-4 font-semibold text-gray-900 flex items-center">
+                    <i class="fas fa-briefcase text-blue-500 mr-2"></i>
                     {{ __('Job Listings') }}
                 </div>
+
+
+                <!-- Desktop View -->
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-100">
                             <tr>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference_No</th>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
-
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">Description</th>
-
-                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Date Posted</th>
-                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Deadline</th>
-                                <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Status</th>
-                                <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Action</th>
+                                <th class="w-32 p-4 text-sm font-semibold text-gray-700 text-left">Reference No</th>
+                                <th class="w-48 p-4 text-sm font-semibold text-gray-700 text-left">Position</th>
+                                <th class="p-4 text-sm font-semibold text-gray-700 text-left">Description</th>
+                                <th class="w-28 p-4 text-sm font-semibold text-gray-700 text-left">Date Posted</th>
+                                <th class="w-28 p-4 text-sm font-semibold text-gray-700 text-left">Deadline</th>
+                                <th class="w-24 p-4 text-sm font-semibold text-gray-700 text-left">Status</th>
+                                <th class="w-32 p-4 text-sm font-semibold text-gray-700 text-left">Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
+                            <!-- Job Row -->
+                            <tr class="bg-white hover:bg-gray-50 transition">
+                                <td class="p-4 text-sm text-gray-700"><a href="#"
                                         class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a></td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
-                                    Science <br>and 2 years experience in a busy ICT working environment
+                                <td class="p-4 text-sm text-gray-700">ICT OFFICER II</td>
+                                <td class="p-4 text-sm text-gray-700">BSc in IT, Computer Science & 2 years experience.
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/05/2024</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/08/2024</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                <td class="p-4 text-sm text-gray-700">16/05/2024</td>
+                                <td class="p-4 text-sm text-gray-700">16/08/2024</td>
+                                <td class="p-4 text-sm">
                                     <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg opacity-200">open</span>
+                                        class="px-3 py-1 text-xs font-medium text-green-800 bg-green-200 rounded-md">Open</span>
                                 </td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> <a href="#"
-                                        class="font-semibold hover:underline rounded-lg text-blue-900">Apply >></a>
+                                <td class="p-4 text-sm">
+                                    <a href="#" class="text-blue-600 font-semibold hover:underline">Apply →</a>
                                 </td>
                             </tr>
-                            <tr class="bg-gray-50">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition">
+                                <td class="p-4 text-sm text-gray-700"><a href="#"
                                         class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a></td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">SENIOR CLOUD ENGINEER</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Masters Degree in IT,Computer
-                                    Science <br>and 5 years experience in cloud Infrastructure
-                                </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/05/2024</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/08/2024</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                <td class="p-4 text-sm text-gray-700">Senior Cloud Engineer</td>
+                                <td class="p-4 text-sm text-gray-700">MSc in IT, Computer Science & 5 years in Cloud
+                                    Infra.</td>
+                                <td class="p-4 text-sm text-gray-700">16/05/2024</td>
+                                <td class="p-4 text-sm text-gray-700">16/08/2024</td>
+                                <td class="p-4 text-sm">
                                     <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-gray-800 bg-gray-200 rounded-lg opacity-50">Closed</span>
+                                        class="px-3 py-1 text-xs font-medium text-gray-800 bg-gray-200 rounded-md">Closed</span>
                                 </td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> <a href="#"
-                                        class="font-semibold hover:underline rounded-lg text-blue-900">Apply >></a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
-                                    Science and CCNA <br>and 2 years experience in Networking environment
-                                </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/05/2024</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/08/2024</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg opacity-200">open</span>
-                                </td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <a href="#"
-                                        class="font-semibold hover:underline rounded-lg text-blue-900">Apply >></a>
-                                </td>
+                                <td class="p-4 text-sm text-gray-400">N/A</td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-                <!--------------------------------------------------------------------- Mobile View Resposive Job Listings Columns ----------------------------------------------------------->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
-                        <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
-                            </div>
-                            <div class="text-gray-500">ICT OFFICER</div>
-                            <div> <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg opacity-100">OPEN</span>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-700">Bachelors Degree in IT,Computer Science and 2 years
-                            experience in a busy ICT working environment</div>
 
-                        <div class="text-sm font-medium text-gray-600">
-                            Deadline : 16/10/2024
+                <!-- Mobile View -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:hidden p-4">
+                    <!-- Job Card -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105">
+                        <div class="flex items-center space-x-3 text-sm">
+                            <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
+                            <span class="text-gray-500">ICT Officer</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium uppercase text-green-800 bg-green-200 rounded-md">Open</span>
                         </div>
-                        <div class="text-sm font-medium text-gray-800">
-                            <a href="#"
-                                class="block w-full text-center px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
-                                Apply →
-                            </a>
-                        </div>
+                        <p class="text-sm text-gray-700 mt-2">BSc in IT, Computer Science & 2 years experience.</p>
+                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 16/08/2024</p>
+                        <a href="#"
+                            class="block w-full text-center mt-3 px-4 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 transition">
+                            Apply →
+                        </a>
                     </div>
 
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
-                        <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a>
-                            </div>
-                            <div class="text-gray-500">Senior Cloud Engineer</div>
-                            <div> <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-gray-800 bg-gray-200 rounded-lg opacity-100">CLOSED</span>
-                            </div>
+                    <!-- Closed Job Card -->
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105">
+                        <div class="flex items-center space-x-3 text-sm">
+                            <a href="#" class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a>
+                            <span class="text-gray-500">Cloud Engineer</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium uppercase text-gray-800 bg-gray-200 rounded-md">Closed</span>
                         </div>
-                        <div class="text-sm text-gray-700">Masters Degree in IT,Computer Science and 5 years experience
-                            in cloud Infrastructure</div>
-
-                        <div class="text-sm font-medium text-gray-600">
-                            Deadline : 16/10/2024
-                        </div>
-                        <div class="text-sm font-medium text-gray-800 flex items-center space-x-2">
+                        <p class="text-sm text-gray-700 mt-2">MSc in IT, Computer Science & 5 years in Cloud Infra.</p>
+                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 16/08/2024</p>
+                        <div class="text-sm font-medium text-gray-800 flex items-center space-x-2 mt-3">
                             <i class="fas fa-ban text-red-600"></i>
-                            <span class="px-4 py-2 font-semibold text-red-600 bg-gray-100 rounded-lg shadow-sm">
-                                Application Closed
-                            </span>
+                            <span class="px-4 py-2 text-red-600 bg-gray-100 rounded-lg shadow-sm">Application
+                                Closed</span>
                         </div>
                     </div>
-
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
-                        <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
-                            </div>
-                            <div class="text-gray-500">Network Administrator</div>
-                            <div> <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg opacity-100">OPEN</span>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-700">Bachelors Degree in IT,Computer Science and 2 years
-                            experience in a busy ICT working environment</div>
-
-                        <div class="text-sm font-medium text-gray-600">
-                            Deadline : 16/10/2024
-                        </div>
-                        <div class="text-sm font-medium text-gray-800">
-                            <a href="#"
-                                class="block w-full text-center px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
-                                Apply →
-                            </a>
-                        </div>
-                        
-                        
-                    </div>
-
                 </div>
-                <!-----------------------------------------------------------End Of Responsive Columns----------------------------------------------------------------------------------->
             </div>
         </div>
     </div>
+
+
     <!----------------------------------------------------------------------------Responsive Mobile view for Job Applied------------------------------------------->
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-3 font-semibold text-gray-900">
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="p-4 font-semibold text-gray-900 flex items-center">
                     <i class="fas fa-check-circle text-green-600 mr-2"></i>
-                    {{ __('Job Applied') }}
+                    {{ __('Job Applications') }}
                 </div>
+
+                <!-- Desktop View -->
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
-                    <table class="w-full">
-                        <thead class="bg-gray-50 border-b-2 border-gray-100">
+                    <table class="w-full border-collapse">
+                        <thead class="bg-gray-50 border-b-2 border-gray-200">
                             <tr>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference_No</th>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
-
+                                <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Reference No</th>
+                                <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide text-left">Description</th>
-
-                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Date Posted</th>
-                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Deadline</th>
+                                <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Date Posted</th>
+                                <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Deadline</th>
                                 <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Status</th>
                                 <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Action</th>
                             </tr>
-
                         </thead>
-
-                        <tbody class="divide-y divide-gray-100">
-                            <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap"><a href="#"
-                                        class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a></td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
-
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Bachelors Degree in IT,Computer
-                                    Science and CCNA <br>and 2 years experience in Networking environment
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="bg-white hover:bg-gray-50 transition duration-200">
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Network Administrator</td>
+                                <td class="p-3 text-sm text-gray-700">
+                                    Bachelor's Degree in IT, Computer Science, CCNA, and 2 years of networking
+                                    experience.
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/05/2024</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/08/2024</td>
-
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg opacity-200">APPLIED</span>
+                                        class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
                                 </td>
-
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <a href="#" 
+                                    <a href="#"
                                         class="flex items-center space-x-2 font-medium text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
                                         <span class="underline">View Details</span>
-                                        <i class="fas fa-arrow-right text-blue-500 group-hover:text-blue-700"></i>
+                                        <i class="fas fa-arrow-right text-blue-500"></i>
                                     </a>
                                 </td>
-                                
-                                
                             </tr>
-
                         </tbody>
                     </table>
-
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
-                        <div class="flex items-center space-x-2 text-sm">
-                            <div><a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
-                            </div>
-                            <div class="text-gray-500">ICT OFFICER</div>
-                            <div> <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg opacity-50">APPLIED</span>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-700">Bachelors Degree in IT,Computer Science and 2 years
-                            experience in a busy ICT working environment</div>
 
-                        <div class="text-sm font-medium text-gray-600">
-                            Deadline : 16/10/2024
+                <!-- Mobile View -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden p-4">
+                    <div class="bg-white p-4 rounded-lg shadow space-y-3 border">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
+                            <span class="text-gray-500">ICT Officer</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
                         </div>
-                        <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                            <a href="#" 
-                                class="flex items-center space-x-1 font-semibold text-blue-500 hover:underline hover:text-blue-600 transition duration-300">
+                        <div class="text-sm text-gray-700">
+                            Bachelor's Degree in IT, Computer Science, and 2 years of experience in a busy ICT
+                            environment.
+                        </div>
+                        <div class="text-sm font-medium text-gray-600">
+                            Deadline: 16/08/2024
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <a href="#"
+                                class="flex items-center space-x-1 font-semibold text-blue-500 hover:text-blue-600 transition duration-300">
                                 <span>View Details</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
-                        </td>
-                        
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-----------------------------------------------------------------------End of Job Applied Responsive Mobile View------------------------------------------>
 
 
     <!-- Application Status Tracker -->
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-3 font-semibold text-gray-900">
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="p-4 font-semibold text-gray-900 flex items-center">
                     <i class="fas fa-tasks text-blue-600 mr-2"></i>
                     {{ __('Application Status Tracker') }}
                 </div>
 
-                <!-- Table (Hidden on small screens) -->
+                <!-- Desktop View -->
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
-                    <table class="w-full">
-                        <thead class="bg-gray-50 border-b-2 border-gray-100">
+                    <table class="w-full border-collapse">
+                        <thead class="bg-gray-50 border-b-2 border-gray-200">
                             <tr>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Reference No</th>
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
+                                <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Reference No</th>
+                                <th class="w-32 p-3 text-sm font-semibold tracking-wide text-left">Position</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide text-left">Status</th>
-                                <th class="w-28 p-3 text-sm font-semibold tracking-wide text-left">Progress</th>
+                                <th class="w-36 p-3 text-sm font-semibold tracking-wide text-left">Progress</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            <tr class="bg-white">
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- Job 1 -->
+                            <tr class="bg-white hover:bg-gray-50 transition duration-200">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">ICT OFFICER II</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">
+                                        class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">
                                         Interviewed
                                     </span>
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <div class="w-full bg-gray-200 rounded-full">
-                                        <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
-                                            style="width: 75%;">
-                                            75%
-                                        </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-500 h-2 rounded-full transition-all duration-500"
+                                            style="width: 75%;"></div>
                                     </div>
+                                    <div class="text-xs text-gray-500 mt-1">75%</div>
                                 </td>
                             </tr>
-                            <tr class="bg-gray-50">
+                            <!-- Job 2 -->
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition duration-200">
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">NETWORK ADMINISTRATOR</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">Network Administrator</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span
-                                        class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">
+                                        class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">
                                         Applied
                                     </span>
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <div class="w-full bg-gray-200 rounded-full">
-                                        <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
-                                            style="width: 25%;">
-                                            25%
-                                        </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full transition-all duration-500"
+                                            style="width: 25%;"></div>
                                     </div>
+                                    <div class="text-xs text-gray-500 mt-1">25%</div>
                                 </td>
                             </tr>
                         </tbody>
@@ -357,53 +295,39 @@
                 <!-- Mobile View -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden p-4">
                     <!-- Card 1 -->
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                    <div class="bg-white p-4 rounded-lg shadow space-y-3 border">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div>
-                                <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
-                            </div>
-                            <div class="text-gray-500">ICT OFFICER II</div>
-                            <div>
-                                <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">
-                                    Interviewed
-                                </span>
-                            </div>
+                            <a href="#" class="font-bold text-blue-500 hover:underline">BMA/ICT_II</a>
+                            <span class="text-gray-500">ICT Officer II</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg">Interviewed</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full">
-                            <div class="bg-green-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
-                                style="width: 75%;">
-                                75%
-                            </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full transition-all duration-500"
+                                style="width: 75%;"></div>
                         </div>
+                        <div class="text-xs text-gray-500">75%</div>
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                    <div class="bg-white p-4 rounded-lg shadow space-y-3 border">
                         <div class="flex items-center space-x-2 text-sm">
-                            <div>
-                                <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
-                            </div>
-                            <div class="text-gray-500">NETWORK ADMINISTRATOR</div>
-                            <div>
-                                <span
-                                    class="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">
-                                    Applied
-                                </span>
-                            </div>
+                            <a href="#" class="font-bold text-blue-500 hover:underline">BMA/NET_ADMN</a>
+                            <span class="text-gray-500">Network Administrator</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full">
-                            <div class="bg-yellow-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
-                                style="width: 25%;">
-                                25%
-                            </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full transition-all duration-500"
+                                style="width: 25%;"></div>
                         </div>
+                        <div class="text-xs text-gray-500">25%</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+
 
 
 </x-app-layout>

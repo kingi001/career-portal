@@ -6,16 +6,13 @@
                 <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:text-blue-600 transition duration-300 ease-in-out">
                     <x-application-logo class="h-6 w-auto text-gray-900" />
-                    
+
                     <!-- Show "BMA E-RECRUITMENT" on Mobile -->
                     <span class="text-base font-bold text-gray-900 tracking-wide sm:hidden">BMA E-RECRUITMENT PORTAL</span>
-                    
+
                     <!-- Show "E-RECRUITMENT" on Desktop -->
                     <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT </span>
                 </a>
-                
-                
-
                 <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-6 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -33,22 +30,22 @@
                         <span class="ml-1 text-sm font-semibold text-gray-700">Education</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('career')">
+                    <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
                         <i class="fas fa-briefcase text-blue-600"></i>
                         <span class="ml-1 text-sm font-semibold text-gray-700">Experience</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('referee')">
+                    <x-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
                         <i class="fas fa-users text-blue-600"></i>
                         <span class="ml-1 text-sm font-semibold text-gray-700">Referees</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('career')">
+                    <x-nav-link :href="route('documentUpload')"  :active="request()->routeIs('documentUpload')">
                         <i class="fas fa-file-upload text-blue-600"></i>
                         <span class="ml-1 text-sm font-semibold text-gray-700">Documents</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('career')">
+                    <x-nav-link :href="route('application')"  :active="request()->routeIs('application')" >
                         <i class="fas fa-paper-plane text-blue-600"></i>
                         <span class="ml-1 text-sm font-semibold text-gray-700">Application</span>
                     </x-nav-link>
@@ -94,7 +91,7 @@
     </button>
 
     <!-- Mobile Nav -->
-    <div x-show="open" 
+    <div x-show="open"
          x-transition:enter="transition ease-out duration-300 transform"
          x-transition:enter-start="opacity-0 -translate-x-full scale-95"
          x-transition:enter-end="opacity-100 translate-x-0 scale-100"
@@ -106,7 +103,7 @@
 
         <!-- Logo and Portal Title -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center py-3 px-4 rounded-t-2xl shadow-md">
-            <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" 
+            <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
                  class="w-16 h-16 mx-auto mb-2 rounded-full border-2 border-white shadow-lg">
             <h1 class="text-lg font-semibold">Bandari Maritime Academy</h1>
             <p class="text-xs text-gray-200">Career Portal</p>
@@ -115,7 +112,7 @@
         <!-- User Info -->
         <div class="px-5 py-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
             <div class="flex items-center space-x-3">
-               
+
                 <div>
                     <span class="block font-semibold text-gray-900 dark:text-gray-100">{{ Auth::user()->name }}</span>
                     <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</span>
@@ -175,7 +172,7 @@
     </div>
 </div>
 
-           
+
 
             <!-- Mobile Menu Button -->
             {{-- <div class="md:hidden flex items-center">
@@ -198,11 +195,5 @@
         <span class="text-gray-700 dark:text-gray-300">{{ ucwords(str_replace('-', ' ', request()->route()->getName())) }}</span>
     </div>
 </div>
-
-    
-    
-    
-
-
 
 </nav>
