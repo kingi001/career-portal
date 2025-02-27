@@ -138,19 +138,19 @@
                 <i class="fas fa-graduation-cap text-blue-600"></i> <span class="ml-2">Education</span>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('career')">
+            <x-responsive-nav-link  :href="route('career')" :active="request()->routeIs('career')">
                 <i class="fas fa-briefcase text-blue-600"></i> <span class="ml-2">Experience</span>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('referee')">
+            <x-responsive-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
                 <i class="fas fa-users text-blue-600"></i> <span class="ml-2">Referees</span>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('career')">
+            <x-responsive-nav-link :href="route('documentUpload')"  :active="request()->routeIs('documentUpload')">
                 <i class="fas fa-file-upload text-blue-600"></i> <span class="ml-2">Documents</span>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('career')">
+            <x-responsive-nav-link :href="route('application')"  :active="request()->routeIs('application')">
                 <i class="fas fa-paper-plane text-blue-600"></i> <span class="ml-2">Application</span>
             </x-responsive-nav-link>
         </div>
