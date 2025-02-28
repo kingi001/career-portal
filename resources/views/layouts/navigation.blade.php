@@ -17,70 +17,77 @@
                 <div class="hidden md:flex space-x-6 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         <i class="fas fa-home text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Dashboard</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Dashboard</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
                         <i class="fas fa-user text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Personal Info</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Personal Info</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')">
                         <i class="fas fa-graduation-cap text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Education</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Education</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
                         <i class="fas fa-briefcase text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Experience</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Experience</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
                         <i class="fas fa-users text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Referees</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Referees</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('documentUpload')"  :active="request()->routeIs('documentUpload')">
                         <i class="fas fa-file-upload text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Documents</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Documents</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('application')"  :active="request()->routeIs('application')" >
-                        <i class="fas fa-paper-plane text-blue-600"></i>
-                        <span class="ml-1 text-sm font-semibold text-gray-700">Application</span>
+                        <i class="fas fa-paper-plane  text-blue-600"></i>
+                        <span class="ml-1 text-sm font-base text-gray-700">Application</span>
                     </x-nav-link>
                 </div>
             </div>
 
-            <!-- Right Section: User Dropdown -->
+            <!-- Right Section: Settings Dropdown -->
             <div class="hidden md:flex items-center">
-                <x-dropdown align="right" width="48">
+                <x-dropdown align="right" width="56">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-gray-700 hover:text-gray-900 focus:outline-none">
-                            <i class="fas fa-user-circle text-xl"></i>
-                            <span class="ml-2 text-sm font-medium">{{ Auth::user()->name }}</span>
-                            <svg class="ml-1 w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
+                        <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none">
+                            <i class="fas fa-cog "></i>
+                            <span class="ml-2 text-sm font-base">Settings</span>
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
                         </button>
                     </x-slot>
 
                     <x-slot name="content">
+                        <!-- User Info -->
+                        <div class="px-4 py-3 text-gray-700 text-sm border-b bg-gray-100">
+                            <div class="font-semibold"><i class="fas fa-user-circle mr-1"></i> {{ Auth::user()->name }}</div>
+                            <div class="text-sm text-gray-500"><i class="fas fa-envelope mr-1"></i> {{ Auth::user()->email }}</div>
+                        </div>
+
+
+                        <!-- Profile -->
                         <x-dropdown-link :href="route('profile.edit')">
-                            <i class="fas fa-user-edit"></i>
-                            <span class="ml-2">Profile</span>
+                            <i class="fas fa-user-edit mr-2 text-gray-700"></i> Profile
                         </x-dropdown-link>
 
+                        <!-- Logout -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span class="ml-2">Logout</span>
+                                <i class="fas fa-sign-out-alt mr-2 text-red-500"></i> <span class="text-red-500">Logout</span>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
             </div>
+
+
 
 
                 <!-- Mobile Navigation Menu -->
