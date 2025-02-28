@@ -106,7 +106,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
                  class="w-16 h-16 mx-auto mb-2 rounded-full border-2 border-white shadow-lg">
             <h1 class="text-lg font-semibold">Bandari Maritime Academy</h1>
-            <p class="text-xs text-gray-200">Career Portal</p>
+            <p class="text-xs text-gray-200">E-Recruitment Portal</p>
         </div>
 
         <!-- User Info -->
