@@ -22,7 +22,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4">
                     <!-- Salutation -->
                     <div>
-                        <x-input-label for="salutation" :value="__('Salutation')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="salutation" :value="__('Salutation')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-handshake"></i>
@@ -42,7 +43,8 @@
 
                     <!-- Full Names -->
                     <div>
-                        <x-input-label for="full_names" :value="__('Full Names')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="full_names" :value="__('Full Names')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-user"></i>
@@ -56,7 +58,8 @@
 
                     <!-- ID Number -->
                     <div>
-                        <x-input-label for="id_number" :value="__('ID Number')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="id_number" :value="__('ID Number')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-id-card"></i>
@@ -74,7 +77,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 py-4">
                     <!-- Nationality -->
                     <div>
-                        <x-input-label for="nationality" :value="__('Nationality')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="nationality" :value="__('Nationality')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-flag"></i>
@@ -83,9 +87,12 @@
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2"
                                 required>
                                 <option value="" disabled selected>Select Nationality</option>
-                                <option value="Kenya" {{ old('nationality') == 'Kenya' ? 'selected' : '' }}>Kenya</option>
-                                <option value="Tanzania" {{ old('nationality') == 'Tanzania' ? 'selected' : '' }}>Tanzania</option>
-                                <option value="Uganda" {{ old('nationality') == 'Uganda' ? 'selected' : '' }}>Uganda</option>
+                                <option value="Kenya" {{ old('nationality') == 'Kenya' ? 'selected' : '' }}>Kenya
+                                </option>
+                                <option value="Tanzania" {{ old('nationality') == 'Tanzania' ? 'selected' : '' }}>
+                                    Tanzania</option>
+                                <option value="Uganda" {{ old('nationality') == 'Uganda' ? 'selected' : '' }}>Uganda
+                                </option>
                             </select>
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('nationality')" />
@@ -93,7 +100,8 @@
 
                     <!-- County -->
                     <div>
-                        <x-input-label for="county" :value="__('County')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="county" :value="__('County')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-landmark"></i>
@@ -102,9 +110,12 @@
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2"
                                 required>
                                 <option value="" disabled selected>Select County</option>
-                                <option value="Kilifi" {{ old('county') == 'Kilifi' ? 'selected' : '' }}>Kilifi</option>
-                                <option value="Mombasa" {{ old('county') == 'Mombasa' ? 'selected' : '' }}>Mombasa</option>
-                                <option value="Nairobi" {{ old('county') == 'Nairobi' ? 'selected' : '' }}>Nairobi</option>
+                                <option value="Kilifi" {{ old('county') == 'Kilifi' ? 'selected' : '' }}>Kilifi
+                                </option>
+                                <option value="Mombasa" {{ old('county') == 'Mombasa' ? 'selected' : '' }}>Mombasa
+                                </option>
+                                <option value="Nairobi" {{ old('county') == 'Nairobi' ? 'selected' : '' }}>Nairobi
+                                </option>
                             </select>
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('county')" />
@@ -112,7 +123,8 @@
 
                     <!-- Constituency -->
                     <div>
-                        <x-input-label for="constituency" :value="__('Constituency')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="constituency" :value="__('Constituency')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-city"></i>
@@ -121,9 +133,12 @@
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2"
                                 required>
                                 <option value="" disabled selected>Select Constituency</option>
-                                <option value="Likoni" {{ old('constituency') == 'Likoni' ? 'selected' : '' }}>Likoni</option>
-                                <option value="Jomvu" {{ old('constituency') == 'Jomvu' ? 'selected' : '' }}>Jomvu</option>
-                                <option value="Changamwe" {{ old('constituency') == 'Changamwe' ? 'selected' : '' }}>Changamwe</option>
+                                <option value="Likoni" {{ old('constituency') == 'Likoni' ? 'selected' : '' }}>Likoni
+                                </option>
+                                <option value="Jomvu" {{ old('constituency') == 'Jomvu' ? 'selected' : '' }}>Jomvu
+                                </option>
+                                <option value="Changamwe" {{ old('constituency') == 'Changamwe' ? 'selected' : '' }}>
+                                    Changamwe</option>
                             </select>
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('constituency')" />
@@ -131,7 +146,8 @@
 
                     <!-- Ward -->
                     <div>
-                        <x-input-label for="ward" :value="__('Ward')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="ward" :value="__('Ward')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -140,9 +156,12 @@
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2"
                                 required>
                                 <option value="" disabled selected>Select Ward</option>
-                                <option value="Mtongwe" {{ old('ward') == 'Mtongwe' ? 'selected' : '' }}>Mtongwe</option>
-                                <option value="Mikindani" {{ old('ward') == 'Mikindani' ? 'selected' : '' }}>Mikindani</option>
-                                <option value="Kisauni" {{ old('ward') == 'Kisauni' ? 'selected' : '' }}>Kisauni</option>
+                                <option value="Mtongwe" {{ old('ward') == 'Mtongwe' ? 'selected' : '' }}>Mtongwe
+                                </option>
+                                <option value="Mikindani" {{ old('ward') == 'Mikindani' ? 'selected' : '' }}>Mikindani
+                                </option>
+                                <option value="Kisauni" {{ old('ward') == 'Kisauni' ? 'selected' : '' }}>Kisauni
+                                </option>
                             </select>
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('ward')" />
@@ -153,7 +172,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                     <!-- Date of Birth -->
                     <div>
-                        <x-input-label for="date_of_birth" :value="__('Date of Birth')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="date_of_birth" :value="__('Date of Birth')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-calendar-alt"></i>
@@ -167,7 +187,8 @@
 
                     <!-- Gender -->
                     <div>
-                        <x-input-label for="gender" :value="__('Gender')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="gender" :value="__('Gender')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="flex items-center space-x-6 mt-1">
                             <label class="flex items-center">
                                 <input type="radio" name="gender" value="male"
@@ -188,7 +209,8 @@
 
                     <!-- KRA PIN -->
                     <div>
-                        <x-input-label for="kra_pin" :value="__('KRA PIN')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="kra_pin" :value="__('KRA PIN')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-address-card"></i>
@@ -205,7 +227,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4">
                     <!-- Postal Code -->
                     <div>
-                        <x-input-label for="postal_code" :value="__('Postal Code')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="postal_code" :value="__('Postal Code')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-mail-bulk"></i>
@@ -219,7 +242,8 @@
 
                     <!-- Email Address -->
                     <div>
-                        <x-input-label for="email" :value="__('Email Address')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="email" :value="__('Email Address')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-envelope"></i>
@@ -233,7 +257,8 @@
 
                     <!-- Mobile Number -->
                     <div>
-                        <x-input-label for="phone_number" :value="__('Mobile Number')" class="px-2 text-sm font-medium text-gray-700" />
+                        <x-input-label for="phone_number" :value="__('Mobile Number')"
+                            class="px-2 text-sm font-medium text-gray-700" />
                         <div class="relative">
                             <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                                 <i class="fas fa-phone"></i>
@@ -249,65 +274,71 @@
 
                 <!---------------------------------------------------------------------5th Row----------------------------------------------------------------------->
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center py-2"
-                x-data="{ hasDisability: '{{ old('disability_status', 'no') }}' }">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center py-2" x-data="{ hasDisability: '{{ old('disability_status', 'no') }}' }">
 
-                <!-- Disability Status (Radio Buttons) -->
-                <div class="flex items-center space-x-4">
-                    <x-input-label for="disability_status" :value="__('Person with Disability')" />
+                    <!-- Disability Status (Radio Buttons) -->
+                    <div class="flex items-center space-x-4">
+                        <x-input-label for="disability_status" :value="__('Person with Disability')" />
 
-                    <label class="flex items-center">
-                        <input type="radio" name="disability_status" value="yes"
-                            class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="hasDisability"
-                            {{ old('disability_status') == 'yes' ? 'checked' : '' }} required>
-                        <span class="ml-2">Yes</span>
-                    </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="disability_status" value="yes"
+                                class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="hasDisability"
+                                {{ old('disability_status') == 'yes' ? 'checked' : '' }} required>
+                            <span class="ml-2">Yes</span>
+                        </label>
 
-                    <label class="flex items-center">
-                        <input type="radio" name="disability_status" value="no"
-                            class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="hasDisability"
-                            {{ old('disability_status') == 'no' ? 'checked' : '' }} required>
-                        <span class="ml-2">No</span>
-                    </label>
-                </div>
-
-                <!-- Disability Type Dropdown (Visible if Yes is selected) -->
-                <div x-show="hasDisability === 'yes'" class="w-full" x-cloak>
-                    <x-input-label for="disability_type" :value="__('Disability Type')" />
-                    <select name="disability_type" id="disability_type"
-                        class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
-                        required>
-                        <option value="">Select Disability Type</option>
-                        <option value="visual" {{ old('disability_type') == 'visual' ? 'selected' : '' }}>Visual Impairment</option>
-                        <option value="hearing" {{ old('disability_type') == 'hearing' ? 'selected' : '' }}>Hearing Impairment</option>
-                        <option value="physical" {{ old('disability_type') == 'physical' ? 'selected' : '' }}>Physical Disability</option>
-                        <option value="mental" {{ old('disability_type') == 'mental' ? 'selected' : '' }}>Mental Disability</option>
-                        <option value="other" {{ old('disability_type') == 'other' ? 'selected' : '' }}>Other</option>
-                    </select>
-                </div>
-
-                <!-- Registration No (Visible if Yes is selected) -->
-                <div x-show="hasDisability === 'yes'" class="w-full" x-cloak>
-                    <x-input-label for="registration_no" :value="__('Registration No')" class="flex items-center gap-2 text-gray-700 font-semibold">
-                        <i class="fas fa-id-card text-blue-500 text-base"></i> {{ __('Registration No') }}
-                    </x-input-label>
-
-                    <div class="flex items-center border border-gray-300 focus-within:border-indigo-500 focus-within:ring-indigo-500 rounded-lg shadow-sm px-3 py-2 transition duration-300">
-                        <span class="text-gray-500"><i class="fas fa-address-card text-sm"></i></span>
-                        <x-text-input id="registration_no" name="registration_no" type="text"
-                            class="w-full outline-none border-none focus:ring-0 px-2 py-1 text-sm"
-                            :value="old('registration_no')" required placeholder="Enter your Registration No" />
+                        <label class="flex items-center">
+                            <input type="radio" name="disability_status" value="no"
+                                class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="hasDisability"
+                                {{ old('disability_status') == 'no' ? 'checked' : '' }} required>
+                            <span class="ml-2">No</span>
+                        </label>
                     </div>
+
+                    <!-- Disability Type Dropdown (Visible if Yes is selected) -->
+                    <div x-show="hasDisability === 'yes'" class="w-full" x-cloak>
+                        <x-input-label for="disability_type" :value="__('Disability Type')" />
+                        <select name="disability_type" id="disability_type"
+                            class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
+                            required>
+                            <option value="">Select Disability Type</option>
+                            <option value="visual" {{ old('disability_type') == 'visual' ? 'selected' : '' }}>Visual
+                                Impairment</option>
+                            <option value="hearing" {{ old('disability_type') == 'hearing' ? 'selected' : '' }}>
+                                Hearing Impairment</option>
+                            <option value="physical" {{ old('disability_type') == 'physical' ? 'selected' : '' }}>
+                                Physical Disability</option>
+                            <option value="mental" {{ old('disability_type') == 'mental' ? 'selected' : '' }}>Mental
+                                Disability</option>
+                            <option value="other" {{ old('disability_type') == 'other' ? 'selected' : '' }}>Other
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Registration No (Visible if Yes is selected) -->
+                    <div x-show="hasDisability === 'yes'" class="w-full" x-cloak>
+                        <x-input-label for="registration_no" :value="__('Registration No')"
+                            class="flex items-center gap-2 text-gray-700 font-semibold">
+                            <i class="fas fa-id-card text-blue-500 text-base"></i> {{ __('Registration No') }}
+                        </x-input-label>
+
+                        <div
+                            class="flex items-center border border-gray-300 focus-within:border-indigo-500 focus-within:ring-indigo-500 rounded-lg shadow-sm px-3 py-2 transition duration-300">
+                            <span class="text-gray-500"><i class="fas fa-address-card text-sm"></i></span>
+                            <x-text-input id="registration_no" name="registration_no" type="text"
+                                class="w-full outline-none border-none focus:ring-0 px-2 py-1 text-sm"
+                                :value="old('registration_no')" required placeholder="Enter your Registration No" />
+                        </div>
+                    </div>
+
+
+
+                    <!-- Validation Errors -->
+                    <x-input-error class="mt-2" :messages="$errors->get('disability_status')" />
+                    <x-input-error class="mt-2" :messages="$errors->get('disability_type')" />
+                    <x-input-error class="mt-2" :messages="$errors->get('registration_no')" />
+
                 </div>
-
-
-
-                <!-- Validation Errors -->
-                <x-input-error class="mt-2" :messages="$errors->get('disability_status')" />
-                <x-input-error class="mt-2" :messages="$errors->get('disability_type')" />
-                <x-input-error class="mt-2" :messages="$errors->get('registration_no')" />
-
-            </div>
 
 
                 {{-- <!-- Alpine.js (Required for toggling visibility) -->
@@ -348,14 +379,23 @@
                             <div class="relative">
                                 <i class="fas fa-building text-gray-400 absolute left-3 top-3"></i>
                                 <select name="department" id="department"
-                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10" required>
+                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10"
+                                    required>
                                     <option value="">Select Department</option>
-                                    <option value="ICT" {{ old('department') == 'ICT' ? 'selected' : '' }}>ICT</option>
-                                    <option value="maritime_affairs" {{ old('department') == 'maritime_affairs' ? 'selected' : '' }}>Maritime Affairs</option>
-                                    <option value="port_operations" {{ old('department') == 'port_operations' ? 'selected' : '' }}>Port Operations</option>
-                                    <option value="finance" {{ old('department') == 'finance' ? 'selected' : '' }}>Finance</option>
-                                    <option value="hr" {{ old('department') == 'hr' ? 'selected' : '' }}>Human Resources</option>
-                                    <option value="other" {{ old('department') == 'other' ? 'selected' : '' }}>Other</option>
+                                    <option value="ICT" {{ old('department') == 'ICT' ? 'selected' : '' }}>ICT
+                                    </option>
+                                    <option value="maritime_affairs"
+                                        {{ old('department') == 'maritime_affairs' ? 'selected' : '' }}>Maritime
+                                        Affairs</option>
+                                    <option value="port_operations"
+                                        {{ old('department') == 'port_operations' ? 'selected' : '' }}>Port Operations
+                                    </option>
+                                    <option value="finance" {{ old('department') == 'finance' ? 'selected' : '' }}>
+                                        Finance</option>
+                                    <option value="hr" {{ old('department') == 'hr' ? 'selected' : '' }}>Human
+                                        Resources</option>
+                                    <option value="other" {{ old('department') == 'other' ? 'selected' : '' }}>Other
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -377,12 +417,19 @@
                             <div class="relative">
                                 <i class="fas fa-file-contract text-gray-400 absolute left-3 top-3"></i>
                                 <select name="terms_of_service" id="terms_of_service"
-                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10" required>
+                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10"
+                                    required>
                                     <option value="">Select Terms of Service</option>
-                                    <option value="permanent" {{ old('terms_of_service') == 'permanent' ? 'selected' : '' }}>Permanent</option>
-                                    <option value="contract" {{ old('terms_of_service') == 'contract' ? 'selected' : '' }}>Contract</option>
-                                    <option value="internship" {{ old('terms_of_service') == 'internship' ? 'selected' : '' }}>Internship</option>
-                                    <option value="casual" {{ old('terms_of_service') == 'casual' ? 'selected' : '' }}>Casual</option>
+                                    <option value="permanent"
+                                        {{ old('terms_of_service') == 'permanent' ? 'selected' : '' }}>Permanent
+                                    </option>
+                                    <option value="contract"
+                                        {{ old('terms_of_service') == 'contract' ? 'selected' : '' }}>Contract</option>
+                                    <option value="internship"
+                                        {{ old('terms_of_service') == 'internship' ? 'selected' : '' }}>Internship
+                                    </option>
+                                    <option value="casual"
+                                        {{ old('terms_of_service') == 'casual' ? 'selected' : '' }}>Casual</option>
                                 </select>
                             </div>
                         </div>
@@ -393,10 +440,13 @@
                             <div class="relative">
                                 <i class="fas fa-chart-line text-gray-400 absolute left-3 top-3"></i>
                                 <select name="job_scale" id="job_scale"
-                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10" required>
+                                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm pl-10"
+                                    required>
                                     <option value="">Select Job Scale</option>
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option value="bma{{ $i }}" {{ old('job_scale') == "bma$i" ? 'selected' : '' }}>BMA{{ $i }}</option>
+                                        <option value="bma{{ $i }}"
+                                            {{ old('job_scale') == "bma$i" ? 'selected' : '' }}>BMA{{ $i }}
+                                        </option>
                                     @endfor
                                 </select>
                             </div>
@@ -431,13 +481,18 @@
                         <!-- Criminal Offense Question -->
                         <div class="flex items-center space-x-4">
                             <i class="fas fa-gavel text-red-500 text-lg"></i>
-                            <x-input-label for="criminal_offense" :value="__('Have you ever been convicted of any criminal offence or a subject of probation order?')" />
+                            <x-input-label for="criminal_offense" :value="__(
+                                'Have you ever been convicted of any criminal offence or a subject of probation order?',
+                            )" />
                         </div>
 
                         <!-- Yes Option -->
                         <div class="flex items-center space-x-2">
                             <label class="flex items-center space-x-2">
-                                <input type="radio" name="criminal_offense" value="yes" class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="criminal_offense" {{ old('criminal_offense') == 'yes' ? 'checked' : '' }} required>
+                                <input type="radio" name="criminal_offense" value="yes"
+                                    class="form-radio text-indigo-600 focus:ring-indigo-500"
+                                    x-model="criminal_offense" {{ old('criminal_offense') == 'yes' ? 'checked' : '' }}
+                                    required>
                                 <span>Yes</span>
                             </label>
                         </div>
@@ -445,7 +500,10 @@
                         <!-- No Option -->
                         <div class="flex items-center space-x-2">
                             <label class="flex items-center space-x-2">
-                                <input type="radio" name="criminal_offense" value="no" class="form-radio text-indigo-600 focus:ring-indigo-500" x-model="criminal_offense" {{ old('criminal_offense') == 'no' ? 'checked' : '' }} required>
+                                <input type="radio" name="criminal_offense" value="no"
+                                    class="form-radio text-indigo-600 focus:ring-indigo-500"
+                                    x-model="criminal_offense" {{ old('criminal_offense') == 'no' ? 'checked' : '' }}
+                                    required>
                                 <span>No</span>
                             </label>
                         </div>
@@ -453,17 +511,21 @@
                         <!-- Criminal Details -->
                         <div x-show="criminal_offense === 'yes'" x-cloak class="w-full col-span-3">
                             <x-input-label for="criminal_details" :value="__('If Yes, state nature of the offence, the year, and duration of conviction')" />
-                            <textarea id="criminal_details" name="criminal_details" class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm h-24 p-2" x-bind:required="criminal_offense === 'yes'"></textarea>
+                            <textarea id="criminal_details" name="criminal_details"
+                                class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm h-24 p-2"
+                                x-bind:required="criminal_offense === 'yes'"></textarea>
                             <x-input-error class="mt-2" :messages="$errors->get('criminal_offense')" />
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-5 flex items-center text-sm gap-4">
-                    <x-primary-button class="flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-300">
+                <div class="mt-3 flex items-center text-sm gap-4">
+                    <button
+                        class="flex items-center gap-2 px-12 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-blue-300">
                         <i class="fas fa-save"></i> {{ __('Save') }}
-                    </x-primary-button>
+                        <button>
                 </div>
+
 
             </form>
         </div>
