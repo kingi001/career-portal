@@ -21,7 +21,11 @@ class SendOtpMail extends Mailable
     {
         return $this->subject('Your OTP Code')
                     ->view('emails.otp')
-                    ->with(['otp' => $this->otp]);
+                    ->with(['otp' => $this->otp])
+                    ->attach(public_path('images/logo.png'), [
+                        'as' => 'logo.png',
+                        'mime' => 'image/png',
+                    ]);
     }
 }
 ?>

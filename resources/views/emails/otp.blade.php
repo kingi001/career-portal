@@ -107,10 +107,7 @@
     <div class="container">
 
         <!-- Company Logo -->
-        <img src="logo.png" alt="Bandari Maritime Academy" class="logo">
-
-
-
+        <img src="cid:logo.png" alt="Bandari Maritime Academy" class="logo">
         <h2>Your One-Time Password (OTP)</h2>
         <p>Hello,</p>
         <p>Your OTP code for verification is:</p>

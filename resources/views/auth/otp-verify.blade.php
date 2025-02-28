@@ -43,7 +43,8 @@
 
         <!-- Submit Button -->
         <div class="mt-4 flex justify-center">
-            <button type="submit" id="verifyButton" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-blue-700">
+            <button type="submit" id="verifyButton"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-blue-700">
                 <i class="fas fa-check-circle"></i> <span>Verify</span>
             </button>
         </div>
@@ -60,12 +61,28 @@
 
         <form method="GET" action="{{ route('otp.send') }}">
             @csrf
-            <button type="submit" id="resend-otp" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700
+            <button type="submit" id="resend-otp"
+                class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700
                 text-white font-semibold py-2 px-4 rounded-full flex items-center shadow-lg transition-all duration-300 disabled:opacity-50">
                 <i class="fa-solid fa-sync-alt"></i> Resend
             </button>
         </form>
     </div>
+
+    <!-- Back to Login Button -->
+    <!-- Back to Login Button (Ensures Logout First) -->
+    <div class="mt-6 flex justify-center">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit"
+                class="flex items-center gap-2 bg-gradient-to-r from-gray-600 to-gray-800
+            hover:from-gray-700 hover:to-black text-white font-semibold py-2.5 px-6 rounded-full
+            shadow-md transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-arrow-left"></i> <span>Back to Login</span>
+            </button>
+        </form>
+    </div>
+
 </x-guest-layout>
 
 <script>
@@ -91,7 +108,7 @@
     updateTimer(); // Start the countdown
 
     // Show Spinner when Submitting OTP
-    document.getElementById("otpForm").addEventListener("submit", function () {
+    document.getElementById("otpForm").addEventListener("submit", function() {
         document.getElementById("verifyingMessage").classList.remove("hidden");
 
         // Disable the Verify button to prevent multiple clicks
