@@ -19,9 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script> --}}
 
-
-
-
 </head>
 
 <body class="min-h-screen bg-cobg-gray-100ver bg-center bg-no-repeat">
@@ -87,36 +84,36 @@
         });
     @endif
 </script> --}}
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    function showToast(icon, message) {
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            icon: icon,
-            title: message,
-            showConfirmButton: false,
-            timer: 3000
-        });
-    }
+    <script>
+        function showToast(icon, message) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: icon,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000
+            });
+        }
 
-    @if (session('success'))
-        showToast('success', "{{ session('success') }}");
-    @endif
+        @if (session('success'))
+            showToast('success', "{{ session('success') }}");
+        @endif
 
-    @if (session('error'))
-        showToast('error', "{{ session('error') }}");
-    @endif
+        @if (session('error'))
+            showToast('error', "{{ session('error') }}");
+        @endif
 
-    @if (session('info'))
-        showToast('info', "{{ session('info') }}");
-    @endif
+        @if (session('info'))
+            showToast('info', "{{ session('info') }}");
+        @endif
 
-    @if (session('warning'))
-        showToast('warning', "{{ session('warning') }}");
-    @endif
-</script>
+        @if (session('warning'))
+            showToast('warning', "{{ session('warning') }}");
+        @endif
+    </script>
 
 
 </body>

@@ -75,8 +75,8 @@
                                 <td class="p-4 text-sm text-gray-700">ICT OFFICER II</td>
                                 <td class="p-4 text-sm text-gray-700">BSc in IT, Computer Science & 2 years experience.
                                 </td>
-                                <td class="p-4 text-sm text-gray-700">16/05/2024</td>
-                                <td class="p-4 text-sm text-gray-700">16/08/2024</td>
+                                <td class="p-4 text-sm text-gray-700">02/03/2025</td>
+                                <td class="p-4 text-sm text-gray-700">15/05/2025</td>
                                 <td class="p-4 text-sm">
                                     <span
                                         class="px-3 py-1 text-xs font-medium text-green-800 bg-green-200 rounded-md">Open</span>
@@ -92,8 +92,8 @@
                                 <td class="p-4 text-sm text-gray-700">Senior Cloud Engineer</td>
                                 <td class="p-4 text-sm text-gray-700">MSc in IT, Computer Science & 5 years in Cloud
                                     Infra.</td>
-                                <td class="p-4 text-sm text-gray-700">16/05/2024</td>
-                                <td class="p-4 text-sm text-gray-700">16/08/2024</td>
+                                <td class="p-4 text-sm text-gray-700">16/01/2025</td>
+                                <td class="p-4 text-sm text-gray-700">16/02/2025</td>
                                 <td class="p-4 text-sm">
                                     <span
                                         class="px-3 py-1 text-xs font-medium text-gray-800 bg-gray-200 rounded-md">Closed</span>
@@ -115,7 +115,7 @@
                                 class="px-2 py-1 text-xs font-medium uppercase text-green-800 bg-green-200 rounded-md">Open</span>
                         </div>
                         <p class="text-sm text-gray-700 mt-2">BSc in IT, Computer Science & 2 years experience.</p>
-                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 16/08/2024</p>
+                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 15/05/2025</p>
                         <a href="#"
                             class="block w-full text-center mt-3 px-4 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 transition">
                             Apply →
@@ -131,7 +131,7 @@
                                 class="px-2 py-1 text-xs font-medium uppercase text-gray-800 bg-gray-200 rounded-md">Closed</span>
                         </div>
                         <p class="text-sm text-gray-700 mt-2">MSc in IT, Computer Science & 5 years in Cloud Infra.</p>
-                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 16/08/2024</p>
+                        <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 15/02/2025</p>
                         <div class="text-sm font-medium text-gray-800 flex items-center space-x-2 mt-3">
                             <i class="fas fa-ban text-red-600"></i>
                             <span class="px-4 py-2 text-red-600 bg-gray-100 rounded-lg shadow-sm">Application
@@ -177,8 +177,8 @@
                                     Bachelor's Degree in IT, Computer Science, CCNA, and 2 years of networking
                                     experience.
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/05/2024</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/08/2024</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/02/2025</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">16/03/2025</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <span
                                         class="px-2 py-1 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg">Applied</span>
@@ -209,7 +209,7 @@
                             environment.
                         </div>
                         <div class="text-sm font-medium text-gray-600">
-                            Deadline: 16/08/2024
+                            Deadline: 15/03/2025
                         </div>
                         <div class="flex items-center space-x-2">
                             <a href="#"
