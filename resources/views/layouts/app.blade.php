@@ -23,13 +23,8 @@
 
 <body class="min-h-screen bg-cobg-gray-100ver bg-center bg-no-repeat">
     <div class="min-h-screen  overflow-y-auto bg-gray-100">
-
-
-
         @include('layouts.navigation')
         @include('sweetalert::alert')
-
-
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow overflow-auto">
@@ -39,7 +34,7 @@
             </header>
         @endisset
 
-        <!-- Page Content -->
+       <!-- Page Content -->
         <main class="pb-16">
             {{ $slot }}
         </main>

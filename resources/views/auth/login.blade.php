@@ -26,7 +26,7 @@
                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
                     <i class="fas fa-envelope"></i>
                 </span>
-                <x-text-input id="email" class="block mt-1 w-full text-sm pl-8" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-text-input id="email" class="block mt-1 w-full text-sm pl-8" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Enter your email address"/>
             </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -38,7 +38,7 @@
                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">
                     <i class="fas fa-lock"></i>
                 </span>
-                <x-text-input id="password" class="block mt-1 w-full text-sm pl-8" type="password" name="password" required autocomplete="current-password" />
+                <x-text-input id="password" class="block mt-1 w-full text-sm pl-8" type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"/>
             </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>

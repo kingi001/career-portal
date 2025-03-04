@@ -20,7 +20,7 @@
                         <span class="ml-1 text-sm font-base text-gray-700">Dashboard</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+                    <x-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                         <i class="fas fa-user text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Personal Info</span>
                     </x-nav-link>
@@ -137,7 +137,7 @@
                 <i class="fas fa-home text-blue-600"></i> <span class="ml-2">Dashboard</span>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('personal-info')" :active="request()->routeIs('personal-info')">
+            <x-responsive-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                 <i class="fas fa-user text-blue-600"></i> <span class="ml-2">Personal Info</span>
             </x-responsive-nav-link>
 

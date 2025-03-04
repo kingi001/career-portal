@@ -1,12 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\OTPController;
+use App\Http\Controllers\PersonalInformationController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+
 
 //Guest User Routes
 require __DIR__.'/auth.php';
+Route::get('/get-counties/{country_id}', [PersonalInformationController::class, 'getCounties']);
+Route::get('/get-constituencies/{county_id}', [PersonalInformationController::class, 'getConstituencies']);
+Route::get('/get-wards/{constituency_id}', [PersonalInformationController::class, 'getWards']);
 
 Route::middleware(['auth'])->group(function () {
  // OTP Verification Routes (No OTP check needed here)
@@ -18,7 +24,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', function () { return view('dashboard');})->name('dashboard');
 // Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
-Route::get('/personal-info', function () { return view('personal-info.personal-info');})->name('personal-info');
+// Route::get('/personal-info', function () { return view('personal-info.personal-info');})->name('personal-info');
+Route::get('/personal-information', [PersonalInformationController::class, 'show'])->name('personal-info.show');
+    Route::post('/personal-information', [PersonalInformationController::class, 'storeOrUpdate'])->name('personal-info.store');
 
 Route::get('/documentUpload', function () { return view('documentupload.index');})->name('documentUpload');
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
