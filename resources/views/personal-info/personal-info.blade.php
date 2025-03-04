@@ -127,7 +127,8 @@
                             <x-input-error class="mt-2" :messages="$errors->get('county_id')" />
                         </div>
 
-                        <!-- Constituency -->
+                        <!-- Constituency main-->
+
                         <div>
                             <x-input-label for="constituency_id" :value="__('Constituency')"
                                 class="px-2 text-sm font-medium text-gray-700" />
