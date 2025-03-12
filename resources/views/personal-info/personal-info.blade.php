@@ -534,6 +534,8 @@
                         class="flex items-center gap-2 px-12 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-blue-300">
                         <i class="fas fa-save"></i> {{ __('Save') }}
                     </button>
+
+
                 </div>
 
 

@@ -1,4 +1,5 @@
 <x-app-layout>
+    @include('education.modals.add-education')
     <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
 
@@ -123,10 +124,13 @@
 
             <!-- Add Education Button -->
             <div class="mt-4 flex justify-end">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-1
-                    shadow-sm hover:shadow-md transition-all duration-200 ease-in-out">
-                    <i class="fas fa-plus text-xs"></i> {{ __('Add Education Qualification') }}
-                </button>
+                <button
+                x-data=""
+                x-on:click.prevent="$dispatch('open-modal', 'add-education')"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out"
+            >
+                <i class="fas fa-plus-circle text-xs"></i> {{ __('Add Education Qualification') }}
+            </button>
             </div>
 
         </div>
