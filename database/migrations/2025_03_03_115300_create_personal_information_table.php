@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('personal_information', function (Blueprint $table) {
+
+
             //section 1
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -29,10 +31,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('mobile_number')->unique();
             $table->boolean('is_pwd')->default(false);
-            $table->string('pwd_type')->nullable();
-            $table->string('ncpwd_number')->nullable();
+            $table->enum('pwd_type', [
+                'Visual Impairment', 'Hearing Impairment', 'Physical Disability',
+                'Intellectual Disability', 'Psychosocial Disability', 'Albinism'
+            ])->nullable();            $table->string('ncpwd_number')->nullable();
 
-         // Current Employment Details
+
+           // Current Employment Details
              $table->enum('bma_applicant', ['yes', 'no'])->nullable();
              $table->string('department')->nullable();
              $table->string('designation')->nullable();
@@ -45,8 +50,6 @@ return new class extends Migration
               // Other Personal Details
             $table->enum('criminal_offense', ['yes', 'no'])->nullable();
             $table->text('criminal_details')->nullable();
-
-
 
 
             $table->timestamps();

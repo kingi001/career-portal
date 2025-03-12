@@ -19,7 +19,7 @@ class PersonalInformation extends Model
      */
     protected $fillable = [
         // Section 1: Personal Details
-        'user_id', 'salutation', 'full_names', 'id_number',
+        'salutation', 'full_names', 'id_number',
         'country_id', 'county_id', 'constituency_id', 'ward_id',
         'date_of_birth', 'gender', 'kra_pin', 'postal_code',
         'email', 'mobile_number', 'is_pwd', 'pwd_type', 'ncpwd_number',

@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('constituency_id')->constrained()->onDelete('cascade');
-            $table->string('ward_name')->unique();
+            $table->foreignId('sub_county_id')->constrained()->onDelete('cascade');
+            $table->string('ward_name');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * migrate
      */
     public function down(): void
     {

@@ -2,22 +2,26 @@
 
 namespace App\Models;
 
+use App\Models\SubCounty;
+use App\Models\Ward;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class County extends Model
 {
     use HasFactory;
-    protected $fillable = ['country_id', 'county_name'];
-
-    public function country(): BelongsTo
+    protected $fillable = ['county_name'];
+    public function subcounties(): HasMany
     {
-        return $this->belongsTo(Country::class);
+        return $this->hasMany(SubCounty::class);
     }
-    public function constituencies(): HasMany
+
+    /**
+     * A County has many Wards through SubCounties.
+     */
+    public function wards(): HasMany
     {
-        return $this->hasMany(Constituency::class);
+        return $this->hasManyThrough(Ward::class, SubCounty::class);
     }
 }

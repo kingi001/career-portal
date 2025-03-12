@@ -1,94 +1,93 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your OTP Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
         }
 
         .container {
             max-width: 480px;
-            margin: 20px auto;
+            margin: 30px auto;
             background-color: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
+            border-top: 5px solid #007BFF;
         }
 
         .logo {
             width: 100px;
-            /* Adjust size as needed */
             height: 100px;
-            /* Maintain circular shape */
             border-radius: 50%;
-            /* Makes it a perfect circle */
             object-fit: cover;
-            /* Ensures image fills the circular frame */
             display: block;
             margin: 0 auto 15px;
-            /* Centers the logo */
-            border: 3px solid #007BFF;
-            /* Optional: Add border */
+            border: 4px solid #007BFF;
         }
-
 
         h2 {
             color: #333;
             margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: bold;
         }
 
         p {
-            color: #666;
+            color: #555;
             font-size: 16px;
-            line-height: 1.5;
-            margin: 8px 0;
+            line-height: 1.6;
+            margin: 10px 0;
         }
 
         .otp {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             color: #2c3e50;
             background: #ecf0f1;
-            padding: 12px;
+            padding: 14px;
             display: inline-block;
-            border-radius: 5px;
-            margin: 15px 0;
-            letter-spacing: 2px;
+            border-radius: 6px;
+            margin: 20px 0;
+            letter-spacing: 3px;
         }
 
         .btn {
-            background-color: #007BFF;
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
             color: white;
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 14px 28px;
+            border-radius: 6px;
             display: inline-block;
-            margin-top: 15px;
-            font-size: 16px;
+            margin-top: 20px;
+            font-size: 17px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
         }
 
         .footer {
-            font-size: 12px;
-            color: #999;
-            margin-top: 20px;
+            font-size: 13px;
+            color: #777;
+            margin-top: 25px;
         }
 
         .footer a {
             color: #007BFF;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .footer a:hover {
@@ -98,19 +97,22 @@
         .divider {
             height: 1px;
             background: #ddd;
-            margin: 20px 0;
+            margin: 25px 0;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-
         <!-- Company Logo -->
         <img src="cid:logo.png" alt="Bandari Maritime Academy" class="logo">
         <h2>Your One-Time Password (OTP)</h2>
-        <p>Hello,</p>
-        <p>Your OTP code for verification is:</p>
+
+        @php
+            use Illuminate\Support\Str;
+        @endphp
+
+        <p>Hello <i class="fa-solid fa-user-tag"></i> <strong>{{ Str::before(Auth::user()->name, ' ') }}</strong>,</p>
 
         <p class="otp">{{ $otp }}</p>
 
@@ -123,8 +125,7 @@
         <div class="divider"></div>
 
         <p class="footer">
-            Need help? <a href="#">Contact Support</a> |
-            <a href="#">Security Tips</a>
+            Need help? <a href="#">Contact Support</a> | <a href="#">Security Tips</a>
         </p>
         <p class="footer">This is an automated message, please do not reply.</p>
     </div>

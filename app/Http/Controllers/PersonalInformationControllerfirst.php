@@ -10,23 +10,23 @@ use App\Models\Constituency;
 use App\Models\Ward;
 use Illuminate\Support\Facades\Auth;
 
-class PersonalInformationController extends Controller
+class PersonalInformationControllerfirst extends Controller
 {
     /**
      * Display the user's personal information.
      */
-    public function show()
-    {
-        $user = Auth::user();
-        $personalInformation = PersonalInformation::where('user_id', $user->id)->first();
-        // Fetch necessary data for dropdowns
-        $countries = Country::all();
-        $counties = County::all();
-        $constituencies = Constituency::all();
-        $wards = Ward::all();
+    // public function show()
+    // {
+    //     $user = Auth::user();
+    //     $personalInformation = PersonalInformation::where('user_id', $user->id)->first();
+    //     // Fetch necessary data for dropdowns
+    //     // $countries = Country::all();
+    //     // $counties = County::all();
+    //     // $constituencies = Constituency::all();
+    //     // $wards = Ward::all();
 
-        return view('personal-info.personal-info', compact('personalInformation', 'countries', 'counties', 'constituencies', 'wards'));
-    }
+    //     return view('personal-info.personal-info', compact('personalInformation'));
+    // }
 
     /**
      * Store or update personal information.
@@ -76,30 +76,30 @@ class PersonalInformationController extends Controller
     }
  /**
  * Fetch counties based on the selected country.
- */
-public function getCounties($country_id)
-{
-    $counties = County::where('country_id', $country_id)->get();
-    return response()->json($counties);
-}
+  */
+ public function getCounties($country_id)
+ {
+     $counties = County::where('country_id', $country_id)->get();
+     return response()->json($counties);
+ }
 
-/**
- * Fetch constituencies based on the selected county.
- */
-public function getConstituencies($county_id)
-{
-    $constituencies = Constituency::where('county_id', $county_id)->get();
-    return response()->json($constituencies);
-}
+ /**
+  * Fetch constituencies based on the selected county.
+  */
+ public function getConstituencies($county_id)
+ {
+     $constituencies = Constituency::where('county_id', $county_id)->get();
+     return response()->json($constituencies);
+ }
 
-/**
- * Fetch wards based on the selected constituency.
- */
-public function getWards($constituency_id)
-{
-    $wards = Ward::where('constituency_id', $constituency_id)->get();
-    return response()->json($wards);
-}
+ /**
+  * Fetch wards based on the selected constituency.
+  */
+ public function getWards($constituency_id)
+ {
+     $wards = Ward::where('constituency_id', $constituency_id)->get();
+     return response()->json($wards);
+ }
 
 
 }
