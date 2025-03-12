@@ -17,53 +17,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
-<body class="min-h-screen bg-gray-100 bg-center bg-no-repeat">
+<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }"
+    x-init="
+        $watch('darkMode', val => localStorage.setItem('darkMode', val));
+        window.addEventListener('beforeunload', () => loading = true);
+        document.addEventListener('DOMContentLoaded', () => loading = false);
+    "
+    :class="{'dark bg-gray-900 text-white': darkMode, 'bg-gray-100 text-gray-900': !darkMode}"
+    class="min-h-screen bg-center bg-no-repeat transition-all duration-300"
+>
 
-    <!-- Alpine.js Wrapper for Loading Spinner -->
-    <div x-data="{ loading: false }"
-        x-init="
-            window.addEventListener('beforeunload', () => loading = true);
-            document.addEventListener('DOMContentLoaded', () => loading = false);
-        "
-        class="min-h-screen overflow-y-auto bg-gray-100"
-    >
-
-        <!-- Loading Spinner Overlay -->
-        <div x-show="loading"
-            class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
-            <i class="fas fa-spinner fa-spin text-blue-600 text-4xl"></i>
-        </div>
-
-        <!-- Navigation -->
-        @include('layouts.navigation')
-        @include('sweetalert::alert')
-
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white shadow overflow-auto">
-                <div class="mt-1 max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 rounded-lg">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
-
-        <!-- Page Content -->
-        <main class="pb-16">
-            {{ $slot }}
-        </main>
-
-        <!-- Footer -->
-        @include('layouts.footer')
-
+    <!-- Loading Spinner Overlay -->
+    <div x-show="loading" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-black bg-opacity-75 z-50">
+        <i class="fas fa-spinner fa-spin text-blue-600 text-4xl"></i>
     </div>
 
+    <!-- Dark Mode Toggle -->
+    <button @click="darkMode = !darkMode" class="fixed top-4 right-4 p-2 bg-gray-300 dark:bg-gray-700 rounded-full shadow-md">
+        <i class="fas" :class="darkMode ? 'fa-sun text-yellow-500' : 'fa-moon text-gray-800'"></i>
+    </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+        @include('layouts.navigation')
+    </nav>
 
+    <!-- SweetAlert Notifications -->
+    @include('sweetalert::alert')
+
+    <!-- Page Heading -->
+    @isset($header)
+        <header class="bg-white dark:bg-gray-800 shadow-md">
+            <div class="mt-1 max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 rounded-lg">
+                {{ $header }}
+            </div>
+        </header>
+    @endisset
+
+    <!-- Page Content -->
+    <main class="pb-16">
+        {{ $slot }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 shadow-md text-center py-4">
+        @include('layouts.footer')
+    </footer>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your app description here">
+    <meta name="keywords" content="Laravel, Web App, Career Portal, Software">
+    <meta name="author" content="Your Name">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
+    <!-- Smooth Scrolling -->
+    <style> html { scroll-behavior: smooth; } </style>
+
+    <!-- SweetAlert2 & Custom Toast Notifications -->
     <script>
         function showToast(icon, message) {
             Swal.fire({
@@ -72,7 +87,11 @@
                 icon: icon,
                 title: message,
                 showConfirmButton: false,
-                timer: 3000
+                timer: 3000,
+                customClass: {
+                 popup: 'p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
+                 title: 'text-lg font-semibold'
+                }
             });
         }
 
@@ -94,6 +113,8 @@
     </script>
 
 
+
 </body>
+
 
 </html>
