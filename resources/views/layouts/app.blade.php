@@ -65,9 +65,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-gray-800 shadow-md text-center py-4">
         @include('layouts.footer')
-    </footer>
+
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Your app description here">
@@ -89,7 +88,7 @@
                 showConfirmButton: false,
                 timer: 3000,
                 customClass: {
-                 popup: 'p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
+                 popup: 'p-4 mb-4 text-base text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
                  title: 'text-lg font-semibold'
                 }
             });

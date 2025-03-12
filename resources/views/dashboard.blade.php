@@ -78,12 +78,18 @@
                                 <td class="p-4 text-sm text-gray-700">02/03/2025</td>
                                 <td class="p-4 text-sm text-gray-700">15/05/2025</td>
                                 <td class="p-4 text-sm">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium text-green-800 bg-green-200 rounded-md">Open</span>
+                                    <span class="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 border border-green-300 rounded-full shadow-sm">
+                                        Open
+                                    </span>
                                 </td>
                                 <td class="p-4 text-sm">
-                                    <a href="#" class="text-blue-600 font-semibold hover:underline">Apply →</a>
-                                </td>
+                                    <a href="#"
+                                    class="px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md hover:from-blue-700 hover:to-blue-900 transition-all duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 inline-flex items-center">
+                                    <svg class="w-2 h-2 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h2zm2-1a1 1 0 0 0-1 1v1h6V2a1 1 0 0 0-1-1H8zm9 4H3v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Apply
+                                </a>                           </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition">
@@ -95,10 +101,12 @@
                                 <td class="p-4 text-sm text-gray-700">16/01/2025</td>
                                 <td class="p-4 text-sm text-gray-700">16/02/2025</td>
                                 <td class="p-4 text-sm">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium text-gray-800 bg-gray-200 rounded-md">Closed</span>
+                                    <span class="px-3 py-1 text-xs font-bold text-red-800 bg-red-200 border border-red-300 rounded-md shadow-sm">
+                                        Closed
+                                    </span>
                                 </td>
-                                <td class="p-4 text-sm text-gray-400">N/A</td>
+                                <td class="p-4 text-sm text-gray-400"><a href="#" class="text-blue-600 font-semibold hover:underline">View Details →</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -117,9 +125,12 @@
                         <p class="text-sm text-gray-700 mt-2">BSc in IT, Computer Science & 2 years experience.</p>
                         <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 15/05/2025</p>
                         <a href="#"
-                            class="block w-full text-center mt-3 px-4 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 transition">
-                            Apply →
-                        </a>
+                        class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md hover:from-blue-700 hover:to-blue-900 transition-all duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 inline-flex items-center">
+                        <svg class="w-4 h-4 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h2zm2-1a1 1 0 0 0-1 1v1h6V2a1 1 0 0 0-1-1H8zm9 4H3v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z" clip-rule="evenodd"/>
+                        </svg>
+                        Apply
+                    </a>
                     </div>
 
                     <!-- Closed Job Card -->
@@ -186,8 +197,7 @@
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <a href="#"
                                         class="flex items-center space-x-2 font-medium text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
-                                        <span class="underline">View Details</span>
-                                        <i class="fas fa-arrow-right text-blue-500"></i>
+                                        <span class="underline"><a href="#" class="text-blue-600 font-semibold hover:underline">View Details →</a></span>
                                     </a>
                                 </td>
                             </tr>
