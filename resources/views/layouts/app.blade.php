@@ -21,10 +21,27 @@
 
 </head>
 
-<body class="min-h-screen bg-cobg-gray-100ver bg-center bg-no-repeat">
-    <div class="min-h-screen  overflow-y-auto bg-gray-100">
+<body class="min-h-screen bg-gray-100 bg-center bg-no-repeat">
+
+    <!-- Alpine.js Wrapper for Loading Spinner -->
+    <div x-data="{ loading: false }"
+        x-init="
+            window.addEventListener('beforeunload', () => loading = true);
+            document.addEventListener('DOMContentLoaded', () => loading = false);
+        "
+        class="min-h-screen overflow-y-auto bg-gray-100"
+    >
+
+        <!-- Loading Spinner Overlay -->
+        <div x-show="loading"
+            class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
+            <i class="fas fa-spinner fa-spin text-blue-600 text-4xl"></i>
+        </div>
+
+        <!-- Navigation -->
         @include('layouts.navigation')
         @include('sweetalert::alert')
+
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow overflow-auto">
@@ -34,51 +51,17 @@
             </header>
         @endisset
 
-       <!-- Page Content -->
+        <!-- Page Content -->
         <main class="pb-16">
             {{ $slot }}
         </main>
 
+        <!-- Footer -->
         @include('layouts.footer')
+
     </div>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    @if (session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: "{{ session('success') }}",
-            timer: 3000,
-            showConfirmButton: false
-        });
-    @endif
-
-    @if (session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops!',
-            text: "{{ session('error') }}",
-        });
-    @endif
-
-    @if (session('info'))
-        Swal.fire({
-            icon: 'info',
-            title: 'Heads up!',
-            text: "{{ session('info') }}",
-        });
-    @endif
-
-    @if (session('warning'))
-        Swal.fire({
-            icon: 'warning',
-            title: 'Warning!',
-            text: "{{ session('warning') }}",
-        });
-    @endif
-</script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
