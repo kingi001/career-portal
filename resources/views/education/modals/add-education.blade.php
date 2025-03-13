@@ -16,7 +16,7 @@
             x-show="open" x-transition.scale.90>
 
             <!-- Modal Header -->
-            <div class="flex justify-between items-center px-6 py-4 bg-indigo-600 text-white rounded-t-lg">
+            <div class="flex justify-between items-center px-6 py-2 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-2">
                     <i class="fas fa-graduation-cap"></i> Add Academic Qualifications
                 </h2>
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal Form -->
-            <form method="POST" action="{{ route('education.store') }}" class="p-5 space-y-3">
+            <form method="POST" action="{{ route('education.store') }}" class="p-5 space-y-2">
                 @csrf
 
                 <p class="text-sm text-gray-700">
