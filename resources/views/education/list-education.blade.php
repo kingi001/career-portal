@@ -47,14 +47,16 @@
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
 
-                                    <form action="{{ route('education.destroy', $education->id) }}" method="POST"
-                                        onsubmit="return confirm('Are you sure you want to delete this education?');">
+                                    <form id="delete-form-{{ $education->id }}" action="{{ route('education.destroy', $education->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="text-red-500 hover:text-red-700 flex items-center gap-1">
+                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $education->id }})">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </form>
+
+
                                 </td>
                             </tr>
                         @empty
@@ -94,11 +96,11 @@
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <form action="{{ route('education.destroy', $education->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this education?');">
+                            <form id="delete-form-{{ $education->id }}" action="{{ route('education.destroy', $education->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="text-red-500 hover:text-red-700 flex items-center gap-1">
+                                <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                        onclick="confirmDelete({{ $education->id }})">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>

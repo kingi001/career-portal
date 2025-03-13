@@ -14,7 +14,7 @@
                 </button>
             </div>
 
-            <form method="POST" :action="'/education/' + education.id" class="p-6 space-y-3">
+            <form method="POST" :action="'/education/' + education.id" class="p-6 space-y-4">
                 @csrf
                 @method('PUT')
 

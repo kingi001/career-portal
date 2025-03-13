@@ -39,7 +39,7 @@
         <i class="fas fa-spinner fa-spin text-blue-600 text-4xl"></i>
     </div>
 
-    <!-- Dark Mode Toggle -->
+    <!---Dark Mode Toggle -->
     <button @click="darkMode = !darkMode" class="fixed top-4 right-4 p-2 bg-gray-300 dark:bg-gray-700 rounded-full shadow-md">
         <i class="fas" :class="darkMode ? 'fa-sun text-yellow-500' : 'fa-moon text-gray-800'"></i>
     </button>
@@ -140,7 +140,30 @@
     @endif
 });
 
-   </script>
+</script>
+
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "Confirm Deletion",
+            text: "This action is irreversible. Do you really want to delete this education record?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it",
+            cancelButtonText: "Cancel",
+            reverseButtons: true,
+            focusCancel: true,
+            buttonsStyling: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`delete-form-${id}`).submit();
+            }
+        });
+    }
+</script>
+
 
 
 

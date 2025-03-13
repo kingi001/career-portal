@@ -8,7 +8,7 @@
     </div>
 
     <!-- Modal Overlay -->
-    <div x-show="open" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
+    <div x-show="open" class="fixed inset-0 mt-4 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
         x-transition.opacity>
 
         <!-- Modal Content -->
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal Form -->
-            <form method="POST" action="{{ route('education.store') }}" class="p-5 space-y-2">
+            <form method="POST" action="{{ route('education.store') }}" class="p-5 space-y-4">
                 @csrf
 
                 <p class="text-sm text-gray-700">
