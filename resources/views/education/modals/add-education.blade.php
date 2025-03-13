@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal Form -->
-            <form method="POST" action="{{ route('education.store') }}" class="p-6 space-y-4">
+            <form method="POST" action="{{ route('education.store') }}" class="p-5 space-y-3">
                 @csrf
 
                 <p class="text-sm text-gray-700">
