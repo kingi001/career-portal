@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+
+
 </head>
 
 <body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }"
@@ -78,38 +80,67 @@
     <style> html { scroll-behavior: smooth; } </style>
 
     <!-- SweetAlert2 & Custom Toast Notifications -->
-    <script>
-        function showToast(icon, message) {
-            Swal.fire({
-                toast: true,
-                position: 'top-end',
-                icon: icon,
-                title: message,
-                showConfirmButton: false,
-                timer: 3000,
-                customClass: {
-                 popup: 'p-4 mb-4 text-base text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
-                 title: 'text-lg font-semibold'
-                }
-            });
-        }
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    function showToast(icon, message) {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: icon, // success, error, warning, info
+            title: message,
+            showConfirmButton: false,
+            timer: 2000, // Auto close after 4 seconds
+            timerProgressBar: true,
+            background: getToastBackground(icon),
+            color: '#003366', // Dark blue text for good contrast
+            customClass: {
+                popup: 'animate__animated animate__bounceInRight', // Animation on show
+                title: 'swal-custom-title',
+                timerProgressBar: 'swal-progress-bar'
+            },
+            showCloseButton: true, // Allow manual closing
+            padding: '12px',
+            width: '380px',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            },
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer); // Pause timer on hover
+                toast.addEventListener('mouseleave', Swal.resumeTimer); // Resume timer when unhovered
+            }
+        });
+    }
 
-        @if (session('success'))
-            showToast('success', "{{ session('success') }}");
-        @endif
+    // Function to determine background color based on icon type
+    function getToastBackground(icon) {
+        return icon === 'success' ? '#e6f7ff' : // Light blue for success (theme-based)
+               icon === 'error' ? '#ffe6e6' :   // Soft red for error
+               icon === 'warning' ? '#fff4e6' : // Light orange for warning
+               '#e6f0ff'; // Light blue for info
+    }
 
-        @if (session('error'))
-            showToast('error', "{{ session('error') }}");
-        @endif
+    // Check for session messages and trigger toast notifications
+    @if (session('success'))
+        showToast('success', "{{ session('success') }}");
+    @endif
 
-        @if (session('info'))
-            showToast('info', "{{ session('info') }}");
-        @endif
+    @if (session('error'))
+        showToast('error', "{{ session('error') }}");
+    @endif
 
-        @if (session('warning'))
-            showToast('warning', "{{ session('warning') }}");
-        @endif
-    </script>
+    @if (session('info'))
+        showToast('info', "{{ session('info') }}");
+    @endif
+
+    @if (session('warning'))
+        showToast('warning', "{{ session('warning') }}");
+    @endif
+});
+
+   </script>
 
 
 

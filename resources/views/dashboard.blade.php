@@ -52,7 +52,6 @@
                     {{ __('Job Listings') }}
                 </div>
 
-
                 <!-- Desktop View -->
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
                     <table class="w-full">
