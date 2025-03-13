@@ -13,6 +13,8 @@
                     <!-- Show "E-RECRUITMENT" on Desktop -->
                     <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT </span>
                 </a>
+
+
                 <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-6 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
