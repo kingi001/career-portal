@@ -144,8 +144,7 @@
                     x-transition:leave="transition ease-in duration-200 transform"
                     x-transition:leave-start="opacity-100 translate-x-0 scale-100"
                     x-transition:leave-end="opacity-0 -translate-x-full scale-95" @click.away="open = false"
-                    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-gray-900 shadow-2xl rounded-r-2xl z-50 md:hidden backdrop-blur-lg
-           overflow-y-auto max-h-screen">
+                    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-gray-900 shadow-2xl rounded-r-2xl z-50 md:hidden backdrop-blur-lg">
 
                     <!-- Logo and Portal Title -->
                     <div
@@ -245,13 +244,14 @@
 
                     <!-- Profile & Logout -->
                     <div
-                        class="absolute bottom-0 left-0 w-full bg-gray-100 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 py-4 px-5 rounded-br-2xl">
+                        class="absolute bottom-0 left-0 w-full bg-gray-100 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700
+       py-1 px-4 rounded-br-2xl text-sm">
                         <x-responsive-nav-link :href="route('profile.edit')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all rounded-lg">
                             <i class="fas fa-user-cog text-blue-600"></i> <span>Profile Settings</span>
                         </x-responsive-nav-link>
 
-                        <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                        <form method="POST" action="{{ route('logout') }}" class="mt-1">
                             @csrf
                             <x-responsive-nav-link :href="route('logout')"
                                 onclick="event.preventDefault(); this.closest('form').submit();"
@@ -260,6 +260,7 @@
                             </x-responsive-nav-link>
                         </form>
                     </div>
+
                 </div>
 
 
