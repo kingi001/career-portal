@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfessionalQualificationController extends Controller
 {
+
     /**
      * Display the list of professional qualifications.
      */
@@ -25,7 +26,7 @@ class ProfessionalQualificationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'institution' => 'required|string|max:255',
             'certification' => 'required|string|max:255',
             'award' => 'nullable|string|max:100',
@@ -33,16 +34,12 @@ class ProfessionalQualificationController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
-        ProfessionalQualification::create([
-            'user_id' => Auth::id(),
-            'institution' => $request->institution,
-            'certification' => $request->certification,
-            'award' => $request->award,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-        ]);
+        // Attach user_id automatically
+        $validated['user_id'] = Auth::id();
 
-        return redirect()->back()->with('success', 'Professional qualification added successfully.');
+        ProfessionalQualification::create($validated);
+
+        return redirect()->route('qualifications.index')->with('success', 'Professional qualification added successfully.');
     }
 
     /**
@@ -51,6 +48,7 @@ class ProfessionalQualificationController extends Controller
     public function edit($id)
     {
         $qualification = ProfessionalQualification::where('user_id', Auth::id())->findOrFail($id);
+
         return response()->json($qualification);
     }
 
@@ -59,7 +57,7 @@ class ProfessionalQualificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'institution' => 'required|string|max:255',
             'certification' => 'required|string|max:255',
             'award' => 'nullable|string|max:100',
@@ -68,15 +66,9 @@ class ProfessionalQualificationController extends Controller
         ]);
 
         $qualification = ProfessionalQualification::where('user_id', Auth::id())->findOrFail($id);
-        $qualification->update([
-            'institution' => $request->institution,
-            'certification' => $request->certification,
-            'award' => $request->award,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-        ]);
+        $qualification->update($validated);
 
-        return redirect()->back()->with('success', 'Professional qualification updated successfully.');
+        return redirect()->route('qualifications.index')->with('success', 'Professional qualification updated successfully.');
     }
 
     /**
@@ -87,6 +79,6 @@ class ProfessionalQualificationController extends Controller
         $qualification = ProfessionalQualification::where('user_id', Auth::id())->findOrFail($id);
         $qualification->delete();
 
-        return redirect()->back()->with('success', 'Professional qualification deleted successfully.');
+        return redirect()->route('qualifications.index')->with('success', 'Professional qualification deleted successfully.');
     }
 }
