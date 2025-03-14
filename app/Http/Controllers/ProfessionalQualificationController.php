@@ -14,7 +14,7 @@ class ProfessionalQualificationController extends Controller
      */
     public function index()
     {
-        $qualifications = ProfessionalQualification::where('user_id', Auth::id());
+        $qualifications = ProfessionalQualification::where('user_id', Auth::id())->get();
 
 
         return view('education.professional-qualifications.lists.list-professional-qualification', compact('qualifications'));
