@@ -22,6 +22,9 @@
 
 
 
+
+
+
 </head>
 
 <body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }"
@@ -33,6 +36,8 @@
     :class="{'dark bg-gray-900 text-white': darkMode, 'bg-gray-100 text-gray-900': !darkMode}"
     class="min-h-screen bg-center bg-no-repeat transition-all duration-300"
 >
+
+
 
     <!-- Loading Spinner Overlay -->
     <div x-show="loading" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-black bg-opacity-75 z-50">

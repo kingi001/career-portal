@@ -27,7 +27,7 @@
 
                     <x-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                         <i class="fas fa-user text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Personal Info</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Personal Details</span>
                     </x-nav-link>
 
                     <div class="hidden md:flex items-center">
@@ -180,7 +180,7 @@
 
                         <x-responsive-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
-                            <i class="fas fa-user text-blue-600"></i> <span>Personal Info</span>
+                            <i class="fas fa-user text-blue-600"></i> <span>Personal Details</span>
                         </x-responsive-nav-link>
 
                         <!-- Education Dropdown -->
