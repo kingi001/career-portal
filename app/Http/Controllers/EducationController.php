@@ -14,7 +14,7 @@ class EducationController extends Controller
     public function index()
     {
         $educations = Education::where('user_id', Auth::id())->orderBy('start_date', 'desc')->get();
-        return view('education.list-education', compact('educations'));
+        return view('education.academic-qualifications.lists.list-education', compact('educations'));
     }
 
     /**

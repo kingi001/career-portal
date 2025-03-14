@@ -61,4 +61,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserInformation::class);
     }
+     /**
+     * Get the professional qualifications for the user.
+     */
+    public function professionalQualifications()
+    {
+        return $this->hasMany(ProfessionalQualification::class);
+    }
 }

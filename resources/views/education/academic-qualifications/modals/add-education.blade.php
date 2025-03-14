@@ -1,4 +1,4 @@
-<!-- Education Modal -->
+<!-- ADD Education Modal -->
 <div x-data="{ open: false }" @open-modal.window="if ($event.detail.modal === 'add-education') open = true" x-cloak>
     <div class="mt-4 flex justify-end">
         <button @click="open = true"
