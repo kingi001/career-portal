@@ -196,13 +196,13 @@
                             </button>
 
                             <div x-show="open" x-collapse class="mt-1 w-full">
-                                <x-responsive-nav-link :href="route('education.index')"
+                                {{-- <x-responsive-nav-link :href="route('education.index')"
                                     :active="request()->routeIs('education.index')"
                                     class="flex items-center w-full gap-2 py-3 px-4 bg-white dark:bg-gray-900
                                            hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                                     <i class="fas fa-university text-gray-600 dark:text-gray-300"></i>
                                     <span class="flex-1">Academic Qualifications</span>
-                                </x-responsive-nav-link>
+                                </x-responsive-nav-link> --}}
 
                                 <x-responsive-nav-link :href="route('qualifications.index')"
                                     :active="request()->routeIs('qualifications.index')"
