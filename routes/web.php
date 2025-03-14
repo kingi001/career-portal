@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -37,8 +39,9 @@ Route::get('/application-submission', function () { return view('applicationstat
 
 
 Route::resource('/education',EducationController::class);
-
 Route::resource('/qualifications', ProfessionalQualificationController::class);
+Route::resource('memberships', MembershipController::class);
+
 
 
 Route::get('career', function () { return view('career.career-list');})->name('career');

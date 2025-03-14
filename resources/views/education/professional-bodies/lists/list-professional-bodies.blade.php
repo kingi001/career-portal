@@ -1,85 +1,113 @@
+<x-app-layout>
+    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
 
-<section>
-    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-x-auto">
-        <div class="p-2 bg-white border-b border-gray-100 rounded-lg overflow-x-auto">
-
-            <h2 class="text-lg font-medium text-gray-900">
-                <i class="fas fa-landmark text-blue-500 text-lg"></i>
-                {{ __('Membership to Professional Bodies') }}
+            <!-- Section Title -->
+            <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <i class="fas fa-user-tie text-blue-500 text-xl"></i>
+                {{ __('Memberships to Professional Bodies') }}
             </h2>
-            <p class="mt-2 text-sm text-gray-600">
-                {{ __('Professional Membership.') }}
+            <p class="mt-1 text-sm text-gray-600">
+                {{ __('Please provide details of your professional memberships with the most recent.') }}
             </p>
 
-            <!-- Mobile View: Card Layout -->
-            <div class="sm:block md:hidden">
-                <div class="space-y-4">
-                    <div class="p-4 border rounded-lg shadow">
-                        <p class="font-semibold"><i class="fas fa-school mr-1"></i> IEEE</p>
-                        <p class="text-sm text-gray-700"><i class="fas fa-user-tag mr-1"></i> Professional</p>
-                        <p class="text-sm text-gray-700"><i class="fas fa-award mr-1"></i> Senior Member</p>
-                        <p class="text-sm text-gray-700"><i class="fas fa-calendar mr-1"></i> 15/01/2020 - 15/01/2025
-                        </p>
-                        <div class="mt-2 flex space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <button type="button" class="text-red-500 hover:text-red-700"
-                                onclick="return confirm('Are you sure you want to delete this membership?');">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
-            <!-- Desktop View: Table -->
-            <div class="overflow-auto rounded-lg shadow hidden md:block">
-                <table class="mt-4 min-w-full bg-white border-gray-300 shadow-lg rounded-lg overflow-auto">
-                    <thead class="bg-gray-50 border-b-2 border-gray-100">
-                        <tr>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">ID</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">Organization</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">Membership Type</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">Membership Level</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">Start Date</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">End Date</th>
-                            <th class="p-2 text-sm font-semibold tracking-wide text-left">Actions</th>
+            <!-- Desktop Table View -->
+            <div class="overflow-auto rounded-lg shadow-md mt-4 hidden md:block">
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                    <thead class="bg-blue-50 border-b-2 border-gray-200">
+                        <tr class="text-gray-700">
+                            <th class="p-3 text-sm font-semibold text-left">Professional Body</th>
+                            <th class="p-3 text-sm font-semibold text-left">Membership No</th>
+                            <th class="p-3 text-sm font-semibold text-left">Date Renewed</th>
+                            <th class="p-3 text-sm font-semibold text-left">Next Renewal Date</th>
+                            <th class="p-3 text-sm font-semibold text-left">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">1</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">IEEE</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">Professional</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">Senior Member</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">15/01/2020</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">15/01/2025</td>
-                            <td class="p-2 text-sm text-gray-700 whitespace-nowrap">
-                                <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                        class="fas fa-edit"></i> Edit</a>
-                                <button type="button" class="text-red-500 hover:text-red-700 ml-2"
-                                    onclick="return confirm('Are you sure you want to delete this membership?');">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
-                            </td>
-                        </tr>
+                        @forelse ($memberships as $membership)
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-building text-gray-500"></i> {{ $membership->professional_body }}
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-id-badge text-gray-500"></i> {{ $membership->membership_no }}
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-calendar-check text-gray-500"></i> {{ $membership->date_renewed }}
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->next_renewal_date }}
+                                </td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3">
+                                    <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
+                                        class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+
+                                    <form id="delete-form-{{ $membership->id }}" action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $membership->id }})">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="p-4 text-center text-gray-500">
+                                    No professional memberships found.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
 
-            <!-- Add Membership Button -->
+            <!-- Mobile View (Stacked Cards) -->
+            <div class="mt-4 space-y-4 md:hidden">
+                @forelse ($memberships as $membership)
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
+                        <h3 class="text-md font-semibold text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-building text-blue-500"></i> {{ $membership->professional_body }}
+                        </h3>
+                        <p class="text-sm text-gray-600 flex items-center gap-2">
+                            <i class="fas fa-id-badge text-gray-500"></i> {{ $membership->membership_no }}
+                        </p>
+                        <p class="text-sm text-gray-600 flex items-center gap-2">
+                            <i class="fas fa-calendar-check text-gray-500"></i> {{ $membership->date_renewed }}
+                        </p>
+                        <p class="text-sm text-gray-600 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->next_renewal_date }}
+                        </p>
 
-            <div class="mt-4 flex justify-end">
-                <button
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-1
-                    shadow-sm hover:shadow-md transition-all duration-200 ease-in-out">
-                    <i class="fas fa-plus text-xs"></i> {{ __('Add Membership') }}
-                </button>
+                        <div class="flex justify-between items-center mt-3 space-x-4">
+                            <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
+                                class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <form id="delete-form-{{ $membership->id }}" action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                        onclick="confirmDelete({{ $membership->id }})">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @empty
+                    <div class="p-4 bg-gray-100 rounded-lg text-center text-gray-500">
+                        No professional memberships found.
+                    </div>
+                @endforelse
             </div>
+
+            <!-- Add Membership Button -->
+            {{-- @include('education.memberships.modals.add-membership')
+            @include('education.memberships.modals.edit-membership') --}}
+
         </div>
     </div>
-
-
-</section>
+</x-app-layout>

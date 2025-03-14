@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProfessionalQualification::class);
     }
+     // Relationship: A user has many memberships
+     public function memberships()
+     {
+         return $this->hasMany(Membership::class);
+     }
 }

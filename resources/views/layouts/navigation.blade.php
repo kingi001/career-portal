@@ -54,7 +54,7 @@
                                         <span class="flex-1">Professional Qualifications</span>
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link
+                                    <x-dropdown-link :href="route('memberships.index')" :active="request()->routeIs('memberships.index')"
                                         class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                                         <i class="fas fa-users-cog text-gray-700 dark:text-gray-300 mr-3"></i>
                                         <span class="flex-1">Membership to Professional Bodies</span>
@@ -211,7 +211,7 @@
                                     <span class="flex-1">Professional Qualifications</span>
                                 </x-responsive-nav-link>
 
-                                <x-responsive-nav-link
+                                <x-responsive-nav-link :href="route('memberships.index')" :active="request()->routeIs('memberships.index')"
                                     class="flex items-center w-full gap-2 py-3 px-4 bg-white dark:bg-gray-900
                                            hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                                     <i class="fas fa-users-cog text-gray-600 dark:text-gray-300"></i>
