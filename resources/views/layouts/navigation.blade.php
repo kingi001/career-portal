@@ -68,7 +68,7 @@
 
                     <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
                         <i class="fas fa-briefcase text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Experience</span>
+                        <span class="ml-1 text-sm font-base text-gray-700">Employment</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
@@ -85,6 +85,7 @@
                         <i class="fas fa-paper-plane  text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Application</span>
                     </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -224,7 +225,7 @@
 
                         <x-responsive-nav-link :href="route('career')" :active="request()->routeIs('career')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
-                            <i class="fas fa-briefcase text-blue-600"></i> <span>Experience</span>
+                            <i class="fas fa-briefcase text-blue-600"></i> <span>Employment Details</span>
                         </x-responsive-nav-link>
 
                         <x-responsive-nav-link :href="route('referee')" :active="request()->routeIs('referee')"
