@@ -42,21 +42,20 @@
 
                             <x-slot name="content">
                                 <div class="w-60 bg-white dark:bg-gray-800 shadow-lg rounded-md">
-                                    <x-dropdown-link :href="route('education.index')"
-                                                     :active="request()->routeIs('education.index')"
-                                                     class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    <x-dropdown-link :href="route('education.index')" :active="request()->routeIs('education.index')"
+                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                                         <i class="fas fa-university text-gray-700 dark:text-gray-300 mr-3"></i>
                                         <span class="flex-1">Academic Qualifications</span>
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link :href="route('qualifications.index')"
-                                                     :active="request()->routeIs('qualifications.index')"
-                                                     class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    <x-dropdown-link :href="route('qualifications.index')" :active="request()->routeIs('qualifications.index')"
+                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                                         <i class="fas fa-award text-gray-700 dark:text-gray-300 mr-3"></i>
                                         <span class="flex-1">Professional Qualifications</span>
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    <x-dropdown-link
+                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                                         <i class="fas fa-users-cog text-gray-700 dark:text-gray-300 mr-3"></i>
                                         <span class="flex-1">Membership to Professional Bodies</span>
                                     </x-dropdown-link>
@@ -85,7 +84,7 @@
                         <i class="fas fa-paper-plane  text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Application</span>
                     </x-nav-link>
-                    
+
                 </div>
             </div>
 
@@ -145,7 +144,8 @@
                     x-transition:leave="transition ease-in duration-200 transform"
                     x-transition:leave-start="opacity-100 translate-x-0 scale-100"
                     x-transition:leave-end="opacity-0 -translate-x-full scale-95" @click.away="open = false"
-                    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-gray-900 shadow-2xl rounded-r-2xl z-50 md:hidden backdrop-blur-lg">
+                    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-gray-900 shadow-2xl rounded-r-2xl z-50 md:hidden backdrop-blur-lg
+           overflow-y-auto max-h-screen">
 
                     <!-- Logo and Portal Title -->
                     <div
@@ -193,20 +193,19 @@
                                 <span class="flex items-center gap-2">
                                     <i class="fas fa-graduation-cap text-blue-600"></i> <span>Education</span>
                                 </span>
-                                <i :class="open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" class="text-gray-500"></i>
+                                <i :class="open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
+                                    class="text-gray-500"></i>
                             </button>
 
                             <div x-show="open" x-collapse class="mt-1 w-full">
-                                <x-responsive-nav-link :href="route('education.index')"
-                                    :active="request()->routeIs('education.index')"
+                                <x-responsive-nav-link :href="route('education.index')" :active="request()->routeIs('education.index')"
                                     class="flex items-center w-full gap-2 py-3 px-4 bg-white dark:bg-gray-900
                                            hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                                     <i class="fas fa-university text-gray-600 dark:text-gray-300"></i>
                                     <span class="flex-1">Academic Qualifications</span>
                                 </x-responsive-nav-link>
 
-                                <x-responsive-nav-link :href="route('qualifications.index')"
-                                    :active="request()->routeIs('qualifications.index')"
+                                <x-responsive-nav-link :href="route('qualifications.index')" :active="request()->routeIs('qualifications.index')"
                                     class="flex items-center w-full gap-2 py-3 px-4 bg-white dark:bg-gray-900
                                            hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                                     <i class="fas fa-award text-gray-600 dark:text-gray-300"></i>
