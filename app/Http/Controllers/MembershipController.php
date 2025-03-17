@@ -28,7 +28,7 @@ class MembershipController extends Controller
             'professional_body' => 'required|string|max:255',
             'membership_no' => 'required|string|max:255|unique:memberships',
             'date_renewed' => 'required|date',
-            'next_renewal_date' => 'required|date|after_or_equal:date_renewed',
+            'expiry_date' => 'required|date|after_or_equal:date_renewed',
         ]);
 
         // Attach user_id automatically
@@ -58,7 +58,7 @@ class MembershipController extends Controller
             'professional_body' => 'required|string|max:255',
             'membership_no' => 'required|string|max:255|unique:memberships,membership_no,' . $id,
             'date_renewed' => 'required|date',
-            'next_renewal_date' => 'required|date|after_or_equal:date_renewed',
+            'expiry_date' => 'required|date|after_or_equal:date_renewed',
         ]);
 
         $membership = Membership::where('user_id', Auth::id())->findOrFail($id);

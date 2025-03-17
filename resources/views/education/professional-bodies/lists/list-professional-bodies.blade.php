@@ -36,7 +36,7 @@
                                     <i class="fas fa-calendar-check text-gray-500"></i> {{ $membership->date_renewed }}
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->next_renewal_date }}
+                                    <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->expiry_date }}
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3">
                                     <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
@@ -73,13 +73,13 @@
                             <i class="fas fa-building text-blue-500"></i> {{ $membership->professional_body }}
                         </h3>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-id-badge text-gray-500"></i> {{ $membership->membership_no }}
+                            <i class="fas fa-id-badge text-gray-500"></i>Membership No: {{ $membership->membership_no }}
                         </p>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-calendar-check text-gray-500"></i> {{ $membership->date_renewed }}
+                            <i class="fas fa-calendar-check text-gray-500"></i>Date Renewed : {{ $membership->date_renewed }}
                         </p>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->next_renewal_date }}
+                            <i class="fas fa-calendar-alt text-gray-500"></i>Expiry Date : {{ $membership->expiry_date }}
                         </p>
 
                         <div class="flex justify-between items-center mt-3 space-x-4">
@@ -105,8 +105,9 @@
             </div>
 
             <!-- Add Membership Button -->
-            {{-- @include('education.memberships.modals.add-membership')
-            @include('education.memberships.modals.edit-membership') --}}
+            @include('education.professional-bodies.modals.add-professional-body')
+            @include('education.professional-bodies.modals.edit-professional-body')
+
 
         </div>
     </div>
