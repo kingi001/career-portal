@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\EmploymentHistoryController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -27,9 +29,7 @@ Route::middleware(['auth'])->group(function () {
  Route::get('/send-otp', [OTPController::class, 'sendOtp'])->name('otp.send');
 
 // Dashboard and Other  Secured Routes
-
 Route::get('/', function () { return view('dashboard');})->name('dashboard');
-
 Route::get('/personal-information', [UserInformationController::class, 'create'])->name('personal-info.show');
 Route::post('/personal-information', [UserInformationController::class, 'store'])->name('personal-info.store');
 
@@ -41,6 +41,7 @@ Route::get('/application-submission', function () { return view('applicationstat
 Route::resource('/education',EducationController::class);
 Route::resource('/qualifications', ProfessionalQualificationController::class);
 Route::resource('memberships', MembershipController::class);
+Route::resource('employment', EmploymentHistoryController::class);
 
 
 

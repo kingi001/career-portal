@@ -73,4 +73,11 @@ class User extends Authenticatable
      {
          return $this->hasMany(Membership::class);
      }
+        /**
+     * Get the employment history for the user.
+     */
+    public function employments()
+    {
+        return $this->hasMany(EmploymentHistory::class);
+    }
 }

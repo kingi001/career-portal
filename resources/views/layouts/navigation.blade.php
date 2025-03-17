@@ -65,7 +65,7 @@
                     </div>
 
 
-                    <x-nav-link :href="route('career')" :active="request()->routeIs('career')">
+                    <x-nav-link :href="route('employment.index')" :active="request()->routeIs('employment.index')">
                         <i class="fas fa-briefcase text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Employment</span>
                     </x-nav-link>
@@ -221,7 +221,7 @@
                         </div>
 
 
-                        <x-responsive-nav-link :href="route('career')" :active="request()->routeIs('career')"
+                        <x-responsive-nav-link :href="route('employment.index')" :active="request()->routeIs('employment.index')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                             <i class="fas fa-briefcase text-blue-600"></i> <span>Employment Details</span>
                         </x-responsive-nav-link>
