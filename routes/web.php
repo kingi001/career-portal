@@ -6,8 +6,10 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -42,10 +44,11 @@ Route::resource('/education',EducationController::class);
 Route::resource('/qualifications', ProfessionalQualificationController::class);
 Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
+Route::resource('referees', RefereeController::class);
 
 
 
-Route::get('career', function () { return view('career.career-list');})->name('career');
+
 Route::get('/referee', function () { return view('referee.index');})->name('referee');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

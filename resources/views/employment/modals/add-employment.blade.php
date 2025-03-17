@@ -1,6 +1,6 @@
 <!-- ADD Employment Modal -->
 <div x-data="{ open: false }" @open-modal.window="if ($event.detail.modal === 'add-employment') open = true" x-cloak>
-   
+
     <!-- Modal Overlay -->
     <div x-show="open" class="fixed inset-0 mt-4 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
         x-transition.opacity>
@@ -56,7 +56,7 @@
                         <x-input-label for="responsibilities" :value="__('Responsibilities')" />
                         <textarea id="responsibilities" name="responsibilities"
                             class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                            rows="3" placeholder="Briefly describe your roles and responsibilities">{{ old('responsibilities') }}</textarea>
+                            rows="4" placeholder="Briefly describe your roles and responsibilities">{{ old('responsibilities') }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('responsibilities')" />
                     </div>
 

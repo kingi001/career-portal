@@ -80,4 +80,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(EmploymentHistory::class);
     }
+     /**
+     * Get the referees associated with the user.
+     */
+    public function referees()
+    {
+        return $this->hasMany(Referee::class);
+    }
 }

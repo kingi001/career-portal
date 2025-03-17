@@ -151,7 +151,7 @@
     function confirmDelete(id) {
         Swal.fire({
             title: "Confirm Deletion",
-            text: "This action is irreversible. Do you really want to delete this education record?",
+            text: "This action is irreversible. Do you really want to delete this record?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Yes, delete it",

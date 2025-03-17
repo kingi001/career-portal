@@ -70,7 +70,7 @@
                         <span class="ml-1 text-sm font-base text-gray-700">Employment</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('referee')" :active="request()->routeIs('referee')">
+                    <x-nav-link :href="route('referees.index')" :active="request()->routeIs('referees.index')">
                         <i class="fas fa-users text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Referees</span>
                     </x-nav-link>
@@ -226,7 +226,7 @@
                             <i class="fas fa-briefcase text-blue-600"></i> <span>Employment Details</span>
                         </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('referee')" :active="request()->routeIs('referee')"
+                        <x-responsive-nav-link :href="route('referees.index')" :active="request()->routeIs('referees.index')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                             <i class="fas fa-users text-blue-600"></i> <span>Referees</span>
                         </x-responsive-nav-link>
