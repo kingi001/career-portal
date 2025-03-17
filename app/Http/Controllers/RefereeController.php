@@ -13,7 +13,7 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        $referees = Referee::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+        $referees = Referee::where('user_id', Auth::id())->orderBy('id', 'asc')->get();
 
         return view('referee.lists.list-referees', compact('referees'));
     }
