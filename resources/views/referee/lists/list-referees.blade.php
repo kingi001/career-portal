@@ -26,7 +26,7 @@
                     <thead class="bg-gray-100">
                         <tr class="text-left text-gray-700">
                             <th class="p-3 text-sm font-semibold w-8">
-                                <i class="fas fa-hashtag text-blue-400"></i> 
+                                <i class="fas fa-hashtag text-blue-400"></i>
                             </th>
                             <th class="p-3 text-sm font-semibold">
                                 <i class="fas fa-user text-blue-400"></i> Full Name
