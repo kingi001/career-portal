@@ -7,50 +7,44 @@
             <p class="mt-2 text-sm text-gray-600">{{ __('Upload required documents for your application (PDF only).') }}
             </p>
 
-            <div class="mt-4" x-data="fileUpload()" @submit.prevent="submitForm">
-                <form id="document-upload-form" enctype="multipart/form-data">
+            <div class="mt-4" x-data="fileUpload()">
+                <form id="document-upload-form" action="{{ route('documents.store') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="grid gap-6 md:grid-cols-2">
                         <template x-for="(doc, index) in documents" :key="index">
                             <div class="border p-4 rounded-lg shadow-sm bg-gray-50 relative">
-                                <!-- Remove Button -->
-                                <template x-if="doc.removable">
-                                    <button type="button" @click="removeFile(index)"
-                                        class="absolute top-2 right-2 text-red-500 hover:text-red-700 text-lg font-bold">✖</button>
-                                </template>
+                                <button type="button" @click="removeFile(index)" x-show="doc.removable"
+                                    class="absolute top-2 right-2 text-red-500 hover:text-red-700 text-lg font-bold">✖</button>
 
                                 <label class="text-sm font-medium text-gray-700 block mb-2">
                                     <i class="fas fa-file-alt text-gray-600"></i>
                                     <span x-text="doc.label"></span> (PDF Only)
                                 </label>
 
-                                <!-- Academic Certificate Type Dropdown -->
-                                <template x-if="doc.category === 'academic'">
-                                    <select x-model="doc.certificateType"
-                                        class="w-full border-gray-300 rounded-md text-sm shadow-sm p-2 mb-2 focus:ring focus:ring-blue-200">
-                                        <option value="" class="text-gray-500 text-sm font-medium">Select
-                                            Certificate Type</option>
-                                        <option value="PhD">PhD</option>
-                                        <option value="Masters">Masters</option>
-                                        <option value="Degree">Degree</option>
-                                        <option value="Diploma">Diploma</option>
-                                        <option value="KCSE">KCSE</option>
-                                        <option value="KCSE">KCPE</option>
+                                <input type="hidden" :name="'labels[' + index + ']'" x-model="doc.label">
+                                <input type="hidden" :name="'categories[' + index + ']'" x-model="doc.category">
 
+                                <select x-show="doc.category === 'academic'" :name="'certificate_types[' + index + ']'"
+                                    x-model="doc.certificateType"
+                                    class="w-full border-gray-300 rounded-md text-sm shadow-sm p-2 mb-2 focus:ring focus:ring-blue-200">
+                                    <option value="">Select Certificate Type</option>
+                                    <option value="PhD">PhD</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="Degree">Degree</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="KCSE">KCSE</option>
+                                    <option value="KCPE">KCPE</option>
+                                </select>
 
-
-
-                                    </select>
-                                </template>
-
-                                <!-- File Upload Section -->
-                                <div class="border-2 border-dashed border-gray-400 rounded-md p-4 relative bg-white cursor-pointer"
+                                <div class="border-2 border-dashed border-gray-400 rounded-md p-4 bg-white cursor-pointer"
                                     @dragover.prevent="doc.dragging = true" @dragleave.prevent="doc.dragging = false"
                                     @drop.prevent="handleDrop($event, index)">
 
                                     <input type="file"
                                         class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                         @change="handleFileUpload($event, index)" accept=".pdf"
-                                        :name="'documents[' + index + ']'" />
+                                        :name="'documents[' + index + ']'" required>
 
                                     <div class="text-center text-gray-500" x-show="!doc.file">
                                         <i class="fas fa-cloud-upload-alt text-2xl text-blue-600"></i>
@@ -58,7 +52,6 @@
                                                 class="text-blue-500 font-semibold">click to upload</span></p>
                                     </div>
 
-                                    <!-- File Preview -->
                                     <template x-if="doc.file">
                                         <div class="mt-2">
                                             <div class="flex items-center justify-between p-2 bg-blue-100 rounded-md">
@@ -66,64 +59,87 @@
                                                 <i class="fas fa-times text-red-500 cursor-pointer"
                                                     @click="removeFile(index)"></i>
                                             </div>
-
-                                            <!-- Upload Progress Bar -->
-                                            <div class="mt-2">
-                                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                                    <div class="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                                                        :style="'width: ' + doc.progress + '%'"></div>
-                                                </div>
-                                                <p class="text-xs text-gray-600 mt-1" x-text="doc.progress + '%'"></p>
-                                            </div>
                                         </div>
                                     </template>
                                 </div>
-
-                                <!-- Error Message -->
                                 <p class="text-red-500 text-xs mt-2" x-show="doc.error" x-text="doc.error"></p>
                             </div>
                         </template>
                     </div>
 
-                    <!-- Buttons to Add More Certificates -->
-                    <!-- Buttons to Add More Certificates -->
-                    <div class="mt-4 flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                    <!---------------------------------------------------Add Buttons---------------------------------------------------------->
+
+                    <div class="mt-6 flex flex-wrap gap-3 sm:gap-6 justify-center text-sm">
                         <button type="button" @click="addDocument('academic')"
-                            class="flex items-center justify-center gap-2 w-full md:w-auto px-5 py-3 text-sm font-semibold text-white
-               bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg shadow-md
-               hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-graduation-cap"></i> Add Academic Certificate
+                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
+                                   bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg">
+                            <i class="fas fa-graduation-cap text-sm"></i> Add Academic Certificate
                         </button>
 
                         <button type="button" @click="addDocument('professional')"
-                            class="flex items-center justify-center gap-2 w-full md:w-auto px-5 py-3 text-sm font-semibold text-white
-               bg-gradient-to-r from-green-500 to-green-700 rounded-lg shadow-md
-               hover:from-green-600 hover:to-green-800 transform hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-briefcase"></i> Add Professional Certificate
+                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
+                                   bg-green-600 hover:bg-green-700 shadow-md hover:shadow-lg">
+                            <i class="fas fa-briefcase text-sm"></i> Add Professional Certificate
                         </button>
 
                         <button type="button" @click="addDocument('membership')"
-                            class="flex items-center justify-center gap-2 w-full md:w-auto px-5 py-3 text-sm font-semibold text-white
-               bg-gradient-to-r from-purple-500 to-purple-700 rounded-lg shadow-md
-               hover:from-purple-600 hover:to-purple-800 transform hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-id-card"></i> Add Membership Certificate
+                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
+                                   bg-purple-600 hover:bg-purple-700 shadow-md hover:shadow-lg">
+                            <i class="fas fa-id-card text-sm"></i> Add Membership Certificate
                         </button>
                     </div>
 
-
-                    <!-- Submit Button -->
-                    <div class="mt-6 flex justify-center">
+                    <div class="mt-7 flex justify-center text-sm">
                         <button type="submit"
-                            class="px-8 py-3 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800
-                                   hover:from-blue-700 hover:to-blue-900 shadow-lg rounded-full transition-all duration-300
-                                   transform hover:scale-105">
-                            <i class="fas fa-save mr-2"></i> Save Documents
+                            class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm sm:text-sm font-medium transition
+                                   bg-blue-600 hover:bg-blue-700 active:bg-blue-800 shadow-md hover:shadow-lg">
+                            <i class="fas fa-save text-lg"></i> Save Documents
                         </button>
                     </div>
-
                 </form>
             </div>
+            <div class="overflow-x-auto mt-4 rounded-lg shadow-lg border border-gray-200">
+                <table class="min-w-full bg-white rounded-lg">
+                    <thead class="bg-blue-400 text-white text-sm sm:text-sm">
+                        <tr>
+                            <th class="p-3 text-sm text-left">#</th>
+                            <th class="p-3 text-left">Document</th>
+                            <th class="p-3 text-left">Category</th>
+                            <th class="p-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($documents as $index => $document)
+                            <tr class="border-b text-sm sm:text-sm transition hover:bg-blue-50 even:bg-gray-50">
+                                <td class="p-3 text-gray-700 font-semibold">{{ $index + 1 }}</td>
+                                <td class="p-3 flex items-center gap-2">
+                                    <i class="fas fa-file-pdf text-red-500"></i>
+                                    <a href="{{ asset('storage/' . $document->file_path) }}" target="_blank"
+                                        class="text-blue-600 hover:underline truncate max-w-[150px] sm:max-w-none">
+                                        {{ $document->label }}
+                                    </a>
+                                </td>
+                                <td class="p-3 capitalize text-gray-700">{{ $document->category }}</td>
+                                <td class="p-3">
+                                    <form action="{{ route('documents.destroy', $document->id) }}" method="POST"
+                                        onsubmit="return confirmDelete()">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200 px-2 py-1 rounded-md transition">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+
         </div>
+
     </div>
 
     <script>
@@ -133,7 +149,6 @@
                         label: 'Application Letter',
                         category: 'other',
                         file: null,
-                        progress: 0,
                         removable: false,
                         error: ''
                     },
@@ -141,46 +156,16 @@
                         label: 'ID / Passport',
                         category: 'other',
                         file: null,
-                        progress: 0,
-                        removable: false,
-                        error: ''
-                    },
-                    {
-                        label: 'Academic Certificate',
-                        category: 'academic',
-                        file: null,
-                        progress: 0,
-                        removable: false,
-                        error: '',
-                        certificateType: ''
-                    },
-                    {
-                        label: 'Professional Certificate',
-                        category: 'professional',
-                        file: null,
-                        progress: 0,
-                        removable: false,
-                        error: ''
-                    },
-                    {
-                        label: 'Membership Certificate',
-                        category: 'membership',
-                        file: null,
-                        progress: 0,
                         removable: false,
                         error: ''
                     }
                 ],
                 addDocument(type) {
-                    let label = type === 'academic' ? 'Academic Certificate' :
-                        type === 'professional' ? 'Professional Certificate' :
-                        'Membership Certificate';
-
+                    let label = type.charAt(0).toUpperCase() + type.slice(1) + ' Certificate';
                     this.documents.push({
                         label,
                         category: type,
                         file: null,
-                        progress: 0,
                         removable: true,
                         error: '',
                         certificateType: type === 'academic' ? '' : undefined
@@ -188,43 +173,23 @@
                 },
                 handleFileUpload(event, index) {
                     const file = event.target.files[0];
-                    if (!this.validateFile(file, index)) return;
-
+                    if (file.type !== 'application/pdf') {
+                        this.documents[index].error = 'Only PDF files are allowed.';
+                        return;
+                    }
                     this.documents[index].file = file;
-                    this.uploadFile(index);
+                    this.documents[index].error = '';
                 },
                 handleDrop(event, index) {
                     event.preventDefault();
-                    const file = event.dataTransfer.files[0];
-                    if (!this.validateFile(file, index)) return;
-
-                    this.documents[index].file = file;
-                    this.uploadFile(index);
-                },
-                validateFile(file, index) {
-                    if (file.type !== "application/pdf") {
-                        this.documents[index].error = "Only PDF files are allowed.";
-                        this.documents[index].file = null;
-                        return false;
-                    }
-                    this.documents[index].error = "";
-                    return true;
-                },
-                uploadFile(index) {
-                    let progress = 0;
-                    const interval = setInterval(() => {
-                        if (progress >= 100) {
-                            clearInterval(interval);
+                    this.handleFileUpload({
+                        target: {
+                            files: event.dataTransfer.files
                         }
-                        this.documents[index].progress = progress;
-                        progress += 10;
-                    }, 300);
+                    }, index);
                 },
                 removeFile(index) {
                     this.documents.splice(index, 1);
-                },
-                submitForm() {
-                    alert("Documents uploaded successfully!");
                 }
             };
         }

@@ -75,7 +75,7 @@
                         <span class="ml-1 text-sm font-base text-gray-700">Referees</span>
                     </x-nav-link>
 
-                    <x-nav-link :href="route('documentUpload')" :active="request()->routeIs('documentUpload')">
+                    <x-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.index')">
                         <i class="fas fa-file-upload text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Documents</span>
                     </x-nav-link>
@@ -231,7 +231,7 @@
                             <i class="fas fa-users text-blue-600"></i> <span>Referees</span>
                         </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('documentUpload')" :active="request()->routeIs('documentUpload')"
+                        <x-responsive-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.index')"
                             class="flex items-center gap-2 py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
                             <i class="fas fa-file-upload text-blue-600"></i> <span>Documents</span>
                         </x-responsive-nav-link>

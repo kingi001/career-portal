@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmploymentHistoryController;
 use App\Http\Controllers\MembershipController;
@@ -9,12 +10,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
-
-
-
-
-
-
 
 //Guest User Routes
 require __DIR__.'/auth.php';
@@ -36,7 +31,6 @@ Route::get('/personal-information', [UserInformationController::class, 'create']
 Route::post('/personal-information', [UserInformationController::class, 'store'])->name('personal-info.store');
 
 
-Route::get('/documentUpload', function () { return view('documentupload.index');})->name('documentUpload');
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
 
 
@@ -45,8 +39,7 @@ Route::resource('/qualifications', ProfessionalQualificationController::class);
 Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
 Route::resource('referees', RefereeController::class);
-
-
+Route::resource('documents', DocumentController::class);
 
 
 Route::get('/referee', function () { return view('referee.index');})->name('referee');
