@@ -6,7 +6,6 @@
             </h2>
             <p class="mt-2 text-sm text-gray-600">{{ __('Upload required documents for your application (PDF only).') }}
             </p>
-
             <div class="mt-4" x-data="fileUpload()">
                 <form id="document-upload-form" action="{{ route('documents.store') }}" method="POST"
                     enctype="multipart/form-data">
@@ -98,13 +97,16 @@
                     </div>
                 </form>
             </div>
+
             <div class="overflow-x-auto mt-4 rounded-lg shadow-lg border border-gray-200">
-                <table class="min-w-full bg-white rounded-lg">
+                <table class="min-w-full bg-white rounded-lg hidden md:table">
                     <thead class="bg-blue-400 text-white text-sm sm:text-sm">
                         <tr>
                             <th class="p-3 text-sm text-left">#</th>
                             <th class="p-3 text-left">Document</th>
                             <th class="p-3 text-left">Category</th>
+                            <th class="p-3 text-left">Size</th>
+                            <th class="p-3 text-left">Status</th>
                             <th class="p-3 text-left">Actions</th>
                         </tr>
                     </thead>
@@ -120,6 +122,12 @@
                                     </a>
                                 </td>
                                 <td class="p-3 capitalize text-gray-700">{{ $document->category }}</td>
+                                <td class="p-3 text-gray-700">
+                                    100 KB
+                                </td>
+                                <td class="p-3 text-gray-700 font-semibold text-yellow-600"><span
+                                        class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                </td>
                                 <td class="p-3">
                                     <form action="{{ route('documents.destroy', $document->id) }}" method="POST"
                                         onsubmit="return confirmDelete()">
@@ -135,9 +143,43 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <!-- Mobile Card View -->
+                <div class="md:hidden">
+                    @foreach ($documents as $index => $document)
+                        <div class="bg-white rounded-lg shadow-md p-4 mb-4 border border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700 font-semibold">#{{ $index + 1 }}</span>
+                                <span class="text-sm text-yellow-600 font-semibold">Pending</span>
+                            </div>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-700"><strong>Document:</strong>
+                                    <a href="{{ asset('storage/' . $document->file_path) }}" target="_blank"
+                                        class="text-blue-600 hover:underline">
+                                        {{ $document->label }}
+                                    </a>
+                                </p>
+                                <p class="text-sm text-gray-700"><strong>Category:</strong> {{ $document->category }}
+                                </p>
+                                <p class="text-sm text-gray-700"><strong>Size:</strong>
+                                    {{-- {{ number_format(Storage::size($document->file_path) / 1024, 2) }} KB --}}
+                                </p>
+                            </div>
+                            <div class="mt-3 flex justify-end">
+                                <form action="{{ route('documents.destroy', $document->id) }}" method="POST"
+                                    onsubmit="return confirmDelete()">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200 px-3 py-1 rounded-md transition">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-
-
         </div>
 
     </div>
@@ -147,14 +189,14 @@
             return {
                 documents: [{
                         label: 'Application Letter',
-                        category: 'other',
+                        category: 'Letter',
                         file: null,
                         removable: false,
                         error: ''
                     },
                     {
                         label: 'ID / Passport',
-                        category: 'other',
+                        category: 'Identification',
                         file: null,
                         removable: false,
                         error: ''
