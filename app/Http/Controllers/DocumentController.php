@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
 
+
 class DocumentController extends Controller {
     /**
      * Display a listing of the documents.

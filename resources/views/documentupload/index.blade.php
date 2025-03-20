@@ -166,7 +166,7 @@
                                 </p>
                             </div>
                             <div class="mt-3 flex justify-end">
-                                <form action="{{ route('documents.destroy', $document->id) }}" method="POST"
+                                <form action="{{ route('documents.destroy', $document) }}" method="POST"
                                     onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
@@ -205,12 +205,12 @@
                 addDocument(type) {
                     let label = type.charAt(0).toUpperCase() + type.slice(1) + ' Certificate';
                     this.documents.push({
-                        label,
+                        label: label,
                         category: type,
                         file: null,
                         removable: true,
                         error: '',
-                        certificateType: type === 'academic' ? '' : undefined
+                        certificateType: type === 'academic' ? '' : null // Ensure this is always present
                     });
                 },
                 handleFileUpload(event, index) {

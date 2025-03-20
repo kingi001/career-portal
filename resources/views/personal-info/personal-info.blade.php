@@ -3,16 +3,12 @@
         <div class="p-3 bg-white border-b border-gray-100 rounded-lg">
             <h2 class="text-lg font-medium text-gray-900">
                 {{ __('Section 1 :') }}
-
                 <i class="fas fa-user text-blue-500 text-lg"></i>
-
                 {{ __('Personal Information') }}
             </h2>
-
             <p class="mt-2 text-sm text-gray-600">
                 {{ __('Please provide your personal information with accuracy.') }}
             </p>
-
             <form method="POST" action="{{ route('personal-info.store', $personalInformation->id ?? '') }}"
                 class="rounded-lg">
                 @csrf
@@ -40,7 +36,6 @@
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('salutation')" />
                     </div>
-
                     <!-- Surname -->
                     <div>
                         <x-input-label for="surname" :value="__('Surname')"
@@ -56,7 +51,6 @@
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('surname')" />
                     </div>
-
                     <!-- Other Names -->
                     <div>
                         <x-input-label for="other_names" :value="__('Other Names')"
@@ -72,7 +66,6 @@
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('other_names')" />
                     </div>
-
                     <!-- National ID Number -->
                     <div>
                         <x-input-label for="national_id_number" :value="__('National ID Number')"
@@ -90,14 +83,10 @@
                     </div>
 
                 </div>
-
-
                 <!----------------------------------------------------------Second Row------------------------------------------------------------------------------------>
-
                 <div x-data="locationData()" x-init="fetchCounties()">
                     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 py-4">
-
-                        <!-- Ethnicity -->
+                  <!-- Ethnicity -->
                         <div>
                             <x-input-label for="ethnicity_id" :value="__('Ethnicity')"
                                 class="px-2 text-sm font-medium text-gray-700" />
@@ -118,7 +107,6 @@
                             </div>
                             <x-input-error class="mt-2" :messages="$errors->get('ethnicity_id')" />
                         </div>
-
                         <!-- County -->
                         <div>
                             <x-input-label for="county_id" :value="__('County')"
@@ -141,7 +129,6 @@
                             </div>
                             <x-input-error class="mt-2" :messages="$errors->get('county_id')" />
                         </div>
-
                         <!-- SubCounty -->
                         <div>
                             <x-input-label for="sub_county_id" :value="__('SubCounty')"
@@ -164,7 +151,6 @@
                             </div>
                             <x-input-error class="mt-2" :messages="$errors->get('sub_county_id')" />
                         </div>
-
                         <!-- Ward -->
                         <div>
                             <x-input-label for="ward_id" :value="__('Ward')"
@@ -189,12 +175,7 @@
 
                     </div>
                 </div>
-
-
-
-
-
-                <!---------------------------------------------------------------------third row----------------------------------------------------------------------->
+                <!---------------------------------------------------------------------third row-------------------------------------------------------------------->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-4">
                     <!-- Date of Birth -->
                     <div>
@@ -210,7 +191,6 @@
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('date_of_birth')" />
                     </div>
-
                     <!-- Gender -->
                     <div>
                         <x-input-label for="gender" :value="__('Gender')"
@@ -242,10 +222,7 @@
                         </div>
                         <x-input-error class="mt-2" :messages="$errors->get('gender')" />
                     </div>
-
-
                     <!-- Mobile Number -->
-
                     <div>
                         <x-input-label for="mobile_number" :value="__('Mobile Number')"
                             class="px-2 text-sm font-medium text-gray-700" />
@@ -275,9 +252,7 @@
                         <x-input-error class="mt-2" :messages="$errors->get('postal_code')" />
                     </div>
                 </div>
-
                 <!---------------------------------------------------------------------5th Row----------------------------------------------------------------------->
-
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center pt-4" x-data="{ hasDisability: '{{ old('is_pwd', $personalInformation->is_pwd ?? 0) }}' }"
                     x-init="hasDisability = '{{ old('is_pwd', $personalInformation->is_pwd ?? 0) }}'">
 
@@ -299,7 +274,6 @@
                             <span class="ml-2">No</span>
                         </label>
                     </div>
-
                     <!-- Disability Type Dropdown (Visible if Yes is selected) -->
                     <div x-show="hasDisability == 1" x-transition x-cloak class="w-full">
                         <x-input-label for="pwd_type" :value="__('Disability Type')" />
@@ -324,7 +298,6 @@
                                 Other</option>
                         </select>
                     </div>
-
                     <!-- Registration No (Visible if Yes is selected) -->
                     <div x-show="hasDisability == 1" x-transition x-cloak class="w-full">
                         <x-input-label for="ncpwd_number" :value="__('NCPWD No')"
@@ -347,12 +320,6 @@
                     <x-input-error class="mt-2" :messages="$errors->get('pwd_type')" />
                     <x-input-error class="mt-2" :messages="$errors->get('ncpwd_number')" />
                 </div>
-
-
-
-                {{-- <!-- Alpine.js (Required for toggling visibility) -->
-                <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script> --}}
-
 
                 <!----------------------------------------------------------Section 2----------------------------------------------------------------------->
 

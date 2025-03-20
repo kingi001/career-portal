@@ -42,6 +42,7 @@ Route::resource('referees', RefereeController::class);
 Route::resource('documents', DocumentController::class);
 
 
+
 Route::get('/referee', function () { return view('referee.index');})->name('referee');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
