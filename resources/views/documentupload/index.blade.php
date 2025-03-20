@@ -162,7 +162,7 @@
                                 <p class="text-sm text-gray-700"><strong>Category:</strong> {{ $document->category }}
                                 </p>
                                 <p class="text-sm text-gray-700"><strong>Size:</strong>
-                                    {{-- {{ number_format(Storage::size($document->file_path) / 1024, 2) }} KB --}}
+                                    {{-- {{ number_format(Storage::size($document->file_path) / 1024, 2) }} KB --}} 
                                 </p>
                             </div>
                             <div class="mt-3 flex justify-end">
