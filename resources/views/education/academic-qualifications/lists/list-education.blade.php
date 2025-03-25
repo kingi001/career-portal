@@ -17,11 +17,11 @@
                     <thead class="bg-blue-50 border-b-2 border-gray-200">
                         <tr class="text-gray-700">
                             <th class="p-3 text-sm font-semibold text-left">Institution</th>
-                            <th class="p-3 text-sm font-semibold text-left">Level of Study</th>
-                            <th class="p-3 text-sm font-semibold text-left">Field of Study</th>
+                            <th class="p-3 text-sm font-semibold text-left">Qualification</th>
+                            <th class="p-3 text-sm font-semibold text-left">Course</th>
                             <th class="p-3 text-sm font-semibold text-left">Award</th>
-                            <th class="p-3 text-sm font-semibold text-left">Start Date</th>
-                            <th class="p-3 text-sm font-semibold text-left">End Date</th>
+                            <th class="p-3 text-sm font-semibold text-left">Duration</th>
+                            <th class="p-3 text-sm font-semibold text-left">Certificate</th>
                             <th class="p-3 text-sm font-semibold text-left">Actions</th>
                         </tr>
                     </thead>
@@ -38,8 +38,23 @@
                                     <i class="fas fa-book text-gray-500"></i> {{ $education->field_of_study }}
                                 </td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $education->award }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $education->start_date }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $education->end_date }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    {{ \Carbon\Carbon::parse($education->start_date)->format('m/Y') }} -
+                                    {{ \Carbon\Carbon::parse($education->end_date)->format('m/Y') }}
+                                </td>
+
+                                <!-- New Certificate Column -->
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+                                    @if($education->academic_document)
+                                        <a href="{{ asset('storage/' . $education->academic_document) }}" target="_blank"
+                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
+                                            <i class="fas fa-file-pdf"></i> View
+                                        </a>
+                                    @else
+                                        <span class="text-gray-400">No file</span>
+                                    @endif
+                                </td>
+
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3">
                                     <button @click="$dispatch('open-modal', { modal: 'edit-education', education: {{ json_encode($education) }} })"
                                         class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
@@ -54,8 +69,6 @@
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </form>
-
-
                                 </td>
                             </tr>
                         @empty
@@ -69,26 +82,41 @@
                 </table>
             </div>
 
+
             <!-- Mobile View (Stacked Cards) -->
             <div class="mt-4 space-y-4 md:hidden">
                 @forelse ($educations as $education)
-                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-                        <h3 class="text-md font-semibold text-gray-900 flex items-center gap-2">
-                            <i class="fas fa-school text-blue-500"></i> {{ $education->institution }}
-                        </h3>
-                        <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-graduation-cap text-gray-500"></i> {{ $education->level_of_study }}
-                        </p>
-                        <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-book text-gray-500"></i> {{ $education->field_of_study }}
-                        </p>
-                        <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-award text-gray-500"></i> {{ $education->award }}
-                        </p>
-                        <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-calendar-alt text-gray-500"></i>
-                            {{ $education->start_date }} - {{ $education->end_date }}
-                        </p>
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-md font-semibold text-gray-900 flex items-center gap-2">
+                                <i class="fas fa-school text-blue-500"></i> {{ $education->institution }}
+                            </h3>
+                            @if($education->academic_document)
+                                <a href="{{ asset('storage/' . $education->academic_document) }}" target="_blank"
+                                    class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out text-sm">
+                                    <i class="fas fa-file-pdf"></i> View
+                                </a>
+                            @endif
+                        </div>
+
+                        <div class="mt-2 text-sm text-gray-600 space-y-1">
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-graduation-cap text-gray-500"></i> <span class="font-medium">{{ $education->level_of_study }}</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-book text-gray-500"></i> <span>{{ $education->field_of_study }}</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-award text-gray-500"></i> <span>{{ $education->award }}</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-calendar-alt text-gray-500"></i>
+                                <span>
+                                    {{ \Carbon\Carbon::parse($education->start_date)->format('Y') }} -
+                                    {{ \Carbon\Carbon::parse($education->end_date)->format('Y') }}
+                                </span>
+                            </p>
+                        </div>
 
                         <div class="flex justify-between items-center mt-3 space-x-4">
                             <button @click="$dispatch('open-modal', { modal: 'edit-education', education: {{ json_encode($education) }} })"
@@ -111,6 +139,7 @@
                     </div>
                 @endforelse
             </div>
+
 
             <!-- Add Education Button -->
             @include('education.academic-qualifications.modals.add-education')

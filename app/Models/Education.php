@@ -14,6 +14,7 @@ class Education extends Model
         'level_of_study',
         'field_of_study',
         'award',
+        'academic_document',
         'start_date',
         'end_date',
     ];
