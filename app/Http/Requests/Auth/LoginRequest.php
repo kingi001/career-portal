@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Mail\SendOtpMail;
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -48,6 +51,12 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+        $user = User::where('email', $this->input('email'))->first();
+        $otp = $user->generateCode(); // Now, it returns the OTP
+
+        //sends an email with otp to the user
+        Mail::to($user->email)->send(new SendOtpMail($otp, $user->email)); // Pass the second argument
+
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -80,6 +89,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,37 +10,38 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f4f7fc;
             margin: 0;
             padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .container {
-            max-width: 480px;
-            margin: 30px auto;
+            max-width: 500px;
             background-color: #ffffff;
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #007BFF;
             text-align: center;
-            border-top: 5px solid #007BFF;
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 140px;
+            height: auto;
             display: block;
-            margin: 0 auto 15px;
-            border: 4px solid #007BFF;
+            margin: 0 auto 20px;
         }
 
         h2 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 22px;
+            color: #2c3e50;
+            font-size: 24px;
             font-weight: bold;
+            margin-bottom: 15px;
         }
 
         p {
@@ -50,38 +52,40 @@
         }
 
         .otp {
-            font-size: 30px;
+            font-size: 34px;
             font-weight: bold;
-            color: #2c3e50;
-            background: #ecf0f1;
-            padding: 14px;
+            color: #007BFF;
+            background: #eaf2ff;
+            padding: 16px 28px;
             display: inline-block;
-            border-radius: 6px;
+            border-radius: 8px;
             margin: 20px 0;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         .btn {
-            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            background: #007BFF;
             color: white;
             text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 6px;
+            padding: 16px 36px;
+            border-radius: 8px;
             display: inline-block;
             margin-top: 20px;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: bold;
             transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            background: #0056b3;
         }
 
         .footer {
-            font-size: 13px;
+            font-size: 14px;
             color: #777;
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .footer a {
@@ -97,7 +101,23 @@
         .divider {
             height: 1px;
             background: #ddd;
-            margin: 25px 0;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+
+            .otp {
+                font-size: 28px;
+                padding: 14px 24px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 14px 32px;
+            }
         }
     </style>
 </head>
@@ -106,19 +126,14 @@
     <div class="container">
         <!-- Company Logo -->
         <img src="cid:logo.png" alt="Bandari Maritime Academy" class="logo">
+
         <h2>Your One-Time Password (OTP)</h2>
-
-        @php
-            use Illuminate\Support\Str;
-        @endphp
-
-        <p>Hello <i class="fa-solid fa-user-tag"></i> <strong>{{ Str::before(Auth::user()->name, ' ') }}</strong>,</p>
 
         <p class="otp">{{ $otp }}</p>
 
-        <p>This code is valid for <strong>10 minutes</strong>. Do not share this code with anyone.</p>
+        <p>This code is valid for <strong>10 minutes</strong>. Please do not share this code with anyone.</p>
 
-        <a href="{{ route('otp.verify') }}" class="btn">Verify Now</a>
+        <a href="{{ route('verify.index') }}" class="btn">Verify Now</a>
 
         <p>If you did not request this, please ignore this email or contact support.</p>
 
