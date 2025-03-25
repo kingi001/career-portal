@@ -171,7 +171,7 @@
 
                         <!-- Progress Bar -->
                         <div x-show="fileName && fileSize <= 2097152" class="mt-3">
-                            <p class="text-xs text-gray-500">Uploading...</p>
+                            <p class="text-xs text-gray-500">Uploaded Successfully...</p>
                             <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                                 <div class="bg-blue-500 h-2 transition-all duration-300" :style="'width:' + progress + '%'"></div>
                             </div>
