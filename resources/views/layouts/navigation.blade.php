@@ -1,25 +1,32 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-200 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
+        <div class="flex justify-between h-12 items-center">
             <!-- Left Section: Logo and Navigation Links -->
             <div class="flex items-center">
                 <!-- Logo -->
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center space-x-3 hover:text-blue-600 transition duration-300 ease-in-out">
-                    <x-application-logo class="h-6 w-auto text-gray-900" />
+                    class="flex items-center space-x-4 hover:text-blue-600 transition duration-300 ease-in-out">
+                    <img src="{{ asset('images/logo.png') }}" alt="BMA Logo" class="h-8 w-auto mx-auto">
+
+
 
                     <!-- Show "BMA E-RECRUITMENT" on Mobile -->
-                    <span class="text-base font-bold text-gray-900 tracking-wide sm:hidden">BMA E-RECRUITMENT
-                        PORTAL</span>
+                    <span class="text-lg font-extrabold text-gray-900 tracking-wider sm:hidden uppercase animate-fade-in">
+                        BMA E-RECRUITMENT PORTAL
+                    </span>
+
 
                     <!-- Show "E-RECRUITMENT" on Desktop -->
-                    <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT
+                    {{-- <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT
+                    </span> --}}
+                    <span class="text-base font-semibold text-indigo-600 tracking-wide hidden sm:block">
+                        E-RECRUITMENT
                     </span>
                 </a>
 
 
                 <!-- Navigation Links -->
-                <div class="hidden md:flex space-x-6 ml-10">
+                <div class="hidden md:flex space-x-4 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         <i class="fas fa-home text-blue-600"></i>
                         <span class="ml-1 text-sm font-base text-gray-700">Dashboard</span>
@@ -36,7 +43,8 @@
                                 <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none">
                                     <i class="fas fa-graduation-cap text-blue-600"></i>
                                     <span class="ml-1 text-sm font-base">Education</span>
-                                    <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                                    <i class="fas fa-angle-down ml-1 text-sm"></i>
+
                                 </button>
                             </x-slot>
 
@@ -95,7 +103,7 @@
                         <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none">
                             <i class="fas fa-cog "></i>
                             <span class="ml-2 text-sm font-base">Settings</span>
-                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                            <i class="fas fa-angle-down ml-1 text-sm"></i>
                         </button>
                     </x-slot>
 
@@ -263,26 +271,22 @@
 
                 </div>
 
-
             </div>
-
-
-
-
         </div>
     </div>
 
-    <div class="bg-gray-100 dark:bg-gray-800 py-2 pl-10">
-        <div class="max-w-7xl mx-auto flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <nav class="flex px-12 py-1 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-                aria-label="Breadcrumb">
+    <div class="bg-gray-100 dark:bg-gray-800 py-0.5 pl-10"> <!-- Reduced py-2 to py-1 -->
+        <div class="max-w-7xl mx-auto flex items-center text-xs text-gray-600 dark:text-gray-400"> <!-- Reduced text-sm to text-xs -->
+            <nav class="flex px-6 py-1 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+                aria-label="Breadcrumb"> <!-- Reduced px-12 to px-6 -->
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <!-- Home Link -->
                     <li class="inline-flex items-center">
                         <a href="{{ route('dashboard') }}"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                            <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 20 20">
+                            class="inline-flex items-center text-xs font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                            <!-- Reduced text-sm to text-xs -->
+                            <svg class="w-3 h-3 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20"> <!-- Reduced w-4 h-4 to w-3 h-3 -->
                                 <path
                                     d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                             </svg>
@@ -304,19 +308,20 @@
                         @endphp
                         <li>
                             <div class="flex items-center">
-                                <svg class="rtl:rotate-180 w-3 h-1 mx-1 text-gray-400" aria-hidden="true"
+                                <svg class="rtl:rotate-180 w-2 h-2 mx-1 text-gray-400" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <!-- Reduced w-3 h-1 to w-2 h-2 -->
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
 
                                 @if (!$isLast)
                                     <a href="{{ url($url) }}"
-                                        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+                                        class="ms-1 text-xs font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
                                         {{ $name }}
                                     </a>
                                 @else
-                                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                                    <span class="ms-1 text-xs font-medium text-gray-500 md:ms-2 dark:text-gray-400">
                                         {{ $name }}
                                     </span>
                                 @endif
@@ -325,8 +330,8 @@
                     @endforeach
                 </ol>
             </nav>
-
         </div>
     </div>
+
 
 </nav>

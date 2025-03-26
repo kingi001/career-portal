@@ -40,9 +40,9 @@
             <x-input-error :messages="$errors->get('otp')" class="mt-2" />
         </div>
 
-        <!-- Countdown Timer -->
+        <!-- Static OTP Expiry Message -->
         <div class="mt-3 text-sm text-gray-500 text-center">
-            <span id="countdown">OTP expires in 10:00</span>
+            OTP expires in 10 minutes.
         </div>
 
         <!-- Submit Button -->
@@ -84,52 +84,9 @@
             </button>
         </form>
     </div>
-
 </x-guest-layout>
 
 <script>
-    let countdownEl = document.getElementById("countdown");
-    let resendButton = document.getElementById("resend-otp");
-    const OTP_DURATION = 600; // 10 minutes (in seconds)
-
-    // Unique user identifier (e.g., email or user ID from backend)
-    let userEmail = "{{ Auth::user()->email }}"; // Ensure this is available in your Blade template
-    let otpKey = `otpStartTime_${userEmail}`; // Store unique OTP time per user
-
-    // Get stored OTP start time for this user
-    let otpStartTime = localStorage.getItem(otpKey);
-
-    if (!otpStartTime) {
-        otpStartTime = Date.now(); // Set current timestamp
-        localStorage.setItem(otpKey, otpStartTime);
-    }
-
-    function updateCountdown() {
-        let elapsedTime = Math.floor((Date.now() - otpStartTime) / 1000); // Time passed in seconds
-        let timeLeft = OTP_DURATION - elapsedTime; // Remaining time
-
-        if (timeLeft <= 0) {
-            countdownEl.textContent = "OTP expired. Request a new one.";
-            resendButton.removeAttribute("disabled");
-            localStorage.removeItem(otpKey); // Remove expired OTP timestamp
-            clearInterval(interval);
-        } else {
-            let minutes = Math.floor(timeLeft / 60);
-            let seconds = timeLeft % 60;
-            countdownEl.textContent = `OTP expires in ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-    }
-
-    // Run countdown every second
-    let interval = setInterval(updateCountdown, 1000);
-    updateCountdown(); // Call immediately to avoid 1s delay
-
-    // Reset the OTP timer when a new OTP is requested
-    document.getElementById("resend-otp").addEventListener("click", function () {
-        localStorage.setItem(otpKey, Date.now()); // Reset timestamp for this user
-        location.reload(); // Refresh page to restart timer
-    });
-
     // Show Spinner when Submitting OTP
     document.getElementById("otpForm").addEventListener("submit", function() {
         document.getElementById("verifyingMessage").classList.remove("hidden");
@@ -164,15 +121,7 @@
             }
         });
     });
-
-    // Clear old user's OTP timer when logging out
-    document.querySelector('form[action="{{ route("logout") }}"]').addEventListener("submit", function () {
-        localStorage.removeItem(otpKey); // Remove OTP time when logging out
-    });
-
 </script>
-
-
 
 <style>
     .otp-box {

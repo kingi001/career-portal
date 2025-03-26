@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="text-center">
         <!-- Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-24 h-24 mb-4 animate-fade-in">
+        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-50 h-50 mb-1 animate-fade-in">
 
         <!-- Portal Title -->
         <h2 class="text-2xl font-semibold text-gray-800">Bandari Maritime Academy</h2>
@@ -9,12 +9,12 @@
     </div>
 
     <!-- Processing Notification -->
-    <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-4 shadow-md">
+    <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-2 shadow-md">
         <i class="fas fa-spinner fa-spin"></i> Processing... Creating your account, please wait.
     </div>
 
     <!-- Registration Form -->
-    <form id="registerForm" method="POST" action="{{ route('register') }}" class="mt-5 space-y-4 p-6 bg-white shadow-lg rounded-lg max-w-lg mx-auto">
+    <form id="registerForm" method="POST" action="{{ route('register') }}" class="mt-1 space-y-4 p-6 bg-white shadow-lg rounded-lg max-w-lg mx-auto">
         @csrf
 
         <!-- Full Name -->
@@ -79,18 +79,25 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Register & Login Links -->
-        <div class="mt-5 flex flex-col gap-3 text-center">
+          <!-- Register & Login Links -->
+          <div class="mt-5 flex flex-col gap-3">
             <!-- Register Button -->
             <button type="submit" id="registerButton"
-                class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white py-2 rounded-lg font-semibold hover:from-indigo-700 hover:to-blue-600 flex items-center justify-center gap-2 transition-all duration-300 shadow-md">
+                class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white text-sm py-2 rounded-lg font-semibold
+                hover:from-indigo-700 hover:to-blue-600 flex justify-center items-center gap-2 transition-all duration-300 shadow-md">
                 <i class="fas fa-user-plus"></i> Register
             </button>
 
-            <!-- Already Registered? -->
+            <!-- Already have an account -->
+            <div class="text-center text-sm text-gray-600">
+                Already have an account?
+            </div>
+
+            <!-- Login Link -->
             <a href="{{ route('login') }}"
-                class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-50 flex items-center justify-center gap-2 transition-all duration-300">
-                <i class="fas fa-sign-in-alt"></i> Already registered? Log in
+                class="w-full text-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-lg
+                hover:bg-indigo-50 flex justify-center items-center gap-2 transition-all duration-300">
+                <i class="fas fa-sign-in-alt"></i> Log in
             </a>
         </div>
     </form>

@@ -117,7 +117,6 @@
                                 </span>
                             </p>
                         </div>
-
                         <div class="flex justify-between items-center mt-3 space-x-4">
                             <button @click="$dispatch('open-modal', { modal: 'edit-education', education: {{ json_encode($education) }} })"
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
@@ -139,12 +138,9 @@
                     </div>
                 @endforelse
             </div>
-
-
             <!-- Add Education Button -->
             @include('education.academic-qualifications.modals.add-education')
             @include('education.academic-qualifications.modals.edit-education')
-
         </div>
     </div>
 </x-app-layout>

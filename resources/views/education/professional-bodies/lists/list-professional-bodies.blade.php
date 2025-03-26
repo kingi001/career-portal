@@ -4,7 +4,7 @@
 
             <!-- Section Title -->
             <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                <i class="fas fa-user-tie text-blue-500 text-xl"></i>
+                <i class="fas fa-award text-blue-500 text-xl mr-1"></i>
                 {{ __('Memberships to Professional Bodies') }}
             </h2>
             <p class="mt-1 text-sm text-gray-600">
@@ -14,7 +14,7 @@
             <!-- Desktop Table View -->
             <div class="overflow-auto rounded-lg shadow-md mt-4 hidden md:block">
                 <table class="min-w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-blue-50 border-b-2 border-gray-200">
+                    <thead class="bg-gray-100 border-b-2 border-gray-200">
                         <tr class="text-gray-700">
                             <th class="p-3 text-sm font-semibold text-left">Professional Body</th>
                             <th class="p-3 text-sm font-semibold text-left">Membership No</th>
@@ -56,8 +56,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="p-4 text-center text-gray-500">
-                                    No professional memberships found.
+                                <td colspan="5" class="p-4 text-center">
+                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-1 text-sm">No Membership to Professional Bodies Found.</p>
+                                    </div>
                                 </td>
                             </tr>
                         @endforelse

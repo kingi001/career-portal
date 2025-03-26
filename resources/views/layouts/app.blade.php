@@ -19,11 +19,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val));
-window.addEventListener('beforeunload', () => loading = true);
-document.addEventListener('DOMContentLoaded', () => loading = false);"
+
+<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }"
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val));
+    window.addEventListener('beforeunload', () => loading = true);
+    document.addEventListener('DOMContentLoaded', () => loading = false);"
     :class="{ 'dark bg-gray-900 text-white': darkMode, 'bg-gray-100 text-gray-900': !darkMode }"
-    class="min-h-screen bg-center bg-no-repeat transition-all duration-300">
+    class="min-h-screen bg-center bg-no-repeat transition-all duration-300"
+    style="background-image: url('{{ asset('images/bgpattern.gif') }}');
+       background-repeat: repeat;
+       background-attachment: fixed;">
+
     <!-- Loading Spinner Overlay -->
     <div x-show="loading"
         class="fixed inset-0 flex items-center justify-center bg-white dark:bg-black bg-opacity-75 z-50">

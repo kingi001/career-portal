@@ -28,7 +28,7 @@ class OTPController extends Controller
 
         $user = Auth::user();
         // Check if OTP is expired
-        if (Carbon::now()->greaterThan($user->otp_expires_at)) {
+        if (!$user->otp_expires_at || Carbon::now()->greaterThan($user->otp_expires_at)) {
             return redirect()->back()->withErrors(['otp' => 'OTP has expired. Request a new one.']);
         }
         // Check if the entered OTP matches the stored OTP

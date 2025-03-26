@@ -1,5 +1,5 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<img src="{{ asset('images/logo.png') }}" alt="Logo" width="50" height="50">
+<img src="{{ asset('images/logo.png') }}" alt="Logo" width="100" height="100">
 <style type="text/css">
 	.st0{fill:#000000;}
 </style>
