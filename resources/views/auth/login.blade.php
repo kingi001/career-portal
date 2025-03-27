@@ -7,7 +7,7 @@
 
         <!-- Mobile Logo -->
         <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
-            class="block md:hidden mx-auto w-22 h-22 mb-1 animate-fade-in">
+            class="block md:hidden mx-auto w-16 h-16 mb-1 animate-fade-in">
 
 
         <!-- Portal Title -->
