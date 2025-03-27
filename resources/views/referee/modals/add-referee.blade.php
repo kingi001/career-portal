@@ -27,7 +27,7 @@
                     <i class="fas fa-info-circle text-blue-400"></i> Please provide details of your professional referee.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="full_name" :value="__('Full Name')" />
                         <div class="relative">

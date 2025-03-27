@@ -66,33 +66,13 @@
                         </template>
                     </div>
 
-                    <!---------------------------------------------------Add Buttons---------------------------------------------------------->
 
-                    <div class="mt-6 flex flex-wrap gap-3 sm:gap-6 justify-center text-sm">
-                        <button type="button" @click="addDocument('academic')"
-                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
-                                   bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg">
-                            <i class="fas fa-graduation-cap text-sm"></i> Add Academic Certificate
-                        </button>
 
-                        <button type="button" @click="addDocument('professional')"
-                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
-                                   bg-green-600 hover:bg-green-700 shadow-md hover:shadow-lg">
-                            <i class="fas fa-briefcase text-sm"></i> Add Professional Certificate
-                        </button>
-
-                        <button type="button" @click="addDocument('membership')"
-                            class="flex items-center gap-2 px-5 py-2 rounded-lg text-white text-sm sm:text-sm font-medium transition
-                                   bg-purple-600 hover:bg-purple-700 shadow-md hover:shadow-lg">
-                            <i class="fas fa-id-card text-sm"></i> Add Membership Certificate
-                        </button>
-                    </div>
-
-                    <div class="mt-7 flex justify-center text-sm">
+                    <div class="mt-7 flex justify-end text-sm">
                         <button type="submit"
-                            class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm sm:text-sm font-medium transition
+                            class="flex items-center gap-2 px-5 py-1 rounded-lg text-white text-sm sm:text-sm font-medium transition
                                    bg-blue-600 hover:bg-blue-700 active:bg-blue-800 shadow-md hover:shadow-lg">
-                            <i class="fas fa-save text-lg"></i> Save Documents
+                            <i class="fas fa-save text-sm"></i> Save Documents
                         </button>
                     </div>
                 </form>
@@ -106,7 +86,6 @@
                             <th class="p-3 text-left">Document</th>
                             <th class="p-3 text-left">Category</th>
                             <th class="p-3 text-left">Size</th>
-                            <th class="p-3 text-left">Status</th>
                             <th class="p-3 text-left">Actions</th>
                         </tr>
                     </thead>
@@ -125,16 +104,13 @@
                                 <td class="p-3 text-gray-700">
                                     100 KB
                                 </td>
-                                <td class="p-3 text-gray-700 font-semibold text-yellow-600"><span
-                                        class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
-                                </td>
                                 <td class="p-3">
                                     <form action="{{ route('documents.destroy', $document->id) }}" method="POST"
                                         onsubmit="return confirmDelete()">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200 px-2 py-1 rounded-md transition">
+                                            class="text-red-600 hover:text-red-800 bg-red-100 text-sm hover:bg-red-200 px-2 py-1 rounded-md transition">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </form>
@@ -147,31 +123,40 @@
                 <!-- Mobile Card View -->
                 <div class="md:hidden">
                     @foreach ($documents as $index => $document)
-                        <div class="bg-white rounded-lg shadow-md p-4 mb-4 border border-gray-200">
+                        <div class="bg-white rounded-lg shadow-lg p-4 mb-4 border border-gray-200">
+                            <!-- Header Section -->
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-700 font-semibold">#{{ $index + 1 }}</span>
-                                <span class="text-sm text-yellow-600 font-semibold">Pending</span>
+                                <span class="text-gray-800 font-semibold text-sm">#{{ $index + 1 }}</span>
                             </div>
-                            <div class="mt-2">
-                                <p class="text-sm text-gray-700"><strong>Document:</strong>
+
+                            <!-- Document Info -->
+                            <div class="mt-3 space-y-2">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Document:</strong>
                                     <a href="{{ asset('storage/' . $document->file_path) }}" target="_blank"
-                                        class="text-blue-600 hover:underline">
+                                        class="text-blue-600 font-medium hover:underline">
                                         {{ $document->label }}
                                     </a>
                                 </p>
-                                <p class="text-sm text-gray-700"><strong>Category:</strong> {{ $document->category }}
+                                <p class="text-sm text-gray-700">
+                                    <strong>Category:</strong>
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-xs">
+                                        {{ $document->category }}
+                                    </span>
                                 </p>
-                                <p class="text-sm text-gray-700"><strong>Size:</strong>
-                                    {{-- {{ number_format(Storage::size($document->file_path) / 1024, 2) }} KB --}} 
+                                <p class="text-sm text-gray-700">
+                                    <strong>Size:</strong>
+                                    {{-- {{ number_format(Storage::size($document->file_path) / 1024, 2) }} KB --}}
                                 </p>
                             </div>
-                            <div class="mt-3 flex justify-end">
-                                <form action="{{ route('documents.destroy', $document) }}" method="POST"
-                                    onsubmit="return confirmDelete()">
+
+                            <!-- Action Button -->
+                            <div class="mt-4 flex justify-end">
+                                <form action="{{ route('documents.destroy', $document) }}" method="POST" onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200 px-3 py-1 rounded-md transition">
+                                        class="flex items-center gap-2 text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200 px-3 py-1.5 rounded-md transition duration-200 ease-in-out text-xs font-medium">
                                         <i class="fas fa-trash-alt"></i> Delete
                                     </button>
                                 </form>
@@ -179,6 +164,7 @@
                         </div>
                     @endforeach
                 </div>
+
             </div>
         </div>
 
@@ -197,6 +183,13 @@
                     {
                         label: 'ID / Passport',
                         category: 'Identification',
+                        file: null,
+                        removable: false,
+                        error: ''
+                    },
+                    {
+                        label: 'Others(i.e Testimonials)',
+                        category: 'Others',
                         file: null,
                         removable: false,
                         error: ''

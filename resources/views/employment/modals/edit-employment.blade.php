@@ -21,7 +21,7 @@
                     Update your employment details below.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="company" :value="__('Company')" />
                         <x-text-input id="company" name="company" type="text"

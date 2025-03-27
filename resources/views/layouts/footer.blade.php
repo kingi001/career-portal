@@ -1,42 +1,23 @@
-{{-- <footer class="fixed bottom-0 left-0 z-20 w-full p-1 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
-    </span>
-    {{-- <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline">Contact</a>
-        </li>
-    </ul>
-</footer> --}}
+<footer class="fixed bottom-0 left-0 z-20 w-full bg-white shadow-md dark:bg-blue-800 border-t border-gray-300">
+    <div class="w-full mx-auto max-w-screen-xl px-3 py-2 text-xs flex flex-col md:flex-row md:items-center md:justify-between">
 
-
-
-<footer class="fixed bottom-0 left-0 z-20 w-full bg-white rounded-lg shadow  dark:bg-blue-800 ">
-    <div class="w-full mx-auto max-w-screen-xl p-2 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-blue-500 sm:text-center dark:text-blue-400 ml-7">© 2025 <a href="https://flowbite.com/"
-                class="hover:underline ml-2">Bandari Maritime Academy E-recruitment Portal </a>
+        <!-- Copyright Section (Always Visible) -->
+        <span class="text-center text-blue-600 dark:text-blue-300 flex items-center justify-center md:justify-start">
+            © 2025 COPYRIGHT : E-RECRUITMENT SYSTEM
         </span>
-        {{-- <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-blue-500 dark:text-blue-400 sm:mt-0">
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">About</a>
+
+        <!-- Footer Items (Hidden on Mobile, Shown on Medium Screens and Above) -->
+        <ul class="hidden md:flex flex-wrap justify-center md:justify-end items-center mt-1 md:mt-0 text-blue-600 dark:text-blue-300 space-x-4 md:space-x-6">
+            <li class="flex items-center">
+                <i class="fa fa-leaf mr-1"></i> V1.0
             </li>
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <li class="flex items-center">
+                <i class="fa fa-briefcase mr-1"></i> LICENSED TO BANDARI MARITIME ACADEMY
             </li>
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            <li class="flex items-center uppercase">
+                <i class="fa fa-user mr-1"></i> {{ Auth::user()->name }}
             </li>
-            <li>
-                <a href="#" class="hover:underline mr-5">Contact</a>
-            </li>
-        </ul> --}}
+        </ul>
     </div>
 </footer>
+

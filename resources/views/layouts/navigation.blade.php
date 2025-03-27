@@ -58,13 +58,16 @@
 
                                     <x-dropdown-link :href="route('qualifications.index')" :active="request()->routeIs('qualifications.index')"
                                         class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                                        <i class="fas fa-award text-gray-700 dark:text-gray-300 mr-3"></i>
+                                        <i class="fas fa-certificate text-gray-700 dark:text-gray-300 mr-3 "></i>
+
                                         <span class="flex-1">Professional Qualifications</span>
                                     </x-dropdown-link>
 
                                     <x-dropdown-link :href="route('memberships.index')" :active="request()->routeIs('memberships.index')"
                                         class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                                        <i class="fas fa-users-cog text-gray-700 dark:text-gray-300 mr-3"></i>
+                                        <i class="fas fa-award text-gray-700 dark:text-gray-300 mr-3"></i>
+
+                                        {{-- <i class="fas fa-users-cog text-gray-700 dark:text-gray-300 mr-3">users</i> --}}
                                         <span class="flex-1">Membership to Professional Bodies</span>
                                     </x-dropdown-link>
                                 </div>

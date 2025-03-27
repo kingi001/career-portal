@@ -7,9 +7,9 @@
         <div class="bg-white rounded-lg shadow-xl w-full max-w-lg transform transition-all duration-300" x-show="open" x-transition.scale>
 
             <!-- Modal Header -->
-            <div class="flex justify-between items-center px-6 py-4 bg-blue-500 text-white rounded-t-lg">
+            <div class="flex justify-between items-center px-6 py-2 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-2">
-                    <i class="fas fa-edit"></i> Edit Professional Qualification
+                    <i class="fas fa-certificate text-xl mr-1"></i> Edit Professional Qualification
                 </h2>
                 <button @click="open = false" class="text-white hover:text-gray-300">
                     <i class="fas fa-times text-xl"></i>
@@ -20,8 +20,11 @@
             <form method="POST" :action="'/qualifications/' + qualification.id" class="p-6 space-y-4">
                 @csrf
                 @method('PUT')
+                <p class="text-sm text-gray-700">
+                    Update the details of your professional qualifications.
+                </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="certifying_body" :value="__('Certifying Body')" />
                         <x-text-input id="institution" name="institution" type="text" x-model="qualification.institution"

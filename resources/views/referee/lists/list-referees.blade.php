@@ -12,12 +12,6 @@
                         {{ __('Add referees who can vouch for your professional experience.') }}
                     </p>
                 </div>
-
-                <!-- Add Referee Button -->
-                <button @click="$dispatch('open-modal', { modal: 'add-referee' })"
-                    class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 text-sm font-semibold rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out transform hover:scale-105">
-                    <i class="fas fa-plus-circle text-sm"></i> {{ __('Add Referee') }}
-                </button>
             </div>
 
             <!-- Referee Table for Desktop -->
@@ -59,14 +53,17 @@
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->phone }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->email }}</td>
                                 <td class="p-3 text-sm text-center flex justify-center space-x-3">
-                                    <button @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
+                                    <button
+                                        @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
                                         class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <form id="delete-form-{{ $referee->id }}" action="{{ route('referees.destroy', $referee->id) }}" method="POST">
+                                    <form id="delete-form-{{ $referee->id }}"
+                                        action="{{ route('referees.destroy', $referee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                        <button type="button"
+                                            class="text-red-500 hover:text-red-700 flex items-center gap-1"
                                             onclick="confirmDelete({{ $referee->id }})">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
@@ -108,11 +105,13 @@
 
                         <!-- Buttons Section -->
                         <div class="mt-3 flex justify-end space-x-3">
-                            <button @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
+                            <button
+                                @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <form id="delete-form-{{ $referee->id }}" action="{{ route('referees.destroy', $referee->id) }}" method="POST">
+                            <form id="delete-form-{{ $referee->id }}"
+                                action="{{ route('referees.destroy', $referee->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
@@ -127,6 +126,12 @@
                         <i class="fas fa-exclamation-circle"></i> No referees added yet.
                     </p>
                 @endforelse
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button @click="$dispatch('open-modal', { modal: 'add-referee' })"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                    <i class="fas fa-plus-circle text-xs"></i> {{ __('Add Referee') }}
+                </button>
             </div>
 
         </div>

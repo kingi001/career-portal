@@ -6,7 +6,7 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center px-6 py-2 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-2">
-                    <i class="fas fa-user-tie"></i> Edit Professional Membership
+                    <i class="fas fa-award text-xl mr-1"></i> Edit Professional Membership
                 </h2>
                 <button @click="open = false" class="text-white hover:text-gray-300 transition-colors duration-200">
                     <i class="fas fa-times text-xl"></i>
@@ -19,10 +19,10 @@
                 @method('PUT')
 
                 <p class="text-sm text-gray-700">
-                    Update the details of your professional membership.
+                    Update the details of your membership body.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="professional_body" :value="__('Professional Body')" />
                         <x-text-input id="professional_body" name="professional_body" type="text"

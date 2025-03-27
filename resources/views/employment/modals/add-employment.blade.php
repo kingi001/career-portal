@@ -1,7 +1,7 @@
 <!-- ADD Employment Modal -->
 <div x-data="{ open: false }" @open-modal.window="if ($event.detail.modal === 'add-employment') open = true" x-cloak>
 
-    <!-- Modal Overlay -->
+   <!-- Modal Overlay -->
     <div x-show="open" class="fixed inset-0 mt-4 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
         x-transition.opacity>
 
@@ -27,12 +27,12 @@
                     Please provide details of your past or current employment history.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="company" :value="__('Company / Employer')" />
                         <x-text-input id="company" name="company" type="text"
                             class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                            :value="old('company')" required placeholder="e.g. XYZ Ltd" />
+                            :value="old('company')" required placeholder="e.g. KPA,KRA,PSC" />
                         <x-input-error class="mt-2" :messages="$errors->get('company')" />
                     </div>
 
@@ -40,7 +40,7 @@
                         <x-input-label for="designation" :value="__('Designation')" />
                         <x-text-input id="designation" name="designation" type="text"
                             class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                            :value="old('designation')" required placeholder="e.g. Software Developer" />
+                            :value="old('designation')" required placeholder="e.g. ICT Officer, HR Assistant" />
                         <x-input-error class="mt-2" :messages="$errors->get('designation')" />
                     </div>
 

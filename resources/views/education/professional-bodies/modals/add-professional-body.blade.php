@@ -18,7 +18,9 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center px-6 py-2 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-2">
-                    <i class="fas fa-user-tie"></i> Add Professional Membership
+                    <i class="fas fa-award text-xl mr-1"></i>
+
+                     Add Membership to Professional Body
                 </h2>
                 <button @click="open = false" class="text-white hover:text-gray-300 transition-colors duration-200">
                     <i class="fas fa-times text-xl"></i>
@@ -33,7 +35,7 @@
                     Please provide details of your professional memberships, starting with the most recent.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="professional_body" :value="__('Professional Body')" />
                         <x-text-input id="professional_body" name="professional_body" type="text"

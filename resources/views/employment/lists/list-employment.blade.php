@@ -6,12 +6,6 @@
                 <h2 class="text-xl font-semibold text-gray-900 flex items-center gap-2">
                     <i class="fas fa-briefcase text-blue-600"></i> {{ __('Employment History') }}
                 </h2>
-
-                <!-- Add Employment Button (Aligned to Right) -->
-                <button @click="$dispatch('open-modal', { modal: 'add-employment' })"
-                    class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                    <i class="fas fa-plus-circle text-sm"></i> {{ __('Add Employment') }}
-                </button>
             </div>
 
             <p class="mt-2 text-sm text-gray-600">
@@ -27,7 +21,7 @@
                                 <th class="p-3 text-sm font-semibold">#</th>
                                 <th class="p-3 text-sm font-semibold">Company</th>
                                 <th class="p-3 text-sm font-semibold">Designation</th>
-                                <th class="p-3 text-sm font-semibold">Monthly Salary/Gross Pay</th>
+                                <th class="p-3 text-sm font-semibold">Salary (KSh)</th>
                                 <th class="p-3 text-sm font-semibold">Start Date</th>
                                 <th class="p-3 text-sm font-semibold">End Date</th>
                                 <th class="p-3 text-sm font-semibold">Responsibilities</th>
@@ -39,11 +33,11 @@
                                 <tr class="hover:bg-gray-50 transition">
                                     <td class="p-3 text-sm">{{ $loop->iteration }}</td>
                                     <td class="p-3 text-sm font-medium text-gray-800">{{ $employment->company }}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{ $employment->designation }}</td>
+                                    <td class="p-3 text-sm text-gray-700 ">{{ $employment->designation }}</td>
                                     <td class="p-3 text-sm text-gray-700">KSh {{ number_format($employment->salary) }}</td>
                                     <td class="p-3 text-sm text-gray-600">{{ \Carbon\Carbon::parse($employment->start_date)->format('M Y') }}</td>
                                     <td class="p-3 text-sm text-gray-600">{{ $employment->end_date ? \Carbon\Carbon::parse($employment->end_date)->format('M Y') : 'Present' }}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{ Str::limit($employment->responsibilities, 50) }}</td>
+                                    <td class="p-3 text-sm text-gray-700">{{ Str::limit($employment->responsibilities, 5) }}</td>
                                     <td class="p-3 text-sm flex justify-center space-x-3">
                                         <button @click="$dispatch('open-modal', { modal: 'edit-employment', employment: {{ json_encode($employment) }} })"
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
@@ -68,6 +62,8 @@
                             @endforelse
                         </tbody>
                     </table>
+
+
                 </div>
 
                 <!-- Mobile View -->
@@ -110,6 +106,13 @@
                     @empty
                         <p class="text-center text-gray-500">{{ __('No employment history found.') }}</p>
                     @endforelse
+                </div>
+
+                <div class="mt-6 flex justify-end">
+                    <button @click="$dispatch('open-modal', { modal: 'add-employment' })"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                        <i class="fas fa-plus-circle text-xs"></i> {{ __('Add Employment') }}
+                    </button>
                 </div>
             </div>
         </div>

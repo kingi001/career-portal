@@ -19,7 +19,7 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center px-6 py-2 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-2">
-                    <i class="fas fa-graduation-cap"></i> Add Academic Qualifications
+                    <i class="fas fa-graduation-cap mr-1"></i> Add Academic Qualifications
                 </h2>
                 <button @click="open = false" class="text-white hover:text-gray-300 transition-colors duration-200">
                     <i class="fas fa-times text-xl"></i>
@@ -35,7 +35,7 @@
                     Please provide your educational information, starting with the most recent.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <x-input-label for="institution" :value="__('Institution')" />
                         <x-text-input id="institution" name="institution" type="text"
