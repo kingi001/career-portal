@@ -3,14 +3,13 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <!-- Main Content -->
             <main class="col-span-4 bg-white p-4 rounded-lg shadow-md">
-                <h2 class="text-sm md:text-base font-bold mb-4 uppercase flex items-center gap-3 text-gray-900 dark:text-gray-100 tracking-wide">
+                <h2
+                    class="text-sm md:text-base font-bold mb-4 uppercase flex items-center gap-3 text-gray-900 dark:text-gray-100 tracking-wide">
                     <i class="fas fa-tachometer-alt text-blue-600 text-2xl"></i>
                     <span class="bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text">
                         Welcome to your Dashboard!
                     </span>
                 </h2>
-
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <!-- Active Applications -->
                     <div
@@ -22,7 +21,6 @@
                                 applications.</p>
                         </div>
                     </div>
-
                     <!-- Jobs Applied -->
                     <div
                         class="p-5 bg-green-100 rounded-lg shadow-md flex items-center gap-3 transition-transform transform hover:scale-105 hover:shadow-lg">
@@ -55,11 +53,10 @@
                     <i class="fas fa-briefcase text-blue-500 mr-2"></i>
                     {{ __('Job Listings') }}
                 </div>
-
                 <!-- Desktop View -->
                 <div class="overflow-auto rounded-lg shadow hidden md:block">
-                    <table class="w-full">
-                        <thead class="bg-gray-50 border-b-2 border-gray-100">
+                    <table class="w-full border-collapse">
+                        <thead class="bg-gray-50 border-b-2 border-gray-200">
                             <tr>
                                 <th class="w-32 p-4 text-sm font-semibold text-gray-700 text-left">Reference No</th>
                                 <th class="w-48 p-4 text-sm font-semibold text-gray-700 text-left">Position</th>
@@ -105,7 +102,7 @@
                                         class="font-bold text-blue-500 hover:underline">BMA/SNCLOUD_ENG</a></td>
                                 <td class="p-4 text-sm text-gray-700">Senior Cloud Engineer</td>
                                 <td class="p-4 text-sm text-gray-700">MSc in IT, Computer Science & 5 years in Cloud
-                                    Infra.</td>
+                                    Infrastructure.</td>
                                 <td class="p-4 text-sm text-gray-700">16/01/2025</td>
                                 <td class="p-4 text-sm text-gray-700">16/02/2025</td>
                                 <td class="p-4 text-sm">
@@ -135,7 +132,8 @@
                         <p class="text-sm text-gray-700 mt-2">BSc in IT, Computer Science & 2 years experience.</p>
                         <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 15/05/2025</p>
                         <div class="text-sm font-medium text-gray-800 flex items-center space-x-2 mt-3">
-                            <span class="px-4 py-2 text-blue-600 bg-gray-100 rounded-lg shadow-sm cursor-pointer hover:bg-blue-200 transition">
+                            <span
+                                class="px-4 py-2 text-blue-600 bg-gray-100 rounded-lg shadow-sm cursor-pointer hover:bg-blue-200 transition">
                                 <i class="fas fa-paper-plane text-blue-600"></i> Apply Now
                             </span>
                         </div>
@@ -152,7 +150,8 @@
                         <p class="text-sm text-gray-700 mt-2">MSc in IT, Computer Science & 5 years in Cloud Infra.</p>
                         <p class="text-xs font-medium text-gray-600 mt-2">Deadline: 15/02/2025</p>
                         <div class="text-sm font-medium text-gray-800 flex items-center space-x-2 mt-3">
-                           <span class="px-4 py-2 text-red-600 bg-gray-100 rounded-lg shadow-sm"><i class="fas fa-ban text-red-600"></i>Application
+                            <span class="px-4 py-2 text-red-600 bg-gray-100 rounded-lg shadow-sm"><i
+                                    class="fas fa-ban text-red-600"></i>Application
                                 Closed</span>
                         </div>
                     </div>
@@ -346,8 +345,4 @@
             <div class="text-xs text-gray-500">25%</div>
         </div>
     </div>
-
-
-
-
 </x-app-layout>

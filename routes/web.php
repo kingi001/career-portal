@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DocumentUploadController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmploymentHistoryController;
 use App\Http\Controllers\MembershipController;
@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
+
 
 //Guest User Routes
 require __DIR__.'/auth.php';
@@ -32,13 +33,16 @@ Route::resource('/qualifications', ProfessionalQualificationController::class);
 Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
 Route::resource('referees', RefereeController::class);
-Route::resource('documents', DocumentController::class);
+Route::resource('documents', DocumentUploadController::class);
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
 Route::get('/referee', function () { return view('referee.index');})->name('referee');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
 
 
 

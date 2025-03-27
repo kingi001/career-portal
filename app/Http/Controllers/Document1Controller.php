@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
 
 
-class DocumentController extends Controller {
+class Document1Controller extends Controller {
     /**
      * Display a listing of the documents.
      */
     public function index() {
         $documents = Document::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        
         return view('documentupload.index', compact('documents'));
     }
 
