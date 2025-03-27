@@ -1,7 +1,14 @@
 <x-guest-layout>
     <div class="text-center mt-1 animate-fade-in">
         <!-- Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-50 h-50 mb-1 animate-fade-in">
+        <!-- Desktop Logo -->
+        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
+            class="hidden md:block mx-auto w-50 h-50 mb-1 animate-fade-in">
+
+        <!-- Mobile Logo -->
+        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
+            class="block md:hidden mx-auto w-16 h-16 mb-1 animate-fade-in">
+
 
         <!-- Portal Title -->
         <h2 class="text-2xl font-semibold text-gray-800">Bandari Maritime Academy</h2>
@@ -9,7 +16,8 @@
     </div>
 
     <!-- Processing Notification Bar -->
-    <div id="processingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-3 mx-auto max-w-md shadow-md">
+    <div id="processingMessage"
+        class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-3 mx-auto max-w-md shadow-md">
         <i class="fas fa-spinner fa-spin"></i> Processing... Logging in, please wait.
     </div>
 
@@ -17,7 +25,8 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <!-- Login Form -->
-    <form method="POST" action="{{ route('login') }}" class="mt-1 mx-auto max-w-md bg-white p-6 rounded-lg shadow-lg animate-fade-in" id="loginForm">
+    <form method="POST" action="{{ route('login') }}"
+        class="mt-1 mx-auto max-w-md bg-white p-6 rounded-lg shadow-lg animate-fade-in" id="loginForm">
         @csrf
 
         <!-- Email Address -->
@@ -27,8 +36,10 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-envelope"></i>
                 </span>
-                <x-text-input id="email" class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                    type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Enter your email address" />
+                <x-text-input id="email"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    type="email" name="email" :value="old('email')" required autofocus autocomplete="username"
+                    placeholder="Enter your email address" />
             </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -40,9 +51,12 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-lock"></i>
                 </span>
-                <x-text-input id="password" class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                    type="password" name="password" required autocomplete="current-password" placeholder="Enter your password" />
-                <button type="button" id="togglePassword" class="absolute inset-y-0 right-3 flex items-center text-gray-500 focus:outline-none">
+                <x-text-input id="password"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    type="password" name="password" required autocomplete="current-password"
+                    placeholder="Enter your password" />
+                <button type="button" id="togglePassword"
+                    class="absolute inset-y-0 right-3 flex items-center text-gray-500 focus:outline-none">
                     <i class="fas fa-eye"></i>
                 </button>
             </div>
@@ -52,7 +66,8 @@
         <!-- Remember Me & Forgot Password -->
         <div class="flex items-center justify-between mt-4">
             <label for="remember_me" class="flex items-center text-sm text-gray-600">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input id="remember_me" type="checkbox"
+                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2"><i class="fas fa-check-circle text-indigo-600"></i> Remember me</span>
             </label>
 
@@ -89,7 +104,7 @@
 
     <!-- JavaScript for Interactivity -->
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
             // Show processing message
             document.getElementById("processingMessage").classList.remove("hidden");
 
@@ -100,7 +115,7 @@
         });
 
         // Toggle Password Visibility
-        document.getElementById("togglePassword").addEventListener("click", function () {
+        document.getElementById("togglePassword").addEventListener("click", function() {
             let passwordField = document.getElementById("password");
             if (passwordField.type === "password") {
                 passwordField.type = "text";
