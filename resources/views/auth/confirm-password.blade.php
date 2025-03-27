@@ -1,7 +1,14 @@
 <x-guest-layout>
     <div class="text-center">
         <!-- Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo" class="mx-auto w-24 h-24 mb-4">
+         <!-- Desktop Logo -->
+         <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
+         class="hidden md:block mx-auto w-50 h-50 mb-1 animate-fade-in">
+
+     <!-- Mobile Logo -->
+     <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
+         class="block md:hidden mx-auto w-24 h-24 mb-1 animate-fade-in">
+
 
         <!-- Portal Title -->
         <h2 class="text-xl font-semibold text-gray-700">Bandari Maritime Academy</h2>
