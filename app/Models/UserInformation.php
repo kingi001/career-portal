@@ -22,6 +22,7 @@ class UserInformation extends Model
         'ward_id',
         'date_of_birth',
         'gender',
+        'religion',
         'mobile_number',
         'postal_code',
         'is_pwd',

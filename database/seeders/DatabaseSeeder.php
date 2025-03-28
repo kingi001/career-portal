@@ -122,20 +122,6 @@ class DatabaseSeeder extends Seeder
         ];
         DB::table('wards')->insert($wards);
 
-         // Seed User Khamis
-         User::create([
-            'name' => 'Khamis Kingi Bahati',
-            'email' => 'kingikhamis518@gmail.com',
-            'password' => Hash::make('set2pass'),
-        ]);
-
         $this->command->info('Database seeded successfully!');
-
-
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

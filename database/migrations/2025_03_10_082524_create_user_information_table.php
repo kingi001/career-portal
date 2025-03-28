@@ -26,6 +26,8 @@ return new class extends Migration
             $table->foreignId('ward_id')->constrained()->onDelete('cascade');
             $table->date('date_of_birth');
             $table->enum('gender', ['Male', 'Female', 'Other']);
+            $table->enum('religion', ['Christianity', 'Islam', 'Hinduism','Budhism','other']);
+
             $table->string('mobile_number', 12)->unique()->index();
             $table->string('postal_code', 10)->index();
             $table->boolean('is_pwd')->nullable();

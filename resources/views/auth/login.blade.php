@@ -26,7 +26,7 @@
 
     <!-- Login Form -->
     <form method="POST" action="{{ route('login') }}"
-        class="mt-1 mx-auto max-w-md bg-white p-6 rounded-lg shadow-lg animate-fade-in" id="loginForm">
+        class="mt-1 mx-auto max-w-md bg-white p-6 rounded-lg animate-fade-in" id="loginForm">
         @csrf
 
         <!-- Email Address -->

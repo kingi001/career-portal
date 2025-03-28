@@ -24,10 +24,11 @@ class UserInformationController extends Controller
         $wards = Ward::all();
         $ethnicities = Ethnicity::all();
         $salutations = ['Mr.', 'Mrs.', 'Miss', 'Dr.', 'Prof.', 'Eng.', 'Hon.', 'Rev.'];
+        $religions = ['Christianity', 'Islam', 'Hinduism','Budhism','other'];
 
 
         return view('personal-info.personal-info', compact(
-            'user', 'personalInformation', 'counties', 'subcounties', 'wards', 'ethnicities','salutations'
+            'user', 'personalInformation', 'counties', 'subcounties', 'wards', 'ethnicities','salutations','religions'
         ));
     }
 
@@ -49,6 +50,7 @@ class UserInformationController extends Controller
             'ward_id'           => 'required|exists:wards,id',
             'date_of_birth'     => 'required|date|before:today',
             'gender'            => 'required|in:Male,Female,Other',
+            'religion'          => 'required|string|max:20',
             'mobile_number'     => "required|string|max:12|unique:user_information,mobile_number,{$userId},user_id",
             'postal_code'       => 'nullable|string|max:10',
             'is_pwd'            => 'nullable|boolean',

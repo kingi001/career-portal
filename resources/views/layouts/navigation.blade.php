@@ -112,17 +112,27 @@
 
                     <x-slot name="content">
                         <!-- User Info -->
-                        <div class="px-4 py-3 text-gray-700 text-sm border-b bg-gray-100">
+                        <div class="px-4 py-2 text-gray-700 text-sm border-b bg-gray-100">
                             <div class="font-semibold"><i class="fas fa-user-circle mr-1"></i> {{ Auth::user()->name }}
                             </div>
-                            <div class="text-sm text-gray-500"><i class="fas fa-envelope mr-1"></i>
-                                {{ Auth::user()->email }}</div>
+                            <div class="text-xs text-gray-500 flex items-center gap-1">
+                                <i class="fas fa-envelope text-gray-400 text-[10px]"></i>
+                                <span class="truncate">{{ Auth::user()->email }}</span>
+                            </div>
+
                         </div>
 
 
                         <!-- Profile -->
                         <x-dropdown-link :href="route('profile.edit')">
                             <i class="fas fa-user-edit mr-2 text-gray-700"></i> Profile
+                        </x-dropdown-link>
+
+                         <!-- Permissions -->
+                         <x-dropdown-link :href="route('permissions.index')">
+                            <i class="fas fa-shield-alt text-gray-700 mr-2"></i>
+
+                          Permissions
                         </x-dropdown-link>
 
                         <!-- Logout -->

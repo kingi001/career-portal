@@ -54,11 +54,17 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>
-                                    <td colspan="8" class="p-4 text-center text-gray-500">
-                                        {{ __('No employment history found. Click Add Employment') }}
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="p-4 text-center">
+                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-1 text-sm">{{ __('No employment history added yet.Click Add') }} </p>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -104,7 +110,13 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-center text-gray-500">{{ __('No employment history found.') }}</p>
+                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Information</span>
+                        </h4>
+                        <p class="mt-5 text-sm items-center text-center">{{ __('No employment history added yet.Click Add') }} </p>
+                    </div>
                     @endforelse
                 </div>
 

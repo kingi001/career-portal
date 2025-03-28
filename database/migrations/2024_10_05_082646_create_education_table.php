@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('level_of_study');
             $table->string('field_of_study');
             $table->string('award');
+            $table->string('academic_document')->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

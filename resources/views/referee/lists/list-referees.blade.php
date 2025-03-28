@@ -72,8 +72,15 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="p-4 text-center text-gray-500">
-                                    <i class="fas fa-exclamation-circle"></i> No referees added yet.
+                                <td colspan="7" class="p-4 text-center">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-1 text-sm">No Referees Added Yet.Click Add Refree</p>
+                                    </div>
                                 </td>
                             </tr>
                         @endforelse
@@ -122,9 +129,13 @@
                         </div>
                     </div>
                 @empty
-                    <p class="text-gray-500 text-sm text-center">
-                        <i class="fas fa-exclamation-circle"></i> No referees added yet.
-                    </p>
+                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Information</span>
+                        </h4>
+                        <p class="mt-5 text-sm items-center text-center">{{ __('No Referees Added Yet. Click Add Referee') }} </p>
+                    </div>
                 @endforelse
             </div>
             <div class="mt-6 flex justify-end">

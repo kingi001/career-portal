@@ -16,12 +16,12 @@
     </div>
 
     <!-- Processing Notification -->
-    <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-2 shadow-md">
+    <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-3 shadow-md">
         <i class="fas fa-spinner fa-spin"></i> Processing... Creating your account, please wait.
     </div>
 
     <!-- Registration Form -->
-    <form id="registerForm" method="POST" action="{{ route('register') }}" class="mt-1 space-y-4 p-6 bg-white shadow-lg rounded-lg max-w-lg mx-auto">
+    <form id="registerForm" method="POST" action="{{ route('register') }}" class="mt-1 space-y-4 p-6 bg-white rounded-lg max-w-lg mx-auto">
         @csrf
 
         <!-- Full Name -->

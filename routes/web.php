@@ -1,10 +1,10 @@
 <?php
-
 use App\Http\Controllers\DocumentUploadController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmploymentHistoryController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\OTPController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 //Guest User Routes
 require __DIR__.'/auth.php';
-
+Route::resource('permissions', PermissionController::class);
 Route::get('/get-counties', [UserInformationController::class, 'getCounties']);
 Route::get('/get-subcounties/{countyId}', [UserInformationController::class, 'getSubCounties']);
 Route::get('/get-wards/{subcountyId}', [UserInformationController::class, 'getWards']);
@@ -28,8 +28,8 @@ Route::get('/', function () { return view('dashboard');})->name('dashboard');
 Route::get('/personal-information', [UserInformationController::class, 'create'])->name('personal-info.show');
 Route::post('/personal-information', [UserInformationController::class, 'store'])->name('personal-info.store');
 //Resource Routes
-Route::resource('/education',EducationController::class);
-Route::resource('/qualifications', ProfessionalQualificationController::class);
+Route::resource('education',EducationController::class);
+Route::resource('qualifications', ProfessionalQualificationController::class);
 Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
 Route::resource('referees', RefereeController::class);
