@@ -122,7 +122,6 @@
 
                         </div>
 
-
                         <!-- Profile -->
                         <x-dropdown-link :href="route('profile.edit')" class="border-b">
                             <i class="fas fa-user-edit mr-2 text-gray-700"></i> Profile
