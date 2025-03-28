@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal Form -->
-            <form method="POST" action="#" class="p-5 space-y-4">
+            <form method="POST" action="{{ route('permissions.store') }}" class="p-5 space-y-4">
                 @csrf
 
                 <p class="text-sm text-gray-700">
@@ -36,11 +36,11 @@
 
                 <!-- Permission Name -->
                 <div>
-                    <x-input-label for="permission_name" :value="__('Permission Name')" />
-                    <x-text-input id="permission_name" name="permission_name" type="text"
+                    <x-input-label for="name" :value="__('Permission Name')" />
+                    <x-text-input id="name" name="name" type="text"
                         class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         required autofocus placeholder="e.g. manage-users" />
-                    <x-input-error class="mt-2" :messages="$errors->get('permission_name')" />
+                    <x-input-error class="mt-2" :messages="$errors->get('name')" />
                 </div>
 
                 <!-- Modal Footer (Buttons) -->

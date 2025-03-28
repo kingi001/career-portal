@@ -33,17 +33,12 @@ class PermissionController extends Controller
         return redirect()->route('permissions.index')->with('success', 'Permission added successfully!');
     }
 
-    /**
-     * Show the form for editing a permission.
-     */
-    // public function edit(Permission $permission)
-    // {
-    //     return view('permissions.edit', compact('permission'));
-    // }
+    public function edit($id)
+    {
+        $permission = Permission::findOrFail($id);
+        return response()->json($permission);
+    }
 
-    /**
-     * Update the specified permission.
-     */
     public function update(Request $request, Permission $permission)
     {
         $request->validate([

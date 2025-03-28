@@ -124,14 +124,13 @@
 
 
                         <!-- Profile -->
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" class="border-b">
                             <i class="fas fa-user-edit mr-2 text-gray-700"></i> Profile
                         </x-dropdown-link>
 
                          <!-- Permissions -->
-                         <x-dropdown-link :href="route('permissions.index')">
+                         <x-dropdown-link :href="route('permissions.index')" class="border-b">
                             <i class="fas fa-shield-alt text-gray-700 mr-2"></i>
-
                           Permissions
                         </x-dropdown-link>
 
