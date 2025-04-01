@@ -128,16 +128,12 @@
                         </x-dropdown-link>
 
                          <!-- Permissions -->
-                         <x-dropdown-link :href="route('permissions.index')" class="border-b">
-                            <i class="fas fa-shield-alt text-gray-700 mr-2"></i>
-                          Permissions
-                        </x-dropdown-link>
-
-                         <!-- Roles -->
                          <x-dropdown-link :href="route('roles.index')" class="border-b">
                             <i class="fas fa-shield-alt text-gray-700 mr-2"></i>
-                          Roles
+                          Roles & Permissions
                         </x-dropdown-link>
+
+
 
                         <!-- Logout -->
                         <form method="POST" action="{{ route('logout') }}">

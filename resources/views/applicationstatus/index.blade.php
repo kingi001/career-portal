@@ -13,7 +13,7 @@
             <!-- Job Selection -->
             <div class="mt-4">
                 <label class="block text-sm font-medium text-gray-700">Select Job Position</label>
-                <select class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <select class="mt-1 block w-full text-sm p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                     <option>Software Developer</option>
                     <option>Network Administrator</option>
                     <option>Cybersecurity Analyst</option>
@@ -21,17 +21,17 @@
             </div>
 
             <!-- Submit Application Button -->
-            <button class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2">
+            <button class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 text-sm rounded-md shadow-md flex items-center gap-2">
                 <i class="fas fa-paper-plane"></i> Submit Application
             </button>
 
             <!-- CV Generator (Hardcoded for now) -->
             <div class="mt-6 p-4 bg-gray-100 border border-gray-300 rounded-lg">
-                <h3 class="text-md font-semibold text-gray-700 flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-gray-700 flex items-center gap-2">
                     <i class="fas fa-file-pdf text-red-500"></i> Generate CV (Preview Mode)
                 </h3>
                 <p class="text-sm text-gray-600">Click below to generate a CV based on your input.</p>
-                <button class="mt-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2">
+                <button class="mt-3 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2">
                     <i class="fas fa-download"></i> Download CV (Preview)
                 </button>
             </div>

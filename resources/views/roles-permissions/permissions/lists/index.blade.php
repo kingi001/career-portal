@@ -1,6 +1,8 @@
 <x-app-layout>
     <div class="py-4 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="p-3 bg-white border-b border-gray-100 rounded-lg">
+
+            @include('roles-permissions.nav-links')
             <!-- Header Section -->
             <div class="flex items-center justify-between mb-2 pb-1">
                 <h3 class="text-base font-medium text-indigo-700">
