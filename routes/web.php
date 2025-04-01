@@ -8,13 +8,14 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
 
 
+
 //Guest User Routes
 require __DIR__.'/auth.php';
-Route::resource('permissions', PermissionController::class);
 Route::get('/get-counties', [UserInformationController::class, 'getCounties']);
 Route::get('/get-subcounties/{countyId}', [UserInformationController::class, 'getSubCounties']);
 Route::get('/get-wards/{subcountyId}', [UserInformationController::class, 'getWards']);
@@ -34,8 +35,10 @@ Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
 Route::resource('referees', RefereeController::class);
 Route::resource('documents', DocumentUploadController::class);
+Route::resource('permissions', PermissionController::class);
+Route::resource('roles', RoleController::class);
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
-Route::get('/referee', function () { return view('referee.index');})->name('referee');
+Route::get('referee', function () { return view('referee.index');})->name('referee');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

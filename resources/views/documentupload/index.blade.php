@@ -95,10 +95,11 @@
                                     <a href="{{ Storage::url($document->file_path ?? '') }}" target="_blank" class="text-blue-600 hover:text-blue-700 flex items-center gap-1">
                                         <i class="fas fa-eye"></i> View
                                     </a>
-                                    <form action="{{ route('documents.destroy', ['document' => $document->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this document?');">
+                                    <form id="delete-form-{{ $document->id }}" action="{{ route('documents.destroy', $document->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-700 flex items-center gap-1">
+                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $document->id }})">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </form>
