@@ -39,7 +39,7 @@
                                 <!-- Upload Button -->
                                 <button type="button"
                                     onclick="document.querySelector('[name={{ $doc['name'] }}{{ $doc['multiple'] ?? false ? '\[\]' : '' }}]').click()"
-                                    class="px-4 py-1 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition flex items-center gap-2">
+                                    class="px-4 py-1 text-sm bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition flex items-center gap-2">
                                     <i class="fas fa-cloud-upload-alt"></i> Choose File{{ $doc['multiple'] ?? false ? '(s)' : '' }}
                                 </button>
 
@@ -63,7 +63,7 @@
                 <!-- Submit Button -->
                 <div class="mt-6 flex justify-end">
                     <button type="submit"
-                        class="px-6 py-1 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:ring focus:ring-blue-300 transition duration-200 flex items-center gap-2">
+                        class="px-5 py-1 text-sm bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:ring focus:ring-blue-300 transition duration-200 flex items-center gap-2">
                         <i class="fas fa-save"></i> Upload Documents
                     </button>
                 </div>
@@ -105,7 +105,13 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="4" class="p-4 text-center text-gray-500">No documents uploaded yet.</td></tr>
+                            <tr><td colspan="4" class="p-4 text-center text-gray-500"><div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                <h4 class="text-md font-semibold flex items-center space-x-2">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Information</span>
+                                </h4>
+                                <p class="mt-5 text-sm items-center text-center">{{ __('No Docuent Uploaded Yet. Please Upload') }} </p>
+                            </div></td></tr>
                         @endforelse
                     </tbody>
                 </table>

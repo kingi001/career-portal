@@ -520,8 +520,10 @@
                 </div>
                 <div class="mt-3 flex items-center text-sm gap-2 justify-end">
                     <button type="submit"
-                        class="flex items-center gap-2 px-12 py-1 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-blue-300">
-                        <i class="fas fa-save"></i> {{ isset($personalInformation) ? __('Update') : __('Save') }}
+                        class="flex items-center gap-2 px-10 py-1 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-blue-300">
+                        <i class="fas fa-save"></i>
+                        Save
+
                     </button>
                 </div>
 
