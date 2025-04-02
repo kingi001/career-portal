@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -11,8 +12,11 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::orderBy('name')->get();
-        return view('roles-permissions.roles.lists.index', compact('roles'));
+        $permissions = Permission::orderBy('name')->get(); // Fetch all permissions
+
+        return view('roles-permissions.roles.lists.index', compact('roles', 'permissions'));
     }
+
     /**
      * Store a newly created Role.
      */
@@ -23,7 +27,7 @@ class RoleController extends Controller
         ]);
 
         Role::create([
-            'name' => $request->name,
+            'name' => strtolower($request->name),
             'guard_name' => 'web',
         ]);
 
@@ -32,7 +36,7 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
+        $role = Role::with('permissions')->findOrFail($id);
         return response()->json($role);
     }
 
@@ -43,11 +47,39 @@ class RoleController extends Controller
         ]);
 
         $role->update([
-            'name' => $request->name,
+            'name' => strtolower($request->name),
         ]);
 
         return redirect()->route('roles.index')->with('success', 'Role updated successfully!');
     }
+
+    /**
+     * Assign permissions to a role.
+     */
+    public function addPermissionToRole(Request $request, Role $role)
+    {
+        $request->validate([
+            'permissions' => ['array'],
+            'permissions.*' => ['string', 'exists:permissions,name'],
+        ]);
+
+        // Sync permissions (removes old and assigns new)
+        $role->syncPermissions($request->permissions);
+
+        return redirect()->route('roles.index')->with('success', 'Permissions assigned to role successfully!');
+    }
+
+
+    public function showAssignPermissions($roleId)
+    {
+        $role = Role::findOrFail($roleId);
+        $permissions = Permission::all();
+        // Assuming permissions are assigned as a relationship
+        $assignedPermissions = $role->permissions->pluck('name')->toArray(); // Getting permission names
+
+        return view('roles-permissions.roles.modals.give-permissiontorole', compact('role', 'permissions', 'assignedPermissions'));
+    }
+
 
     /**
      * Remove the specified Role.
