@@ -3,7 +3,7 @@
 
         <!-- Upload Section -->
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
-            <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h2 class="text-base font-medium text-indigo-700 flex items-center gap-2">
                 <i class="fas fa-upload text-blue-500"></i> {{ __('Upload Documents') }}
             </h2>
             <p class="mt-2 text-sm text-gray-600">
@@ -63,7 +63,7 @@
                 <!-- Submit Button -->
                 <div class="mt-6 flex justify-end">
                     <button type="submit"
-                        class="px-5 py-1 text-sm bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:ring focus:ring-blue-300 transition duration-200 flex items-center gap-2">
+                        class="px-5 py-1 text-sm bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:ring focus:ring-blue-300 transition duration-200 flex items-center gap-1">
                         <i class="fas fa-save"></i> Upload Documents
                     </button>
                 </div>
@@ -71,12 +71,12 @@
         </div>
 
         <!-- Uploaded Documents -->
-        <div class="mt-4 p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
-            <h2 class="text-base font-semibold text-gray-900">{{ __('Uploaded Documents') }}</h2>
+        <div class="mt-4 p-6 bg-white border border-gray-200 rounded-lg">
+            <h2 class="text-base font-medium text-indigo-700"><i class="fa fa-cloud-upload mr-2 text-blue-500"></i>{{ __('Uploaded Documents') }}</h2>
 
             <!-- Table for Desktop -->
             <div class="hidden md:block overflow-x-auto mt-4">
-                <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <table class="min-w-full bg-white rounded-lg shadow-md">
                     <thead class="bg-blue-50 border-gray-200">
                         <tr class="text-gray-700">
                             <th class="p-3 text-sm font-semibold text-left">Document Name</th>

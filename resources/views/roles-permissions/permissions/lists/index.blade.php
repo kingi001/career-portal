@@ -4,9 +4,9 @@
 
             @include('roles-permissions.nav-links')
             <!-- Header Section -->
-            <div class="flex items-center justify-between mb-2 pb-1">
-                <h3 class="text-base font-medium text-indigo-700">
-                    <i class="fas fa-shield-alt text-blue-600 text-lg"></i>
+            <div class="flex items-center justify-between mb-4 pb-1 border-b border-gray-200">
+                <h3 class="text-base font-medium text-indigo-700 flex items-center gap-2">
+                    <i class="fas fa-users-cog text-blue-600 text-xl"></i>
                     {{ __('Manage Permissions') }}
                 </h3>
             </div>

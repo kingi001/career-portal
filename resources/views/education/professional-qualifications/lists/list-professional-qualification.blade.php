@@ -3,7 +3,7 @@
         <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
 
             <!-- Section Title -->
-            <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h2 class="text-base font-medium text-indigo-700 flex items-center gap-1">
                 <i class="fas fa-certificate text-blue-500 text-xl"></i>
                 {{ __('Professional Qualifications') }}
             </h2>

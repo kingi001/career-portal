@@ -1,8 +1,8 @@
-<section class="space-y-4">
+<section class="space-y-2">
     <header>
-        <h2 class="text-lg font-semibold text-gray-900">
+        {{-- <h2 class="text-lg font-semibold text-gray-900">
             {{ __('Profile Information') }}
-        </h2>
+        </h2> --}}
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __("Update your account's profile information and email address.") }}
@@ -13,17 +13,17 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-4 space-y-5">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-2 space-y-4">
         @csrf
         @method('patch')
 
-        <div class="space-y-2">
+        <div class="space-y-1">
             <x-input-label for="name" :value="__('Name')" class="text-sm" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full text-sm" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2 text-sm" :messages="$errors->get('name')" />
         </div>
 
-        <div class="space-y-2">
+        <div class="space-y-1">
             <x-input-label for="email" :value="__('Email')" class="text-sm" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full text-sm" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2 text-sm" :messages="$errors->get('email')" />

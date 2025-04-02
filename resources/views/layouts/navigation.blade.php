@@ -25,49 +25,42 @@
                 </a>
 
 
-                <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-4 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         <i class="fas fa-home text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Dashboard</span>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Dashboard</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                         <i class="fas fa-user text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Personal Details</span>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Personal Details</span>
                     </x-nav-link>
 
+                    <!-- Education Dropdown -->
                     <div class="hidden md:flex items-center">
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
-                                <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none">
+                                <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-graduation-cap text-blue-600"></i>
-                                    <span class="ml-1 text-sm font-base">Education</span>
+                                    <span class="ml-1 text-sm font-normal">Education</span>
                                     <i class="fas fa-angle-down ml-1 text-sm"></i>
-
                                 </button>
                             </x-slot>
-
                             <x-slot name="content">
-                                <div class="w-60 bg-white dark:bg-gray-800 shadow-lg rounded-md">
+                                <div class="w-60 bg-white shadow-lg rounded-md">
                                     <x-dropdown-link :href="route('education.index')" :active="request()->routeIs('education.index')"
-                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                                        <i class="fas fa-university text-gray-700 dark:text-gray-300 mr-3"></i>
+                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        <i class="fas fa-university text-gray-700 mr-3"></i>
                                         <span class="flex-1">Academic Qualifications</span>
                                     </x-dropdown-link>
-
                                     <x-dropdown-link :href="route('qualifications.index')" :active="request()->routeIs('qualifications.index')"
-                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                                        <i class="fas fa-certificate text-gray-700 dark:text-gray-300 mr-3 "></i>
-
+                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        <i class="fas fa-certificate text-gray-700 mr-3"></i>
                                         <span class="flex-1">Professional Qualifications</span>
                                     </x-dropdown-link>
-
                                     <x-dropdown-link :href="route('memberships.index')" :active="request()->routeIs('memberships.index')"
-                                        class="flex items-center w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                                        <i class="fas fa-award text-gray-700 dark:text-gray-300 mr-3"></i>
-
-                                        {{-- <i class="fas fa-users-cog text-gray-700 dark:text-gray-300 mr-3">users</i> --}}
+                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        <i class="fas fa-award text-gray-700 mr-3"></i>
                                         <span class="flex-1">Membership to Professional Bodies</span>
                                     </x-dropdown-link>
                                 </div>
@@ -75,78 +68,69 @@
                         </x-dropdown>
                     </div>
 
-
                     <x-nav-link :href="route('employment.index')" :active="request()->routeIs('employment.index')">
                         <i class="fas fa-briefcase text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Employment</span>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Employment</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('referees.index')" :active="request()->routeIs('referees.index')">
                         <i class="fas fa-users text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Referees</span>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Referees</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.index')">
                         <i class="fas fa-file-upload text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Documents</span>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Documents</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('application')" :active="request()->routeIs('application')">
-                        <i class="fas fa-paper-plane  text-blue-600"></i>
-                        <span class="ml-1 text-sm font-base text-gray-700">Application</span>
+                        <i class="fas fa-paper-plane text-blue-600"></i>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Application</span>
                     </x-nav-link>
-
                 </div>
             </div>
 
-            <!-- Right Section: Settings Dropdown -->
+            <!-- Right Section: Settings Dropdown (Desktop) -->
             <div class="hidden md:flex items-center">
                 <x-dropdown align="right" width="56">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none">
-                            <i class="fas fa-cog "></i>
-                            <span class="ml-2 text-sm font-base">Settings</span>
+                        <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                           <i class="fa fa-cogs"></i>
+                            <span class="ml-1 text-sm font-normal">Settings</span>
                             <i class="fas fa-angle-down ml-1 text-sm"></i>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         <!-- User Info -->
-                        <div class="px-4 py-2 text-gray-700 text-sm border-b bg-gray-100">
-                            <div class="font-semibold"><i class="fas fa-user-circle mr-1"></i> {{ Auth::user()->name }}
+                        <div class="px-4 py-1 text-gray-700 text-sm border-b bg-gray-100">
+                            <div class="font-semibold">
+                                 {{ Auth::user()->name }}
                             </div>
                             <div class="text-xs text-gray-500 flex items-center gap-1">
                                 <i class="fas fa-envelope text-gray-400 text-[10px]"></i>
                                 <span class="truncate">{{ Auth::user()->email }}</span>
                             </div>
-
                         </div>
-
-                        <!-- Profile -->
+                        <!-- Profile Link -->
                         <x-dropdown-link :href="route('profile.edit')" class="border-b">
-                            <i class="fas fa-user-edit mr-2 text-gray-700"></i> Profile
+                            <i class="fas fa-user-edit mr-1 text-gray-700"></i> Profile
                         </x-dropdown-link>
-
-                         <!-- Permissions -->
-                         <x-dropdown-link :href="route('roles.index')" class="border-b">
-                            <i class="fas fa-shield-alt text-gray-700 mr-2"></i>
-                          Roles & Permissions
+                        <!-- Roles & Permissions -->
+                        <x-dropdown-link :href="route('roles.index')" class="border-b">
+                            <i class="fas fa-shield-alt mr-1 text-gray-700"></i> Roles & Permissions
                         </x-dropdown-link>
-
-
-
                         <!-- Logout -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                <i class="fas fa-sign-out-alt mr-2 text-red-500"></i> <span
-                                    class="text-red-500">Logout</span>
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="fas fa-sign-out-alt mr-2 text-red-500"></i>
+                                <span class="text-red-500">Logout</span>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
             </div>
+
 
 
 

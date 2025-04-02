@@ -37,8 +37,9 @@ Route::resource('referees', RefereeController::class);
 Route::resource('documents', DocumentUploadController::class);
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
-Route::post('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
-Route::get('/roles/{role}/permissions', [RoleController::class, 'getRolePermissions']);
+Route::get('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
+Route::put('/roles/{role}/give-permission', [RoleController::class, 'givePermissionToRole']);
+
 
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
 Route::get('referee', function () { return view('referee.index');})->name('referee');

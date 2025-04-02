@@ -1,4 +1,4 @@
-<div class="flex items-center space-x-6 mb-6 text-indigo-700">
+<div class="flex items-center space-x-6 mb-4 text-indigo-700">
     <!-- Roles Link -->
     <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
         <i class="fas fa-users-cog mr-1"></i> {{ __('Roles') }}

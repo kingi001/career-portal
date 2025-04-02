@@ -53,41 +53,29 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role updated successfully!');
     }
 
-    /**
-     * Assign permissions to a role.
-     */
-    public function addPermissionToRole(Request $request, Role $role)
+    public function addPermissionToRole(Role $role)
     {
-        $request->validate([
-            'permissions' => ['array'],
-            'permissions.*' => ['string', 'exists:permissions,name'],
+     $permissions = Permission::get();
+     $role=Role::findOrFail($role->id);
+     return view('roles-permissions.roles.add-permission', compact('role','permissions'));
+    }
+    public function givePermissionToRole(Request $request, Role $role)
+    {
+        $request ->validate([
+            'permissions' => 'required'
         ]);
-
-        // Sync permissions (removes old and assigns new)
+        $role = Role::findOrFail($role->id);
         $role->syncPermissions($request->permissions);
-
-        return redirect()->route('roles.index')->with('success', 'Permissions assigned to role successfully!');
+        return redirect()->back()->with('success', 'Permissions assigned to role successfully!');
     }
-
-
-    public function showAssignPermissions($roleId)
-    {
-        $role = Role::findOrFail($roleId);
-        $permissions = Permission::all();
-        // Assuming permissions are assigned as a relationship
-        $assignedPermissions = $role->permissions->pluck('name')->toArray(); // Getting permission names
-
-        return view('roles-permissions.roles.modals.give-permissiontorole', compact('role', 'permissions', 'assignedPermissions'));
-    }
-
 
     /**
      * Remove the specified Role.
      */
     public function destroy(Role $role)
     {
+        $role = Role::findOrFail($role->id);
         $role->delete();
-
         return redirect()->route('roles.index')->with('success', 'Role deleted successfully!');
     }
 }

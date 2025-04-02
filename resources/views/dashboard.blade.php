@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-3 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <!-- Main Content -->
             <main class="col-span-4 bg-white p-4 rounded-lg shadow-md">
                 <h2
                     class="text-sm md:text-base font-bold mb-4 uppercase flex items-center gap-3 text-gray-900 dark:text-gray-100 tracking-wide">
-                    <i class="fas fa-tachometer-alt text-blue-600 text-2xl"></i>
-                    <span class="bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text">
+                    <i class="fas fa-tachometer-alt text-blue-600 text-lg"></i>
+                    <span class="bg-gradient-to-r text-base from-blue-500 to-indigo-700 text-transparent bg-clip-text">
                         Welcome to your Dashboard!
                     </span>
                 </h2>
@@ -46,10 +46,10 @@
         </div>
     </div>
     <!---------------------------------------------------job listings-------------------------------------->
-    <div class="py-2">
+    <div class="py-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm rounded-lg overflow-hidden">
-                <div class="p-2 font-semibold text-gray-900 flex items-center">
+                <div class="p-2 text-base font-medium text-indigo-700 flex items-center">
                     <i class="fas fa-briefcase text-blue-500 mr-2"></i>
                     {{ __('Job Listings') }}
                 </div>
@@ -165,7 +165,7 @@
     <div class="py-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm rounded-lg overflow-hidden">
-                <div class="p-2 font-semibold text-gray-900 flex items-center">
+                <div class="p-2 text-base font-medium text-indigo-700 flex items-center">
                     <i class="fas fa-check-circle text-green-600 mr-2"></i>
                     {{ __('Job Applications') }}
                 </div>
@@ -250,8 +250,8 @@
     <div class="py-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm rounded-lg overflow-hidden">
-                <div class="p-2 font-semibold text-gray-900 flex items-center">
-                    <i class="fas fa-tasks text-blue-600 mr-2"></i>
+                <div class="p-2 text-base font-medium text-indigo-700 flex items-center">
+                    <i class="fas fa-tasks text-blue-500 mr-2"></i>
                     {{ __('Application Status Tracker') }}
                 </div>
 

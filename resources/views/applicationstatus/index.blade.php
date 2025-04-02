@@ -3,9 +3,13 @@
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
 
             <!-- Section Header -->
-            <h2 class="text-lg font-medium text-gray-900 flex items-center gap-2">
-                <i class="fas fa-file-alt text-blue-900"></i> {{ __('Job Application') }}
-            </h2>
+            <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <h2 class="text-base font-semibold text-gray-900 flex items-center gap-2">
+                    <i class="fas fa-file-alt text-blue-900"></i> {{ __('Job Application') }}
+                </h2>
+                <span class="text-sm text-gray-600">{{ now()->format('F j, Y') }}</span>
+            </div>
+
             <p class="mt-2 text-sm text-gray-600">
                 {{ __('Select the job you want to apply for and submit your application.') }}
             </p>

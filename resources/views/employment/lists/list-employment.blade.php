@@ -1,14 +1,14 @@
 <x-app-layout>
-    <div class="py-6 container max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-2 container max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
 
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                <h2 class="text-base font-medium text-indigo-700 flex items-center gap-1">
                     <i class="fas fa-briefcase text-blue-600"></i> {{ __('Employment History') }}
                 </h2>
             </div>
 
-            <p class="mt-2 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-gray-600">
                 {{ __('Please provide your job history starting with the most recent.') }}
             </p>
 

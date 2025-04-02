@@ -5,8 +5,8 @@
             <!-- Section Header -->
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <i class="fas fa-user-tie text-blue-900"></i> {{ __('Referees') }}
+                    <h2 class="text-base font-medium text-indigo-700 flex items-center gap-2">
+                        <i class="fas fa-user-tie text-blue-500"></i> {{ __('Referees') }}
                     </h2>
                     <p class="text-sm text-gray-600">
                         {{ __('Add referees who can vouch for your professional experience.') }}

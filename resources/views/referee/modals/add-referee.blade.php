@@ -2,7 +2,7 @@
 <div x-data="{ open: false }" @open-modal.window="if ($event.detail.modal === 'add-referee') open = true" x-cloak>
 
     <!-- Modal Overlay -->
-    <div x-show="open" class="fixed inset-0 mt-4 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
+    <div x-show="open" class="fixed inset-0 mt-1 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
         x-transition.opacity>
 
         <!-- Modal Content -->
