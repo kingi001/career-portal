@@ -4,10 +4,10 @@
 
             <!-- Section Header -->
             <div class="flex items-center justify-between border-b pb-3 mb-4">
-                <h2 class="text-base font-semibold text-gray-900 flex items-center gap-2">
-                    <i class="fas fa-file-alt text-blue-900"></i> {{ __('Job Application') }}
+                <h2 class="text-base font-medium text-indigo-700 flex items-center gap-2">
+                    <i class="fas fa-file-alt text-blue-500"></i> {{ __('Job Application') }}
                 </h2>
-                <span class="text-sm text-gray-600">{{ now()->format('F j, Y') }}</span>
+                <span class="text-sm text-blue-600">{{ now()->format('F j, Y') }}</span>
             </div>
 
             <p class="mt-2 text-sm text-gray-600">

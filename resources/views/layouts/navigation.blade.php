@@ -11,7 +11,7 @@
 
 
                     <!-- Show "BMA E-RECRUITMENT" on Mobile -->
-                    <span class="text-lg font-extrabold text-gray-900 tracking-wider sm:hidden uppercase animate-fade-in">
+                    <span class="text-base font-semibold text-indigo-700 tracking-wider sm:hidden uppercase animate-fade-in">
                         BMA E-RECRUITMENT PORTAL
                     </span>
 
