@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="py-6 container max-w-5xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-2 container max-w-5xl mx-auto sm:px-6 lg:px-8">
 
         <!-- Upload Section -->
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
