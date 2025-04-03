@@ -129,6 +129,6 @@ class EducationController extends Controller
         // Delete the education record
         $education->delete();
 
-        return redirect()->back()->with('success', 'Education and document deleted successfully.');
+        return redirect()->back()->with('education_delete_success', 'Education and document deleted successfully.');
     }
 }
