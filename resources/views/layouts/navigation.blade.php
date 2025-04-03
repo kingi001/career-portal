@@ -7,29 +7,22 @@
                 <a href="{{ route('dashboard') }}"
                     class="flex items-center space-x-4 hover:text-blue-600 transition duration-300 ease-in-out">
                     <img src="{{ asset('images/logo.png') }}" alt="BMA Logo" class="h-8 w-auto mx-auto">
-
-
-
                     <!-- Show "BMA E-RECRUITMENT" on Mobile -->
-                    <span class="text-base font-semibold text-indigo-700 tracking-wider sm:hidden uppercase animate-fade-in">
+                    <span
+                        class="text-base font-semibold text-indigo-700 tracking-wider sm:hidden uppercase animate-fade-in">
                         BMA E-RECRUITMENT PORTAL
                     </span>
-
-
-                    <!-- Show "E-RECRUITMENT" on Desktop -->
-                    {{-- <span class="text-base font-semibold text-gray-900 tracking-wide hidden sm:block">E-RECRUITMENT
-                    </span> --}}
                     <span class="text-base font-semibold text-indigo-600 tracking-wide hidden sm:block">
                         E-RECRUITMENT
                     </span>
                 </a>
-
-
                 <div class="hidden md:flex space-x-4 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
 
-                        <svg class="w-4 h-4 me-1 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                            <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                        <svg class="w-4 h-4 me-1 text-blue-600 dark:text-blue-500" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                            <path
+                                d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                         </svg>
                         <span class=" text-sm font-medium text-gray-700">Dashboard</span>
                     </x-nav-link>
@@ -47,7 +40,8 @@
                     <div class="hidden md:flex items-center">
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
-                                <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                                <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-graduation-cap text-blue-600"></i>
                                     <span class="ml-1 text-sm font-normal">Education</span>
                                     <i class="fas fa-angle-down ml-1 text-sm"></i>
@@ -101,9 +95,13 @@
             <div class="hidden md:flex items-center">
                 <x-dropdown align="right" width="56">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none" aria-haspopup="true" aria-expanded="false">
-                            <svg class="w-4 h-4 me-1 text-blue-600 group-hover:text-blue-500 dark:text-blue-500 dark:group-hover:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"/>
+                        <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none"
+                            aria-haspopup="true" aria-expanded="false">
+                            <svg class="w-4 h-4 me-1 text-blue-600 group-hover:text-blue-500 dark:text-blue-500 dark:group-hover:text-blue-300"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z" />
                             </svg>
                             <span class="text-sm font-normal">Settings</span>
                             <i class="fas fa-angle-down ml-1 text-sm"></i>
@@ -113,7 +111,7 @@
                         <!-- User Info -->
                         <div class="px-4 py-1 text-gray-700 text-sm border-b bg-gray-100">
                             <div class="font-semibold">
-                                 {{ Auth::user()->name }}
+                                {{ Auth::user()->name }}
                             </div>
                             <div class="text-xs text-gray-500 flex items-center gap-1">
                                 <i class="fas fa-envelope text-gray-400 text-[10px]"></i>
@@ -131,7 +129,8 @@
                         <!-- Logout -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
                                 <i class="fas fa-sign-out-alt mr-2 text-red-500"></i>
                                 <span class="text-red-500">Logout</span>
                             </x-dropdown-link>
@@ -148,7 +147,7 @@
             <div x-data="{ open: false }">
                 <!-- Hamburger Button -->
                 <button @click="open = true" class="md:hidden p-2 focus:outline-none">
-                    <i class="fas fa-bars text-xl text-gray-800"></i>
+                    <i class="fas fa-bars text-xl text-indigo-700"></i>
                 </button>
 
                 <!-- Mobile Nav -->
@@ -282,7 +281,8 @@
     </div>
 
     <div class="bg-gray-100 dark:bg-gray-800 py-0.5 pl-10"> <!-- Reduced py-2 to py-1 -->
-        <div class="max-w-7xl mx-auto flex items-center text-xs text-gray-600 dark:text-gray-400"> <!-- Reduced text-sm to text-xs -->
+        <div class="max-w-7xl mx-auto flex items-center text-xs text-gray-600 dark:text-gray-400">
+            <!-- Reduced text-sm to text-xs -->
             <nav class="flex px-6 py-1 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
                 aria-label="Breadcrumb"> <!-- Reduced px-12 to px-6 -->
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
