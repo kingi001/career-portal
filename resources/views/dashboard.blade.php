@@ -75,7 +75,7 @@
 
         if (toast) {
             let progress = 0;
-            const duration = 100; // 500ms (half a second)
+            const duration = 500; // 500ms (half a second)
             const intervalTime = 1; // Faster interval (2ms)
             const totalSteps = duration / intervalTime;
 
@@ -85,7 +85,7 @@
                     setTimeout(() => {
                         toast.classList.add(
                         "hidden"); // Hide the toast after progress bar finishes
-                    }, 100); // Allow some delay to see the complete progress
+                    }, 200); // Allow some delay to see the complete progress
                 } else {
                     progress += 100 / totalSteps;
                     progressBar.style.width = progress + "%";

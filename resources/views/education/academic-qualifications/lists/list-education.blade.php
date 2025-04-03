@@ -14,7 +14,7 @@
                     </svg>
                     <span class="sr-only">Check icon</span>
                 </div>
-                <div class="ms-3 text-sm font-normal">Education Updated successfully.</div>
+                <div class="ms-3 text-sm font-normal">Academic Qualification Updated Successfully.</div>
             </div>
 
             <!-- Progress Bar Below Content -->
