@@ -260,7 +260,7 @@
                         class="absolute bottom-0 left-0 w-full bg-gray-100 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700
        py-1 px-4 rounded-br-2xl text-sm">
                         <x-responsive-nav-link :href="route('profile.edit')"
-                            class="flex items-center gap-2 py-2 px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all rounded-lg">
+                            class="flex items-center gap-2 py-1 px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all rounded-lg">
                             <i class="fas fa-user-cog text-blue-600"></i> <span>Profile Settings</span>
                         </x-responsive-nav-link>
 
