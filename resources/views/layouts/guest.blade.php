@@ -25,7 +25,7 @@
     background-attachment: fixed;">
 
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-10 sm:pt-0 rounded-lg">
-        <div class="w-full sm:max-w-md  mt-2 px-6 py-4 bg-white  overflow-hidden sm:rounded-lg">
+        <div class="w-full sm:max-w-md  mt-2 px-6 py-4 bg-gray-100  overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>

@@ -27,12 +27,19 @@
 
                 <div class="hidden md:flex space-x-4 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <i class="fas fa-home text-blue-600"></i>
-                        <span class="ml-1 text-sm font-normal text-gray-700">Dashboard</span>
+
+                        <svg class="w-4 h-4 me-1 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                            <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                        </svg>
+                        <span class=" text-sm font-medium text-gray-700">Dashboard</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                         <i class="fas fa-user text-blue-600"></i>
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" class="w-4 h-4  text-blue-600 me-1 dark:text-blue-500" >
+                            <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                          </svg> --}}
+
                         <span class="ml-1 text-sm font-normal text-gray-700">Personal Details</span>
                     </x-nav-link>
 
@@ -95,8 +102,10 @@
                 <x-dropdown align="right" width="56">
                     <x-slot name="trigger">
                         <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none" aria-haspopup="true" aria-expanded="false">
-                           <i class="fa fa-cogs"></i>
-                            <span class="ml-1 text-sm font-normal">Settings</span>
+                            <svg class="w-4 h-4 me-1 text-blue-600 group-hover:text-blue-500 dark:text-blue-500 dark:group-hover:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"/>
+                            </svg>
+                            <span class="text-sm font-normal">Settings</span>
                             <i class="fas fa-angle-down ml-1 text-sm"></i>
                         </button>
                     </x-slot>
