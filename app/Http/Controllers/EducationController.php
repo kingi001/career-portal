@@ -109,7 +109,7 @@ class EducationController extends Controller
             'academic_document' => $documentPath, // Store new or existing document path
         ]);
 
-        return redirect()->back()->with('success', 'Education updated successfully.');
+        return redirect()->back()->with('education_update_success', 'Education Updated successfully.');;
     }
 
 

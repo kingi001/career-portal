@@ -34,7 +34,7 @@ class OTPController extends Controller
         // Check if the entered OTP matches the stored OTP
         if ($request->input('otp') == $user->otp) {
             $user->resetCodeAfterLogin(); // Reset OTP after successful login
-            return redirect()->route('dashboard')->with('success', 'Verification Successful'); // Redirect to dashboard
+            return redirect()->route('dashboard')->with('verification_success', 'Verification Successful'); // Redirect to dashboard
         }
         return redirect()->back()->withErrors(['otp' => 'Incorrect OTP. Try again.']);
     }

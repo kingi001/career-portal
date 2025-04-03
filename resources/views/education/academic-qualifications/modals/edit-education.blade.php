@@ -23,7 +23,7 @@ x-cloak>
         x-show="open" x-transition.scale.90>
 
         <!-- Modal Header -->
-        <div class="flex justify-between items-center px-6 py-3 bg-indigo-600 text-white rounded-t-lg">
+        <div class="flex justify-between items-center px-5 py-1.5 bg-indigo-600 text-white rounded-t-lg">
             <h2 class="text-lg font-semibold flex items-center gap-2">
                 <i class="fas fa-edit"></i> Edit Academic Qualifications
             </h2>
@@ -39,7 +39,7 @@ x-cloak>
 
             <p class="text-sm text-gray-700">Update your educational details below.</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <!-- Institution -->
                 <div>
                     <x-input-label for="institution" :value="__('Institution')" />
@@ -105,7 +105,7 @@ x-cloak>
 
             <!-- View Certificate -->
             <div class="border border-gray-300 p-3 rounded-lg shadow-sm bg-white">
-                <div x-show="existingFile" class="mt-3">
+                <div x-show="existingFile" class="mt-2">
                     <p class="text-xs text-gray-500">Current File:</p>
                     <a :href="'/storage/' + existingFile" target="_blank"
                         class="text-blue-500 hover:text-blue-700 flex items-center gap-1">
@@ -117,8 +117,8 @@ x-cloak>
             <!-- Modal Footer -->
             <div class="mt-5 flex justify-end space-x-4">
                 <button type="button" @click="open = false"
-                    class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1.5 text-sm rounded-md">Cancel</button>
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md">Update</button>
+                    class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 text-sm rounded-md">Cancel</button>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-sm rounded-md">Update</button>
             </div>
         </form>
     </div>

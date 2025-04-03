@@ -19,10 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }"
-    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val));
-    window.addEventListener('beforeunload', () => loading = true);
-    document.addEventListener('DOMContentLoaded', () => loading = false);"
+<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', loading: false }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val));
+window.addEventListener('beforeunload', () => loading = true);
+document.addEventListener('DOMContentLoaded', () => loading = false);"
     :class="{ 'dark bg-gray-900 text-white': darkMode, 'bg-gray-100 text-gray-900': !darkMode }"
     class="min-h-screen bg-center bg-no-repeat transition-all duration-300"
     style="background-image: url('{{ asset('images/bgpattern.gif') }}');
@@ -60,10 +59,10 @@
     <!-- Footer -->
     @include('layouts.footer')
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Your app description here">
+    {{-- <meta name="description" content="Your app description here">
     <meta name="keywords" content="Laravel, Web App, Career Portal, Software">
     <meta name="author" content="Your Name">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"> --}}
 
     <!-- Smooth Scrolling -->
     <style>
@@ -74,14 +73,15 @@
     <!-- SweetAlert2 & Custom Toast Notifications -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            function showToast(icon, message) {
-                Swal.fire({
+            // Function to show the toast notification with custom icons and messages
+            function showToast(icon, message, customOptions = {}) {
+                const defaultOptions = {
                     toast: true,
                     position: 'top-end',
                     icon: icon, // success, error, warning, info
                     title: message,
                     showConfirmButton: false,
-                    timer: 2000, // Auto close after 4 seconds
+                    timer: customOptions.timer || 3000, // Auto close after 3 seconds
                     timerProgressBar: true,
                     background: getToastBackground(icon),
                     color: '#003366', // Dark blue text for good contrast
@@ -94,21 +94,28 @@
                     padding: '12px',
                     width: '380px',
                     showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
+                        popup: 'animate__animated animate__fadeInDown' // Smooth animation on show
                     },
                     hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
+                        popup: 'animate__animated animate__fadeOutUp' // Smooth fade-out
                     },
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer); // Pause timer on hover
                         toast.addEventListener('mouseleave', Swal
-                        .resumeTimer); // Resume timer when unhovered
+                            .resumeTimer); // Resume timer when unhovered
                     }
-                });
+                };
+
+                // Merge default options with custom options provided by user
+                const options = Object.assign({}, defaultOptions, customOptions);
+
+                // Display the toast notification
+                Swal.fire(options);
             }
+
             // Function to determine background color based on icon type
             function getToastBackground(icon) {
-                return icon === 'success' ? '#e6f7ff' : // Light blue for success (theme-based)
+                return icon === 'success' ? '#e6f7ff' : // Light blue for success
                     icon === 'error' ? '#ffe6e6' : // Soft red for error
                     icon === 'warning' ? '#fff4e6' : // Light orange for warning
                     '#e6f0ff'; // Light blue for info
@@ -116,22 +123,32 @@
 
             // Check for session messages and trigger toast notifications
             @if (session('success'))
-                showToast('success', "{{ session('success') }}");
+                showToast('success', "{{ session('success') }}", {
+                    timer: 2000
+                });
             @endif
 
             @if (session('error'))
-                showToast('error', "{{ session('error') }}");
+                showToast('error', "{{ session('error') }}", {
+                    timer: 2000
+                });
             @endif
 
             @if (session('info'))
-                showToast('info', "{{ session('info') }}");
+                showToast('info', "{{ session('info') }}", {
+                    timer: 2000
+                });
             @endif
 
             @if (session('warning'))
-                showToast('warning', "{{ session('warning') }}");
+                showToast('warning', "{{ session('warning') }}", {
+                    timer: 2000
+                });
             @endif
         });
     </script>
+
+
     <script>
         function confirmDelete(id) {
             Swal.fire({
@@ -154,4 +171,5 @@
         }
     </script>
 </body>
+
 </html>

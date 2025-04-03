@@ -96,19 +96,18 @@
 
 
                     <!-- File Upload Section with Progress, Preview & Clear -->
-                    <div class="sm:col-span-2"
-                    x-data="{ fileName: '', fileSize: 0, progress: 0, fileInput: null, filePreview: '', isImage: false }">
+                    <div class="sm:col-span-2" x-data="{ fileName: '', fileSize: 0, progress: 0, fileInput: null, filePreview: '', isImage: false }">
 
-                    <x-input-label for="academic_document" :value="__('Upload Certificate (PDF or Image)')" />
+                        <x-input-label for="academic_document" :value="__('Upload Certificate (PDF or Image)')" />
 
-                    <div class="border border-gray-300 p-3 rounded-lg shadow-sm bg-white">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-file-upload text-blue-600"></i>
+                        <div class="border border-gray-300 p-3 rounded-lg shadow-sm bg-white">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-file-upload text-blue-600"></i>
 
-                            <!-- Hidden Input -->
-                            <input id="academic_document" name="academic_document" type="file" accept=".pdf,.jpg,.png" class="hidden"
-                                x-ref="fileInput"
-                                @change="
+                                <!-- Hidden Input -->
+                                <input id="academic_document" name="academic_document" type="file"
+                                    accept=".pdf,.jpg,.png" class="hidden" x-ref="fileInput"
+                                    @change="
                                     let file = $event.target.files[0];
                                     if (file) {
                                         fileName = file.name;
@@ -135,63 +134,70 @@
                                     }
                                 ">
 
-                            <!-- Upload Button -->
-                            <label for="academic_document"
-                                class="cursor-pointer bg-blue-600 text-white px-3 py-2 text-sm rounded-md hover:bg-blue-700">
-                                Choose File
-                            </label>
+                                <!-- Upload Button -->
+                                <label for="academic_document"
+                                    class="cursor-pointer bg-blue-600 text-white px-3 py-2 text-sm rounded-md hover:bg-blue-700">
+                                    Choose File
+                                </label>
 
-                            <!-- File Name Display -->
-                            <span x-text="fileName" class="text-sm text-gray-700"></span>
+                                <!-- File Name Display -->
+                                <span x-text="fileName" class="text-sm text-gray-700"></span>
 
-                            <!-- Clear/Cancel Button -->
-                            <button type="button" x-show="fileName"
-                                @click="
+                                <!-- Clear/Cancel Button -->
+                                <button type="button" x-show="fileName"
+                                    @click="
                                     fileName = '';
                                     fileSize = 0;
                                     progress = 0;
                                     filePreview = '';
                                     isImage = false;
                                     $refs.fileInput.value = ''"
-                                class="ml-2 bg-red-600 text-white px-2 py-1 text-xs rounded-md hover:bg-red-700">
-                                Clear
-                            </button>
-                        </div>
+                                    class="ml-2 bg-red-600 text-white px-2 py-1 text-xs rounded-md hover:bg-red-700">
+                                    Clear
+                                </button>
+                            </div>
 
-                        <!-- File Size Warning -->
-                        <p x-show="fileSize > 2097152" class="text-red-500 text-xs mt-2">
-                            File is too large. Max size is 2MB.
-                        </p>
+                            <!-- File Size Warning -->
+                            <p x-show="fileSize > 2097152" class="text-red-500 text-xs mt-2">
+                                File is too large. Max size is 2MB.
+                            </p>
 
-                        <!-- File Preview for Images -->
-                        <div x-show="isImage" class="mt-3">
-                            <p class="text-xs text-gray-500">Preview:</p>
-                            <img :src="filePreview" alt="Preview" class="w-40 h-auto rounded-lg shadow">
-                        </div>
+                            <!-- File Preview for Images -->
+                            <div x-show="isImage" class="mt-3">
+                                <p class="text-xs text-gray-500">Preview:</p>
+                                <img :src="filePreview" alt="Preview" class="w-40 h-auto rounded-lg shadow">
+                            </div>
 
-                        <!-- Progress Bar -->
-                        <div x-show="fileName && fileSize <= 2097152" class="mt-3">
-                            <p class="text-xs text-gray-500">Uploaded Successfully...</p>
-                            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-blue-500 h-2 transition-all duration-300" :style="'width:' + progress + '%'"></div>
+                            <!-- Progress Bar -->
+                            <div x-show="fileName && fileSize <= 2097152" class="mt-3">
+                                <p class="text-xs text-gray-500">Uploaded Successfully...</p>
+                                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-blue-500 h-2 transition-all duration-300"
+                                        :style="'width:' + progress + '%'"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <x-input-error class="mt-2" :messages="$errors->get('academic_document')" />
+                        <x-input-error class="mt-2" :messages="$errors->get('academic_document')" />
+                    </div>
                 </div>
-                    <!-- Modal Footer (Buttons) -->
-                    <div class="mt-5 flex justify-end space-x-4">
-                        <button type="button" @click="open = false"
-                            class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                            <i class="fas fa-times"></i> {{ __('Cancel') }}
-                        </button>
 
-                        <button type="submit"
-                            class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                            <i class="fas fa-save"></i> {{ __('Save') }}
-                        </button>
-                    </div>
+
+                <!-- Modal Footer (Buttons) -->
+                <div class="mt-6 flex justify-end w-full space-x-4">
+                    <!-- Cancel Button -->
+                    <button type="button" @click="open = false"
+                        class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-1 text-sm font-medium rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        <i class="fas fa-times"></i> {{ __('Cancel') }}
+                    </button>
+
+                    <!-- Save Button -->
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-800 text-white px-4 py-1 text-sm font-medium rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <i class="fas fa-save"></i> {{ __('Save') }}
+                    </button>
+                </div>
+
             </form>
         </div>
     </div>
