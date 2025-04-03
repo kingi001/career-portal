@@ -54,7 +54,7 @@ class EducationController extends Controller
             'academic_document' => $documentPath, // Store document path
         ]);
 
-        return redirect()->back()->with('success', 'Education added successfully.');
+        return redirect()->back()->with('education_add_success', 'Education added successfully.');
     }
 
     /**
