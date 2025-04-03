@@ -16,17 +16,21 @@
                 <table class="min-w-full bg-white border border-gray-300 rounded-lg">
                     <thead class="bg-blue-50 border-b-2 border-gray-200">
                         <tr class="text-gray-700">
+                            <th class="p-3 text-sm font-medium text-left">
+                                <i class="fas fa-hashtag"></i>
+                            </th>
                             <th class="p-3 text-sm font-semibold text-left">Institution</th>
                             <th class="p-3 text-sm font-semibold text-left">Certification</th>
                             <th class="p-3 text-sm font-semibold text-left">Award</th>
                             <th class="p-3 text-sm font-semibold text-left">Start Date</th>
                             <th class="p-3 text-sm font-semibold text-left">End Date</th>
-                            <th class="p-3 text-sm font-semibold text-left">Actions</th>
+                            <th class="p-3 text-sm font-semibold text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($qualifications as $qualification)
-                            <tr class="hover:bg-gray-50 transition-colors">
+                            <tr class="hover:bg-gray-50 transition-colors border-b">
+                                <td class="p-3 text-sm text-gray-800">{{ $loop->iteration }}</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <i class="fas fa-school text-gray-500"></i> {{ $qualification->institution }}
                                 </td>
@@ -36,12 +40,14 @@
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->award }}</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->start_date }}</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->end_date }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3">
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3 justify-center">
+                                    <!-- Edit Button -->
                                     <button @click="$dispatch('open-modal', { modal: 'edit-professional-qualification', qualification: {{ json_encode($qualification) }} })"
                                         class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
 
+                                    <!-- Delete Button -->
                                     <form id="delete-form-{{ $qualification->id }}" action="{{ route('qualifications.destroy', $qualification->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -53,21 +59,22 @@
                                 </td>
                             </tr>
                         @empty
-                        <tr>
-                            <td colspan="6" class="p-4 text-center">
-                                <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                    <h4 class="text-md font-semibold flex items-center space-x-2">
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>Information</span>
-                                    </h4>
-                                    <p class="mt-1 text-sm">No Professional Qualifications Found.</p>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td colspan="7" class="p-4 text-center">
+                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-1 text-sm">No Professional Qualifications Found.</p>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
+
 
             <!-- Mobile View (Stacked Cards) -->
             <div class="mt-4 space-y-4 md:hidden">

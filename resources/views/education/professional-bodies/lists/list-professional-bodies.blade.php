@@ -16,16 +16,20 @@
                 <table class="min-w-full bg-white border border-gray-300 rounded-lg">
                     <thead class="bg-gray-100 border-b-2 border-gray-200">
                         <tr class="text-gray-700">
+                            <th class="p-3 text-sm font-medium text-center">
+                                <i class="fas fa-hashtag"></i>
+                            </th>
                             <th class="p-3 text-sm font-semibold text-left">Professional Body</th>
                             <th class="p-3 text-sm font-semibold text-left">Membership No</th>
                             <th class="p-3 text-sm font-semibold text-left">Date Renewed</th>
                             <th class="p-3 text-sm font-semibold text-left">Next Renewal Date</th>
-                            <th class="p-3 text-sm font-semibold text-left">Actions</th>
+                            <th class="p-3 text-sm font-semibold text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($memberships as $membership)
-                            <tr class="hover:bg-gray-50 transition-colors">
+                            <tr class="hover:bg-gray-50 transition-colors border-b">
+                                <td class="p-3 text-sm text-gray-800 text-center">{{ $loop->iteration }}</td>
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <i class="fas fa-building text-gray-500"></i> {{ $membership->professional_body }}
                                 </td>
@@ -38,12 +42,14 @@
                                 <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                     <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->expiry_date }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3">
+                                <td class="p-3 text-sm text-gray-700 flex items-center gap-3 justify-center">
+                                    <!-- Edit Button -->
                                     <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
                                         class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
 
+                                    <!-- Delete Button -->
                                     <form id="delete-form-{{ $membership->id }}" action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -56,9 +62,9 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="p-4 text-center">
+                                <td colspan="6" class="p-4 text-center">
                                     <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
@@ -70,6 +76,8 @@
                     </tbody>
                 </table>
             </div>
+
+
 
             <!-- Mobile View (Stacked Cards) -->
             <div class="mt-4 space-y-4 md:hidden">

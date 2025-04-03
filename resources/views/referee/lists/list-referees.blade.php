@@ -19,7 +19,7 @@
                 <table class="w-full bg-white border border-gray-300 rounded-lg">
                     <thead class="bg-gray-100">
                         <tr class="text-left text-gray-700">
-                            <th class="p-3 text-sm font-semibold w-8">
+                            <th class="p-3 text-sm font-semibold w-8 text-center">
                                 <i class="fas fa-hashtag text-blue-400"></i>
                             </th>
                             <th class="p-3 text-sm font-semibold">
@@ -41,45 +41,46 @@
                                 <i class="fas fa-cogs text-blue-400"></i> Actions
                             </th>
                         </tr>
-
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($referees as $referee)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="p-3 text-sm text-gray-800">{{ $loop->iteration }}</td>
+                                <td class="p-3 text-sm text-gray-800 text-center">{{ $loop->iteration }}</td>
                                 <td class="p-3 text-sm font-medium text-gray-900">{{ $referee->full_name }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->job_title }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->company }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->phone }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $referee->email }}</td>
-                                <td class="p-3 text-sm text-center flex justify-center space-x-3">
-                                    <button
-                                        @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
-                                        class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                    <form id="delete-form-{{ $referee->id }}"
-                                        action="{{ route('referees.destroy', $referee->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button"
-                                            class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                            onclick="confirmDelete({{ $referee->id }})">
-                                            <i class="fas fa-trash-alt"></i> Delete
+                                <td class="p-3 text-sm text-center">
+                                    <div class="flex justify-center space-x-3">
+                                        <button
+                                            @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
+                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
+                                            <i class="fas fa-edit"></i> Edit
                                         </button>
-                                    </form>
+                                        <form id="delete-form-{{ $referee->id }}"
+                                              action="{{ route('referees.destroy', $referee->id) }}"
+                                              method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $referee->id }})">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="7" class="p-4 text-center">
-                                    <div
-                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
-                                        <p class="mt-1 text-sm">No Referees Added Yet.Click Add Refree</p>
+                                        <p class="mt-1 text-sm">No Referees Added Yet. Click <strong>Add Referee</strong></p>
                                     </div>
                                 </td>
                             </tr>
@@ -87,6 +88,7 @@
                     </tbody>
                 </table>
             </div>
+
 
             <!-- Mobile View -->
             <div class="md:hidden space-y-3 mt-3">
