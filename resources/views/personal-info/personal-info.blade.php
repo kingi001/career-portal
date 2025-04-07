@@ -26,7 +26,7 @@
                             </span>
                             <select id="salutation" name="salutation"
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2">
-                                <option value="">Select Salutation</option>
+                                <option value="">--Select Salutation--</option>
                                 @foreach ($salutations as $salutation)
                                     <option value="{{ $salutation }}"
                                         {{ old('salutation', $personalInformation->salutation ?? '') == $salutation ? 'selected' : '' }}>
@@ -97,7 +97,7 @@
                                 </span>
                                 <select id="ethnicity_id" name="ethnicity_id"
                                     class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2">
-                                    <option value="" enabled>Select Ethnicity</option>
+                                    <option value="" enabled>--Select Ethnicity--</option>
                                     @foreach ($ethnicities as $ethnicity)
                                         <option value="{{ $ethnicity->id }}"
                                             {{ old('ethnicity_id', $personalInformation->ethnicity_id ?? '') == $ethnicity->id ? 'selected' : '' }}>
@@ -119,7 +119,7 @@
                                 <select id="county_id" name="county_id" x-model="selectedCounty"
                                     @change="fetchSubcounties()"
                                     class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2">
-                                    <option value="" disabled>Select County</option>
+                                    <option value="" disabled>--Select County--</option>
                                     @foreach ($counties as $county)
                                         <option value="{{ $county->id }}"
                                             {{ old('county_id', $personalInformation->county_id ?? '') == $county->id ? 'selected' : '' }}>
@@ -141,7 +141,7 @@
                                 <select id="sub_county_id" name="sub_county_id" x-model="selectedSubcounty"
                                     @change="fetchWards()"
                                     class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2">
-                                    <option value="" disabled>Select SubCounty</option>
+                                    <option value="" disabled>--Select SubCounty--</option>
                                     <template x-for="subcounty in subcounties" :key="subcounty.id">
                                         <option :value="subcounty.id" x-text="subcounty.subcounty_name"
                                             :selected="subcounty.id ==
@@ -162,7 +162,7 @@
                                 </span>
                                 <select id="ward_id" name="ward_id" x-model="selectedWard"
                                     class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm text-sm pl-10 py-2">
-                                    <option value="" disabled>Select Ward</option>
+                                    <option value="" disabled>--Select Ward--</option>
                                     <template x-for="ward in wards" :key="ward.id">
                                         <option :value="ward.id" x-text="ward.ward_name"
                                             :selected="ward.id == '{{ old('ward_id', $personalInformation->ward_id ?? '') }}'">
@@ -234,7 +234,7 @@
                             </span>
                             <select id="religion" name="religion"
                                 class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm mt-1 text-sm pl-10 py-2">
-                                <option value="">Select Religion</option>
+                                <option value="">--Select Religion--</option>
                                 @foreach ($religions as $religion)
                                     <option value="{{ $religion }}"
                                         {{ old('religion', $personalInformation->religion ?? '') == $religion ? 'selected' : '' }}>
@@ -303,7 +303,7 @@
                         <select name="pwd_type" id="pwd_type"
                             class="w-full text-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
                             x-bind:required="hasDisability == 1">
-                            <option value="">Select Disability Type</option>
+                            <option value="">--Select Disability Type--</option>
                             <option value="visual"
                                 {{ old('pwd_type', $personalInformation->pwd_type ?? '') == 'visual' ? 'selected' : '' }}>
                                 Visual Impairment</option>
@@ -379,7 +379,7 @@
                     <select name="department" id="department"
                         class="w-full text-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
                         x-bind:required="isApplicant === 'yes'">
-                        <option value="">Select Department</option>
+                        <option value="">--Select Department--</option>
                         <option value="ICT"
                             {{ old('department', $personalInformation->department ?? '') == 'ICT' ? 'selected' : '' }}>
                             ICT</option>
@@ -416,7 +416,7 @@
                     <select name="terms_of_service" id="terms_of_service"
                         class="w-full text-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
                         x-bind:required="isApplicant === 'yes'">
-                        <option value="">Select Terms of Service</option>
+                        <option value="">--Select Terms of Service--</option>
                         <option value="permanent"
                             {{ old('terms_of_service', $personalInformation->terms_of_service ?? '') == 'permanent' ? 'selected' : '' }}>
                             Permanent</option>
@@ -438,7 +438,7 @@
                     <select name="job_scale" id="job_scale"
                         class="w-full text-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm"
                         x-bind:required="isApplicant === 'yes'">
-                        <option value="">Select Job Scale</option>
+                        <option value="">--Select Job Scale--</option>
                         @for ($i = 1; $i <= 12; $i++)
                             <option value="bma{{ $i }}"
                                 {{ old('job_scale', $personalInformation->job_scale ?? '') == "bma$i" ? 'selected' : '' }}>

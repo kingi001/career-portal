@@ -57,11 +57,11 @@
                             <tr>
                                 <td colspan="8" class="p-4 text-center">
                                     <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
-                                        <p class="mt-1 text-sm">{{ __('No employment history added yet.Click Add') }} </p>
+                                        <p class="mt-1 text-sm">No Employment History Added Yet. Click <strong>Add Employment</strong></p>
                                     </div>
                                 </td>
                             </tr>

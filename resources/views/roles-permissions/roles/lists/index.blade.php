@@ -10,17 +10,6 @@
                 </h3>
             </div>
 
-            <!-- Search & Filter -->
-            {{-- <div class="mb-4 flex justify-between items-center text-sm">
-                <div class="relative w-full sm:w-1/3">
-                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text" id="search" placeholder="Search roles..."
-                        class="w-full p-1 pl-10 text-sm border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400">
-                </div>
-            </div> --}}
-
             <!-- Roles Table -->
             <div class="overflow-auto rounded-lg shadow mt-4 hidden md:block">
                 <table class="min-w-full bg-white border border-gray-300 rounded-lg">

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfessionalQualificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInformationController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,10 +40,11 @@ Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
 Route::get('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
 Route::put('/roles/{role}/give-permission', [RoleController::class, 'givePermissionToRole']);
+Route::resource('users', UserController::class);
+
 
 
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
-Route::get('referee', function () { return view('referee.index');})->name('referee');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

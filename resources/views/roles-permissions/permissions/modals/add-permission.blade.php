@@ -1,9 +1,9 @@
 <!-- ADD Permission Modal -->
 <div x-data="{ open: false }" @open-modal.window="if ($event.detail.modal === 'add-permission') open = true" x-cloak>
-    <div class="mt-4 flex justify-end">
+    <div class="mt-2 flex justify-right">
         <button @click="open = true"
             class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-            <i class="fas fa-plus-circle text-xs"></i> {{ __('Create Permission') }}
+            <i class="fas fa-plus-circle text-sm"></i> {{ __('Create Permission') }}
         </button>
     </div>
 
@@ -52,7 +52,7 @@
 
                     <button type="submit"
                         class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                        <i class="fas fa-save"></i> {{ __('Save Permission') }}
+                        <i class="fas fa-save"></i> {{ __('Add Permission') }}
                     </button>
                 </div>
             </form>

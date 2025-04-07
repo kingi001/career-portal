@@ -13,7 +13,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::orderBy('name')->get();
+        $permissions = Permission::orderBy('name')->paginate(15);
         return view('roles-permissions.permissions.lists.index', compact('permissions'));
     }
     /**

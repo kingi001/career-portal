@@ -11,10 +11,10 @@
                 </h3>
             </div>
             <!-- Search & Filter -->
-            <div class="mb-2 flex justify-between items-center text-sm">
+            <div class="mb-1 flex justify-between items-center text-sm">
                 <div class="relative w-full sm:w-1/3">
                     <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 text-sm">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-search text-sm"></i>
                     </span>
                     <input type="text" id="search" placeholder="Search permissions..."
                         class="w-full text-sm p-2 pl-10 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400">
@@ -30,7 +30,7 @@
                             <th class="p-2 text-sm text-gray-700 whitespace-nowrap text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    {{-- <tbody class="divide-y divide-gray-200">
                         @forelse ($permissions as $key => $permission)
                             <tr class="hover:bg-gray-50 transition-colors">
                                 <td class="p-2 text-sm text-gray-700 whitespace-nowrap">{{ $key + 1 }}</td>
@@ -43,11 +43,45 @@
                                     </button>
 
                                     <!-- Delete Form -->
-                                   <form id="delete-form-{{ $permission->id }}" action="{{ route('permissions.destroy', $permission->id) }}" method="POST" class="inline">
+                                    <form id="delete-form-{{ $permission->id }}"
+                                        action="{{ route('permissions.destroy', $permission->id) }}" method="POST"
+                                        class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                                onclick="confirmDelete({{ $permission->id }})">
+                                        <button type="button"
+                                            class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                            onclick="confirmDelete({{ $permission->id }})">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="p-4 text-center text-gray-500">No permissions found.</td>
+                            </tr>
+                        @endforelse
+                    </tbody> --}}
+                    <tbody>
+                        @forelse ($permissions as $key => $permission)
+                            <tr class="{{ $key % 2 === 0 ? 'bg-white' : 'bg-gray-100' }} hover:bg-gray-100 transition-colors">
+                                <td class="p-2 text-sm text-gray-700 whitespace-nowrap">{{ $key + 1 }}</td>
+                                <td class="p-2 text-sm text-gray-700 whitespace-nowrap">{{ $permission->name }}</td>
+                                <td class="p-2 text-sm text-gray-700 whitespace-nowrap flex justify-center gap-3">
+                                    <!-- Edit Button -->
+                                    <button class="text-yellow-500 hover:text-yellow-600 transition"
+                                        @click="fetchPermission({{ $permission->id }})">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+
+                                    <!-- Delete Form -->
+                                    <form id="delete-form-{{ $permission->id }}"
+                                        action="{{ route('permissions.destroy', $permission->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button"
+                                            class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                            onclick="confirmDelete({{ $permission->id }})">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </form>
@@ -61,9 +95,16 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Pagination Links -->
 
+            <div class="mt-1 flex justify-end">
+                <nav aria-label="Pagination">
+                    {{ $permissions->onEachSide(1)->links('vendor.pagination.tailwind') }}
+                </nav>
+            </div>
             @include('roles-permissions.permissions.modals.add-permission')
             @include('roles-permissions.permissions.modals.edit-permission')
+
 
         </div>
     </div>

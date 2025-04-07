@@ -1,4 +1,4 @@
-<div class="flex items-center space-x-6 mb-4 text-indigo-700">
+<div class="flex items-center justify-end space-x-2 mb-1 text-indigo-700">
     <!-- Roles Link -->
     <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
         <i class="fas fa-users-cog mr-1"></i> {{ __('Roles') }}
@@ -10,7 +10,7 @@
     </x-nav-link>
 
     <!-- Users Link -->
-    <x-nav-link href="#" :active="request()->routeIs('users.index')">
+    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
         <i class="fas fa-users mr-1"></i> {{ __('Users') }}
     </x-nav-link>
 </div>
