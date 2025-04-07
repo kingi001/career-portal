@@ -2,36 +2,12 @@
 
 ## Overview
 
-The **Job Application Portal** is a web-based platform designed to streamline the job application process. It allows users to create profiles, add their educational background, manage personal information, and apply for job opportunities. The portal is built using **Laravel Breeze** and **Tailwind CSS** for a modern and responsive user experience.
+The **Job Application Portal** is a web-based platform designed to streamline the job application process. It allows users to create profiles, add their educational background, manage personal information, and apply for job opportunities. The portal is built using **Laravel** and **Tailwind CSS** for a modern and responsive user experience.
 
-## Features
-
-### ✅ **User Management**
-
-- User registration and authentication
-- Profile management (Personal Information, Education, etc.)
-
-### 🎓 **Education Section**
-
-- Add, edit, and delete education background
-- Fields: Institution, Level of Study, Field of Study, Award, Start Date, End Date
-- Validation to ensure correct data input
-
-### 📜 **Personal Information Section**
-
-- Includes: Full Name, Email, Phone Number, Date of Birth, Gender, Marital Status, National ID, Nationality, County, Subcounty, Ethnicity
-- Dropdowns for easy selection
-- Eloquent relationships for location-based data
-
-### 📑 **Job Application Management** *(Future Development)*
-
-- Browse and apply for jobs
-- View application status
-- Upload resumes and cover letters
 
 ## Technology Stack
 
-- **Backend:** Laravel 10 (Breeze Authentication)
+- **Backend:** Laravel 11 (Breeze Authentication + OTP)
 - **Frontend:** Tailwind CSS, Alpine.js
 - **Database:** MySQL
 - **Version Control:** Git & GitHub
@@ -42,8 +18,8 @@ The **Job Application Portal** is a web-based platform designed to streamline th
 ### 1️⃣ Clone the Repository
 
 ```sh
-    git clone https://github.com/yourusername/job-application-portal.git
-    cd job-application-portal
+    git https://github.com/kingi001/career-portal.git
+    cd career-portal
 ```
 
 ### 2️⃣ Install Dependencies
@@ -84,12 +60,21 @@ Then run:
 ```sh
     php artisan serve
 ```
+### 5️⃣ Run the Application
+
+```sh
+    npm run dev
+```
 
 Then open `http://127.0.0.1:8000` in your browser.
 
 ## Screenshots 
 ![Dashboard Screenshot](screenshots/screenshot1.PNG)
 ![Education Section](screenshots/screenshot2.PNG)
+![Education Section](screenshots/screenshot3.PNG)
+![Education Section](screenshots/screenshot4.PNG)
+![Education Section](screenshots/screenshot5.PNG)
+![Education Section](screenshots/screenshot6.PNG)
 
 
 ## Future Enhancements
@@ -107,9 +92,6 @@ Contributions are welcome! Please follow these steps:
 3. Commit changes and push to GitHub
 4. Submit a pull request
 
-
-
 ---
-
 🚀 **Developed by khamis kinigi** 
 
