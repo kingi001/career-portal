@@ -26,7 +26,7 @@
                 <div x-show="showForm" x-transition class=" mx-auto max-w-3xl bg-white p-2 rounded-lg animate-fade-in">
                     <div class="bg-white rounded-lg p-6 border border-gray-200">
 
-                        <form method="GET" action="{{ url('users') }}" id="search-form" class="space-y-2 space-x-1">
+                        <form method="GET" action="{{ url('users') }}" id="search-form" class="space-y-2 space-x-1 text-sm">
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
 
@@ -142,7 +142,7 @@
                                     <div class="flex justify-center gap-4 flex-wrap">
                                         <!-- Edit Button -->
                                         <button type="button"
-                                            class="text-yellow-500 hover:text-yellow-600 transition flex items-center gap-1"
+                                            class="text-yellow-500 hover:text-yellow-600 text-sm transition flex items-center gap-1"
                                             @click="fetchuser(@json($user->id))">
                                             <i class="fas fa-edit"></i> Update
                                         </button>
@@ -154,7 +154,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"
-                                                class="text-red-500 hover:text-red-700 transition flex items-center gap-1"
+                                                class="text-red-500 text-sm hover:text-red-700 transition flex items-center gap-1"
                                                 onclick="confirmDelete({{ $user->id }})">
                                                 <i class="fas fa-trash-alt"></i> Delete
                                             </button>
