@@ -22,19 +22,25 @@
                     </button>
                 </div>
 
-                <!-- Search Form (Initially Hidden) -->
-                <div x-show="showForm" x-transition class=" mx-auto max-w-3xl bg-white p-2 rounded-lg animate-fade-in">
-                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                <!-- Search Form with Smooth Transition -->
+                <div x-show="showForm" x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95"
+                    class="mx-auto max-w-3xl bg-white p-2 rounded-lg mt-3">
 
-                        <form method="GET" action="{{ url('users') }}" id="search-form" class="space-y-2 space-x-1 text-sm">
+                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                        <form method="GET" action="{{ url('users') }}" id="search-form"
+                            class="space-y-2 space-x-1 text-sm">
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
-
                                 <!-- User Role -->
                                 <div>
                                     <x-input-label for="user_role_id" :value="__('User Role')" />
                                     <select id="user_role_id" name="user_role_id" aria-label="Select User Role"
-                                        class="form-control w-full text-sm  border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                        class="form-control w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                         <option value="">--Select roles--</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -70,24 +76,22 @@
                                         class="form-control w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="Enter phone number" />
                                 </div>
-
                             </div>
 
                             <!-- Search and Reset Buttons -->
                             <div class="flex justify-end mt-4 space-x-4">
-                                <!-- Button Group -->
                                 <div class="flex space-x-4">
                                     <!-- Reset Button -->
                                     <button type="button"
-                                        class="bg-gray-400 text-white py-1 px-4 rounded-md text-sm hover:bg-gray-500 transition duration-200 flex items-center "
+                                        class="bg-gray-400 text-white py-1 px-4 rounded-md text-sm hover:bg-gray-500 transition duration-200 flex items-center"
                                         @click="showForm = false">
                                         <i class="fa fa-repeat text-sm mr-1"></i>
                                         <span>Reset</span>
                                     </button>
 
-                                    <!-- Submit (Search) Button -->
+                                    <!-- Submit Button -->
                                     <button type="submit"
-                                        class="bg-blue-600 text-sm text-white py-1 px-4 rounded-md text-sm hover:bg-blue-700 transition duration-200 flex items-center ">
+                                        class="bg-blue-600 text-white py-1 px-4 rounded-md text-sm hover:bg-blue-700 transition duration-200 flex items-center">
                                         <i class="fa fa-search text-sm mr-1"></i>
                                         <span>Search</span>
                                     </button>
@@ -98,6 +102,7 @@
                     </div>
                 </div>
             </div>
+
 
 
 
@@ -198,15 +203,26 @@
             </div>
 
             <!-- Mobile View -->
+            <!-- Mobile View -->
             <div class="md:hidden">
                 @forelse ($users as $key => $user)
-                    <div class="border rounded-lg p-4 mb-3 shadow-sm bg-white">
-                        <div class="text-sm font-medium text-gray-800">{{ $user->name }}</div>
-                        <div class="text-sm text-gray-600">{{ $user->email ?? 'N/A' }}</div>
-                        <div class="flex justify-start mt-2 gap-4 flex-wrap text-sm">
+                    <div class="border rounded-lg p-4 mb-4 shadow-sm bg-white space-y-2">
+                        <div class="text-sm text-gray-500">#{{ $key + 1 }}</div>
+                        <div class="text-base font-semibold text-indigo-700">{{ $user->name }}</div>
+                        <div class="text-sm text-gray-600"><strong>Email:</strong> {{ $user->email ?? 'N/A' }}</div>
+                        <div class="text-sm text-gray-600"><strong>Phone:</strong> 0793532363</div>
+                        <div class="text-sm text-gray-600"><strong>Role:</strong> Admin</div>
+                        <div>
+                            <span
+                                class="inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">
+                                <i class="fa fa-check mr-1 text-xs"></i> Active
+                            </span>
+                        </div>
 
+                        <!-- Actions -->
+                        <div class="flex flex-wrap gap-4 mt-2">
                             <!-- Edit -->
-                            <button class="text-yellow-500 hover:text-yellow-600 flex items-center gap-1"
+                            <button class="text-yellow-500 hover:text-yellow-600 text-sm flex items-center gap-1"
                                 @click="fetchuser(@json($user->id))">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
@@ -216,7 +232,8 @@
                                 action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="text-red-500 hover:text-red-600 flex items-center gap-1"
+                                <button type="button"
+                                    class="text-red-500 hover:text-red-600 text-sm flex items-center gap-1"
                                     onclick="confirmDelete({{ $user->id }})">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
@@ -227,7 +244,5 @@
                     <p class="text-center text-gray-500 text-sm mt-4">No users found.</p>
                 @endforelse
             </div>
-
         </div>
-    </div>
 </x-app-layout>

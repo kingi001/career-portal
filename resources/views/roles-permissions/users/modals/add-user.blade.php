@@ -12,7 +12,7 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center px-6 py-1 bg-indigo-600 text-white rounded-t-lg">
                 <h2 class="text-lg font-semibold flex items-center gap-1">
-                    <i class="fas fa-user-plus"></i> Add New User
+                    <i class="fas fa-user-plus text-sm mr-1"></i> Add New User
                 </h2>
                 <button @click="open = false" class="text-white hover:text-gray-300 transition-colors duration-200">
                     <i class="fas fa-times"></i>
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Modal Form -->
-            <form method="POST" action="{{ route('users.store') }}" class="p-5 space-y-4">
+            <form method="POST" action="{{ route('users.store') }}" class="p-4 space-y-4">
                 @csrf
 
                 <p class="text-sm text-gray-700">
