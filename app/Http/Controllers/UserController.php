@@ -62,7 +62,8 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()->findOrFail($id); // get even deleted
+
         $userRole = $user->roles->pluck('name')->first(); // Assuming single role
         $user->role = $userRole;
 
@@ -123,5 +124,17 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User restored successfully.');
+    }
+    public function forceDelete($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        if (auth()->id() == $user->id) {
+            return redirect()->back()->with('error', 'You cannot delete your own account permanently.');
+        }
+
+        $user->forceDelete();
+
+        return redirect()->route('users.index')->with('success', 'User permanently deleted.');
     }
 }

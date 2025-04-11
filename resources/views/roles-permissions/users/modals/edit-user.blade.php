@@ -1,6 +1,5 @@
 <div x-data="{ open: false, user: {} }"
     @open-modal.window="if ($event.detail.modal === 'edit-user') { open = true; user = $event.detail.user; }" x-cloak>
-
     <!-- Modal Overlay -->
     <div x-show="open"
         class="fixed inset-0 mt-4 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300"
@@ -101,18 +100,49 @@
 
 
 
+
                 <!-- Modal Footer (Buttons) -->
-                <div class="mt-5 flex justify-end space-x-4">
+                <div class="mt-5 flex justify-end flex-wrap gap-3">
+
+                    <!-- Cancel Button -->
                     <button type="button" @click="open = false"
-                        class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                        class="min-w-[140px] bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 text-sm rounded-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
                         <i class="fas fa-times"></i> {{ __('Cancel') }}
                     </button>
 
-                    <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                        <i class="fas fa-save"></i> {{ __('Update') }}
-                    </button>
+                    <!-- Update Button -->
+                    <div x-show="!user.deleted_at">
+                        <button type="submit"
+                            class="min-w-[140px] bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 text-sm rounded-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                            <i class="fas fa-save"></i> {{ __('Update') }}
+                        </button>
+                    </div>
+
+                    <!-- Restore Button -->
+                    <div x-show="user.deleted_at">
+                        <form :action="'/users/' + user.id + '/restore'" method="POST" x-data @submit.stop>
+                            @csrf
+                            <button type="submit"
+                                class="min-w-[140px] bg-green-600 hover:bg-green-700 text-white px-2 py-1 text-sm rounded-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                                <i class="fas fa-undo-alt"></i> {{ __('Restore') }}
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Force Delete Button -->
+                    <div x-show="user.deleted_at">
+                        <form :action="'/users/' + user.id + '/force-delete'" method="POST" x-data
+                            @submit.prevent="if(confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')) { $el.submit(); }">
+                            @csrf
+                            <button type="submit"
+                                class="min-w-[140px] bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-sm rounded-md flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                                <i class="fas fa-trash-alt"></i> {{ __('Delete') }}
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
+
             </form>
         </div>
     </div>

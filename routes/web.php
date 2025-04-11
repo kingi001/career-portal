@@ -40,7 +40,13 @@ Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
 Route::get('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
 Route::put('/roles/{role}/give-permission', [RoleController::class, 'givePermissionToRole']);
+
+Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+Route::post('/users/{id}/force-delete', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+
 Route::resource('users', UserController::class);
+
+
 
 
 
