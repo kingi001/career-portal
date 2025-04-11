@@ -48,14 +48,6 @@
                         <x-input-error class="mt-2" :messages="$errors->get('email')" />
                     </div>
 
-                    <!-- Telephone Number -->
-                    <div>
-                        <x-input-label for="telephone" :value="__('Telephone Number')" />
-                        <x-text-input id="telephone" name="telephone" type="text"
-                            class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                            placeholder="e.g. +2541234 / 071234" />
-                        <x-input-error class="mt-2" :messages="$errors->get('telephone')" />
-                    </div>
 
                     <!-- Password -->
                     <div>
@@ -66,22 +58,31 @@
                         <x-input-error class="mt-2" :messages="$errors->get('password')" />
                     </div>
 
-                </div>
-
-                <!-- Role Selection (optional if using roles) -->
-                @if (isset($roles) && count($roles))
+                    <!-- Telephone Number -->
                     <div>
-                        <x-input-label for="role" :value="__('Assign Role')" />
-                        <select id="role" name="role"
-                            class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            <option value="">-- Select Role --</option>
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                        <x-input-error class="mt-2" :messages="$errors->get('role')" />
+                        <x-input-label for="phone" :value="__('Phone Number')" />
+                        <x-text-input id="phone" name="phone" type="text"
+                            class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            placeholder="e.g. +2541234 / 071234" />
+                        <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                     </div>
-                @endif
+                    <!-- User Type -->
+                </div>
+                @if (isset($roles) && count($roles))
+                        <div>
+                            <x-input-label for="roles" :value="__('Assign Role')" />
+                            <select id="roles" name="roles" required
+                                class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <option value="">-- Select Role --</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-2" :messages="$errors->get('roles')" />
+                        </div>
+                    @endif
+
+
 
                 <!-- Modal Footer -->
                 <div class="mt-5 flex justify-end space-x-4">

@@ -5,14 +5,13 @@
             @include('roles-permissions.nav-links')
 
             <!-- Page Heading -->
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
+            <div class="flex items-center justify-between mb-1 pb-1 border-b border-gray-200">
                 <h3 class="text-base font-semibold text-indigo-700 flex items-center gap-2">
                     <i class="fas fa-users-cog text-blue-600 text-xl"></i>
                     {{ __('System Users') }}
                 </h3>
-
             </div>
-            <div x-data="{ showForm: false }" class="w-full mt-4">
+            <div x-data="{ showForm: false }" class="w-full">
 
                 <!-- Search Button Justified at the End -->
                 <div class="flex justify-end mt-1">
@@ -29,9 +28,9 @@
                     x-transition:leave="transition ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="mx-auto max-w-3xl bg-white p-2 rounded-lg mt-3">
+                    class="mx-auto max-w-3xl bg-white p-2 rounded-lg mt-1">
 
-                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                    <div class="bg-white rounded-lg p-4 shadow-md">
                         <form method="GET" action="{{ url('users') }}" id="search-form"
                             class="space-y-2 space-x-1 text-sm">
 
@@ -107,7 +106,7 @@
 
 
             <!-- Desktop Table -->
-            <div class="overflow-auto rounded-lg shadow mt-4 hidden md:block">
+            <div class="overflow-auto rounded-lg shadow mt-1 hidden md:block">
                 <table class="min-w-full bg-white border border-gray-300 rounded-lg">
                     <thead class="bg-blue-50 border-b-2 border-gray-200">
                         <tr>
@@ -126,29 +125,40 @@
                                 <td class="p-3 text-sm text-gray-700">{{ $key + 1 }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $user->name }}</td>
                                 <td class="p-3 text-sm text-gray-700">{{ $user->email ?? 'N/A' }}</td>
-                                <td class="p-3 text-sm text-gray-700">0793532363</td>
+                                <td class="p-3 text-sm text-gray-700">{{ $user->phone ?? 'N/A' }}</td>
 
 
                                 <td class="p-3 text-sm text-center">
                                     <span
                                         class="inline-flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full">
-                                        {{-- {{ $user->role->name ?? 'N/A' }} --}}
-                                        {{ 'Admin' }}
+                                        {{ $user->roles->first()->name ?? 'N/A' }}
+
                                     </span>
                                 </td>
                                 <td class="p-3 text-sm text-center">
-                                    <span
-                                        class="bg-green-600 rounded-full justify-center items-center text-xs font-semibold px-2 py-1 text-white">
+                                    @if (is_null($user->deleted_at))
+                                    <span class="bg-green-600 rounded-full justify-center items-center text-xs font-semibold px-2 py-1 text-white inline-flex gap-1">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         Active
                                     </span>
+                                @else
+                                    <span class="bg-red-600 rounded-full justify-center items-center text-xs font-semibold px-2 py-1 text-white inline-flex gap-1">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                        Deleted / Inactive
+                                    </span>
+                                @endif
                                 </td>
                                 <td class="p-3 text-sm text-center">
                                     <div class="flex justify-center gap-4 flex-wrap">
                                         <!-- Edit Button -->
-                                        <button type="button"
+                                        {{-- <button type="button"
                                             class="text-yellow-500 hover:text-yellow-600 text-sm transition flex items-center gap-1"
                                             @click="fetchuser(@json($user->id))">
+                                            <i class="fas fa-edit"></i> Update
+                                        </button> --}}
+                                        <button
+                                            @click="$dispatch('open-modal', { modal: 'edit-user', user: {{ json_encode($user) }} })"
+                                            class="text-yellow-400 hover:text-yellow-500 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                             <i class="fas fa-edit"></i> Update
                                         </button>
 
@@ -169,13 +179,26 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="p-4 text-center text-gray-500">No users found.</td>
+                                <td colspan="8" class="p-4 text-center text-gray-500">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-5 text-sm items-center text-center">
+                                            {{ __('Query submitted returned no user.') }}
+                                        </p>
+                                    </div>
+                                </td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
 
                 @include('roles-permissions.users.modals.add-user')
+                @include('roles-permissions.users.modals.edit-user')
+
 
             </div>
 

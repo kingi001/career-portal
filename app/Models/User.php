@@ -7,6 +7,7 @@ use App\Models\Education;
 use App\Models\UserInformation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -16,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasApiTokens, Notifiable,HasRoles;
+    use HasFactory, HasApiTokens, Notifiable,HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +29,8 @@ class User extends Authenticatable
         'email',
         'password',
         'otp',
-        'otp_expires_at'
+        'otp_expires_at',
+        'phone',
     ];
     protected $casts = [
         'otp_expires_at' => 'datetime',
