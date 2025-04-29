@@ -491,6 +491,12 @@
                             </span>
                         </li>
                         <li>
+                            ID/Passport -
+                            <span class="inline-flex items-center gap-1 text-green-600 font-semibold">
+                                <i class="fas fa-check-circle"></i> Uploaded
+                            </span>
+                        </li>
+                        <li>
                             Professional Certificates -
                             <span class="inline-flex items-center gap-1 text-yellow-600 font-semibold">
                                 <i class="fas fa-exclamation-circle"></i> Missing
@@ -503,7 +509,7 @@
                             </span>
                         </li>
                         <li>
-                            Application Letter -
+                            Membership to Professional Bodies -
                             <span class="inline-flex items-center gap-1 text-green-600 font-semibold">
                                 <i class="fas fa-check-circle"></i> Uploaded
                             </span>
