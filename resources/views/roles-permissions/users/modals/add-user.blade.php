@@ -69,7 +69,7 @@
                     <!-- User Type -->
                 </div>
                 @if (isset($roles) && count($roles))
-                        <div>
+                        <div >
                             <x-input-label for="roles" :value="__('Assign Role')" />
                             <select id="roles" name="roles" required
                                 class="block w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">

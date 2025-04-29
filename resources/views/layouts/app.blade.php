@@ -5,9 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -31,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => loading = false);"
     <!-- Loading Spinner Overlay -->
     <div x-show="loading"
         class="fixed inset-0 flex items-center justify-center bg-white dark:bg-black bg-opacity-75 z-50">
-        <i class="fas fa-spinner fa-spin text-blue-600 text-4xl"></i>
+        <i class="fas fa-spinner fa-spin text-blue-600 text-3xl"></i>
     </div>
     <!---Dark Mode Toggle -->
     <button @click="darkMode = !darkMode"
@@ -170,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => loading = false);"
             });
         }
     </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script> --}}
 </body>
 
 </html>

@@ -46,10 +46,6 @@ Route::post('/users/{id}/force-delete', [UserController::class, 'forceDelete'])-
 
 Route::resource('users', UserController::class);
 
-
-
-
-
 Route::get('/application-submission', function () { return view('applicationstatus.index');})->name('application');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
