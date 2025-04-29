@@ -13,58 +13,65 @@
 
             <!-- Desktop Table View -->
             <div class="overflow-auto rounded-lg shadow-md mt-4 hidden md:block">
-                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-gray-100 border-b-2 border-gray-200">
-                        <tr class="text-gray-700">
-                            <th class="p-3 text-sm font-medium text-center">
-                                <i class="fas fa-hashtag"></i>
-                            </th>
-                            <th class="p-3 text-sm font-semibold text-left">Professional Body</th>
-                            <th class="p-3 text-sm font-semibold text-left">Membership No</th>
-                            <th class="p-3 text-sm font-semibold text-left">Date Renewed</th>
-                            <th class="p-3 text-sm font-semibold text-left">Next Renewal Date</th>
-                            <th class="p-3 text-sm font-semibold text-center">Actions</th>
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg text-sm">
+                    <thead
+                        class="bg-blue-100 border-b-2 border-gray-200 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
+                        <tr>
+                            <th class="p-3 text-center"><i class="fas fa-hashtag"></i></th>
+                            <th class="p-3 text-left">Professional Body</th>
+                            <th class="p-3 text-left">Membership No</th>
+                            <th class="p-3 text-left">Date Renewed</th>
+                            <th class="p-3 text-left">Next Renewal Date</th>
+                            <th class="p-3 text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-200">
                         @forelse ($memberships as $membership)
-                            <tr class="hover:bg-gray-50 transition-colors border-b">
-                                <td class="p-3 text-sm text-gray-800 text-center">{{ $loop->iteration }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-building text-gray-500"></i> {{ $membership->professional_body }}
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-gray-800 text-center">{{ $loop->iteration }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i
+                                        class="fas fa-building text-gray-500 mr-1"></i>{{ $membership->professional_body }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-id-badge text-gray-500"></i> {{ $membership->membership_no }}
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-id-badge text-gray-500 mr-1"></i>{{ $membership->membership_no }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-calendar-check text-gray-500"></i> {{ $membership->date_renewed }}
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i
+                                        class="fas fa-calendar-check text-gray-500 mr-1"></i>{{ $membership->date_renewed }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-calendar-alt text-gray-500"></i> {{ $membership->expiry_date }}
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-calendar-alt text-gray-500 mr-1"></i>{{ $membership->expiry_date }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 flex items-center gap-3 justify-center">
-                                    <!-- Edit Button -->
-                                    <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
-                                        class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-
-                                    <!-- Delete Button -->
-                                    <form id="delete-form-{{ $membership->id }}" action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                                onclick="confirmDelete({{ $membership->id }})">
-                                            <i class="fas fa-trash-alt"></i> Delete
+                                <td class="p-3 text-center">
+                                    <div class="flex justify-center items-center gap-4">
+                                        <!-- Edit Button -->
+                                        <button
+                                            @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
+                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1">
+                                            <i class="fas fa-edit"></i> Edit
                                         </button>
-                                    </form>
+
+                                        <!-- Delete Button -->
+                                        <form id="delete-form-{{ $membership->id }}"
+                                            action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $membership->id }})">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="6" class="p-4 text-center">
-                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
@@ -75,6 +82,7 @@
                         @endforelse
                     </tbody>
                 </table>
+
             </div>
 
 
@@ -87,38 +95,44 @@
                             <i class="fas fa-building text-blue-500"></i> {{ $membership->professional_body }}
                         </h3>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-id-badge text-gray-500"></i>Membership No: {{ $membership->membership_no }}
+                            <i class="fas fa-id-badge text-gray-500"></i>Membership No:
+                            {{ $membership->membership_no }}
                         </p>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-calendar-check text-gray-500"></i>Date Renewed : {{ $membership->date_renewed }}
+                            <i class="fas fa-calendar-check text-gray-500"></i>Date Renewed :
+                            {{ $membership->date_renewed }}
                         </p>
                         <p class="text-sm text-gray-600 flex items-center gap-2">
-                            <i class="fas fa-calendar-alt text-gray-500"></i>Expiry Date : {{ $membership->expiry_date }}
+                            <i class="fas fa-calendar-alt text-gray-500"></i>Expiry Date :
+                            {{ $membership->expiry_date }}
                         </p>
 
                         <div class="flex justify-between items-center mt-3 space-x-4">
-                            <button @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
+                            <button
+                                @click="$dispatch('open-modal', { modal: 'edit-membership', membership: {{ json_encode($membership) }} })"
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <form id="delete-form-{{ $membership->id }}" action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
+                            <form id="delete-form-{{ $membership->id }}"
+                                action="{{ route('memberships.destroy', $membership->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                        onclick="confirmDelete({{ $membership->id }})">
+                                    onclick="confirmDelete({{ $membership->id }})">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>
                         </div>
                     </div>
                 @empty
-                <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                    <h4 class="text-md font-semibold flex items-center space-x-2">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Information</span>
-                    </h4>
-                    <p class="mt-5 text-sm items-center text-center">{{ __('No Membership to Professional Bodies Found.') }} </p>
-                </div>
+                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                        <h4 class="text-md font-semibold flex items-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Information</span>
+                        </h4>
+                        <p class="mt-5 text-sm items-center text-center">
+                            {{ __('No Membership to Professional Bodies Found.') }} </p>
+                    </div>
                 @endforelse
             </div>
 

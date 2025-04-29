@@ -43,6 +43,11 @@ Route::put('/roles/{role}/give-permission', [RoleController::class, 'givePermiss
 
 Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
 Route::post('/users/{id}/force-delete', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+Route::get('/export-users-pdf', [UserController::class, 'exportUsersPdf'])->name('export-users-pdf');
+Route::get('/export-users-excel', [UserController::class, 'exportUsersExcel'])->name('export-users-excel');
+Route::get('/export-users-csv', [UserController::class, 'exportUsersCsv'])->name('export-users-csv');
+Route::get('/users/print', [UserController::class, 'printUsersPdf'])->name('users.print');
+
 
 Route::resource('users', UserController::class);
 

@@ -219,23 +219,28 @@
 
                         <!-- Dropdown Menu -->
                         <div x-show="exportOpen" @click.away="exportOpen = false" x-transition
-                        class="absolute mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20">
-                        <a href="#" class="flex items-center px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 transition rounded-md">
-                            <i class="fas fa-file-csv mr-2"></i> Export as CSV
-                        </a>
-                        <a href="#" class="flex items-center px-4 py-2 text-sm text-green-600 hover:bg-green-50 transition rounded-md">
-                            <i class="fas fa-file-excel mr-2"></i> Export as Excel
-                        </a>
-                        <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition rounded-md">
+                            class="absolute mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+                            <a href="{{ route('export-users-pdf') }}"
+                            class="flex items-center px-4 py-1 text-sm text-gray-600 hover:bg-gray-50 transition rounded-md"
+                            target="_blank" download>
                             <i class="fas fa-file-pdf mr-2"></i> Export as PDF
                         </a>
-                    </div>
+                            <a href="{{ route('export-users-csv') }}"
+                                class="flex items-center px-4 py-1 text-sm text-blue-600 hover:bg-blue-50 transition rounded-md">
+                                <i class="fas fa-file-csv mr-2"></i> Export as CSV
+                            </a>
+                            <a href="{{ route('export-users-excel') }}"
+                                class="flex items-center px-4 py-1 text-sm text-green-600 hover:bg-green-50 transition rounded-md">
+                                <i class="fas fa-file-excel mr-2"></i> Export as Excel
+                            </a>
+
+                        </div>
 
                     </div>
 
                     <!-- Print and Import Buttons -->
                     <div class="flex gap-2">
-                        <a href="#"
+                        <a href="{{route('users.print')}}"
                             class="inline-flex items-center px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition">
                             <i class="fas fa-print mr-2"></i> Print
                         </a>
@@ -265,13 +270,15 @@
                         <div class="text-base font-semibold text-indigo-700">{{ $user->name }}</div>
                         <div class="text-sm text-gray-600"><strong>Email:</strong> {{ $user->email ?? 'N/A' }}</div>
                         <div class="text-sm text-gray-600"><strong>Phone:</strong> {{ $user->phone ?? 'N/A' }}</div>
-                        <div class="text-sm text-gray-600"><strong>Role:</strong> {{ $user->roles->first()->name ?? 'N/A' }}</div>
+                        <div class="text-sm text-gray-600"><strong>Role:</strong>
+                            {{ $user->roles->first()->name ?? 'N/A' }}</div>
 
                         <!-- User Status -->
                         <div>
                             <span
                                 class="inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">
-                                <i class="fa fa-check mr-1 text-xs"></i> {{ $user->status == 'active' ? 'Active' : 'Inactive' }}
+                                <i class="fa fa-check mr-1 text-xs"></i>
+                                {{ $user->status == 'active' ? 'Active' : 'Inactive' }}
                             </span>
                         </div>
 
@@ -284,7 +291,8 @@
                             </button>
 
                             <!-- Delete -->
-                            <form id="delete-form-mobile-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">
+                            <form id="delete-form-mobile-{{ $user->id }}"
+                                action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button"

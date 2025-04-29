@@ -13,56 +13,63 @@
 
             <!-- Desktop Table View -->
             <div class="overflow-auto rounded-lg shadow-md mt-4 hidden md:block">
-                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-blue-50 border-b-2 border-gray-200">
-                        <tr class="text-gray-700">
-                            <th class="p-3 text-sm font-medium text-left">
-                                <i class="fas fa-hashtag"></i>
-                            </th>
-                            <th class="p-3 text-sm font-semibold text-left">Institution</th>
-                            <th class="p-3 text-sm font-semibold text-left">Certification</th>
-                            <th class="p-3 text-sm font-semibold text-left">Award</th>
-                            <th class="p-3 text-sm font-semibold text-left">Start Date</th>
-                            <th class="p-3 text-sm font-semibold text-left">End Date</th>
-                            <th class="p-3 text-sm font-semibold text-center">Actions</th>
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg text-sm">
+                    <thead
+                        class="bg-blue-50 border-b-2 border-gray-200 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
+                        <tr>
+                            <th class="p-3 text-left"><i class="fas fa-hashtag"></i></th>
+                            <th class="p-3 text-left">Institution</th>
+                            <th class="p-3 text-left">Certification</th>
+                            <th class="p-3 text-left">Award</th>
+                            <th class="p-3 text-left">Start Date</th>
+                            <th class="p-3 text-left">End Date</th>
+                            <th class="p-3 text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-200">
                         @forelse ($qualifications as $qualification)
-                            <tr class="hover:bg-gray-50 transition-colors border-b">
-                                <td class="p-3 text-sm text-gray-800">{{ $loop->iteration }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-school text-gray-500"></i> {{ $qualification->institution }}
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-gray-800 text-left">{{ $loop->iteration }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i class="fas fa-school text-gray-500 mr-1"></i>{{ $qualification->institution }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                    <i class="fas fa-user-graduate text-gray-500"></i> {{ $qualification->certification }}
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    <i
+                                        class="fas fa-user-graduate text-gray-500 mr-1"></i>{{ $qualification->certification }}
                                 </td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->award }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->start_date }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $qualification->end_date }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap flex items-center gap-3 justify-center">
-                                    <!-- Edit Button -->
-                                    <button @click="$dispatch('open-modal', { modal: 'edit-professional-qualification', qualification: {{ json_encode($qualification) }} })"
-                                        class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-
-                                    <!-- Delete Button -->
-                                    <form id="delete-form-{{ $qualification->id }}" action="{{ route('qualifications.destroy', $qualification->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                                onclick="confirmDelete({{ $qualification->id }})">
-                                            <i class="fas fa-trash-alt"></i> Delete
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $qualification->award }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $qualification->start_date }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $qualification->end_date }}</td>
+                                <td class="p-3 text-center">
+                                    <div class="flex justify-center items-center gap-4">
+                                        <!-- Edit Button -->
+                                        <button
+                                            @click="$dispatch('open-modal', { modal: 'edit-professional-qualification', qualification: {{ json_encode($qualification) }} })"
+                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1">
+                                            <i class="fas fa-edit"></i> Edit
                                         </button>
-                                    </form>
+
+                                        <!-- Delete Button -->
+                                        <form id="delete-form-{{ $qualification->id }}"
+                                            action="{{ route('qualifications.destroy', $qualification->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                onclick="confirmDelete({{ $qualification->id }})">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="7" class="p-4 text-center">
-                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
@@ -73,6 +80,7 @@
                         @endforelse
                     </tbody>
                 </table>
+
             </div>
 
 
@@ -83,20 +91,25 @@
                         <h3 class="text-md font-semibold text-gray-900 flex items-center gap-2">
                             <i class="fas fa-school text-blue-500"></i> {{ $qualification->institution }}
                         </h3>
-                        <p class="text-sm text-gray-600"><i class="fas fa-user-graduate text-gray-500"></i> {{ $qualification->certification }}</p>
-                        <p class="text-sm text-gray-600"><i class="fas fa-award text-gray-500"></i> {{ $qualification->award }}</p>
-                        <p class="text-sm text-gray-600"><i class="fas fa-calendar-alt text-gray-500"></i> {{ $qualification->start_date }} - {{ $qualification->end_date }}</p>
+                        <p class="text-sm text-gray-600"><i class="fas fa-user-graduate text-gray-500"></i>
+                            {{ $qualification->certification }}</p>
+                        <p class="text-sm text-gray-600"><i class="fas fa-award text-gray-500"></i>
+                            {{ $qualification->award }}</p>
+                        <p class="text-sm text-gray-600"><i class="fas fa-calendar-alt text-gray-500"></i>
+                            {{ $qualification->start_date }} - {{ $qualification->end_date }}</p>
 
                         <div class="flex justify-between items-center mt-3 space-x-4">
-                            <button @click="$dispatch('open-modal', { modal: 'edit-professional-qualification', qualification: {{ json_encode($qualification) }} })"
+                            <button
+                                @click="$dispatch('open-modal', { modal: 'edit-professional-qualification', qualification: {{ json_encode($qualification) }} })"
                                 class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <form id="delete-form-{{ $qualification->id }}" action="{{ route('qualifications.destroy', $qualification->id) }}" method="POST">
+                            <form id="delete-form-{{ $qualification->id }}"
+                                action="{{ route('qualifications.destroy', $qualification->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
-                                        onclick="confirmDelete({{ $qualification->id }})">
+                                    onclick="confirmDelete({{ $qualification->id }})">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>

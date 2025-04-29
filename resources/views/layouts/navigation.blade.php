@@ -19,7 +19,7 @@
                 <div class="hidden md:flex space-x-4 ml-10">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
 
-                        <svg class="w-4 h-4 me-1 text-blue-600 dark:text-blue-500" aria-hidden="true"
+                        <svg class="w-3 h-3 me-1 text-blue-600 dark:text-blue-500" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path
                                 d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
@@ -29,10 +29,6 @@
 
                     <x-nav-link :href="route('personal-info.show')" :active="request()->routeIs('personal-info.show')">
                         <i class="fas fa-user text-blue-600"></i>
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" class="w-4 h-4  text-blue-600 me-1 dark:text-blue-500" >
-                            <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                          </svg> --}}
-
                         <span class="ml-1 text-sm font-normal text-gray-700">Personal Details</span>
                     </x-nav-link>
 
@@ -50,17 +46,17 @@
                             <x-slot name="content">
                                 <div class="w-60 bg-white shadow-lg rounded-md">
                                     <x-dropdown-link :href="route('education.index')" :active="request()->routeIs('education.index')"
-                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        class="flex items-center px-4 py-3 hover:bg-blue-100 transition">
                                         <i class="fas fa-university text-gray-700 mr-3"></i>
                                         <span class="flex-1">Academic Qualifications</span>
                                     </x-dropdown-link>
                                     <x-dropdown-link :href="route('qualifications.index')" :active="request()->routeIs('qualifications.index')"
-                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        class="flex items-center px-4 py-3 hover:bg-blue-100 transition">
                                         <i class="fas fa-certificate text-gray-700 mr-3"></i>
                                         <span class="flex-1">Professional Qualifications</span>
                                     </x-dropdown-link>
                                     <x-dropdown-link :href="route('memberships.index')" :active="request()->routeIs('memberships.index')"
-                                        class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                                        class="flex items-center px-4 py-3 hover:bg-blue-100 transition">
                                         <i class="fas fa-award text-gray-700 mr-3"></i>
                                         <span class="flex-1">Membership to Professional Bodies</span>
                                     </x-dropdown-link>
@@ -314,7 +310,7 @@
                         @endphp
                         <li>
                             <div class="flex items-center">
-                                <svg class="rtl:rotate-180 w-2 h-2 mx-1 text-gray-400" aria-hidden="true"
+                                <svg class="rtl:rotate-180 w-2 h-2 mx-1 text-blue-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <!-- Reduced w-3 h-1 to w-2 h-2 -->
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

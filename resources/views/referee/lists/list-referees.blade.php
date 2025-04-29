@@ -16,51 +16,54 @@
 
             <!-- Referee Table for Desktop -->
             <div class="hidden md:block overflow-x-auto rounded-lg shadow">
-                <table class="w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-gray-100">
-                        <tr class="text-left text-gray-700">
-                            <th class="p-3 text-sm font-semibold w-8 text-center">
-                                <i class="fas fa-hashtag text-blue-400"></i>
+                <table class="w-full bg-white border border-gray-300 rounded-lg text-sm">
+                    <thead
+                        class="bg-blue-100 text-indigo-800 uppercase text-xs font-semibold tracking-wider border-b-2 border-gray-200">
+                        <tr>
+                            <th class="p-3 w-8 text-center">
+                                <i class="fas fa-hashtag text-blue-500"></i>
                             </th>
-                            <th class="p-3 text-sm font-semibold">
-                                <i class="fas fa-user text-blue-400"></i> Full Name
+                            <th class="p-3 text-left">
+                                <i class="fas fa-user text-blue-500 mr-1"></i> Full Name
                             </th>
-                            <th class="p-3 text-sm font-semibold">
-                                <i class="fas fa-briefcase text-blue-400"></i> Job Title
+                            <th class="p-3 text-left">
+                                <i class="fas fa-briefcase text-blue-500 mr-1"></i> Job Title
                             </th>
-                            <th class="p-3 text-sm font-semibold">
-                                <i class="fas fa-building text-blue-400"></i> Company
+                            <th class="p-3 text-left">
+                                <i class="fas fa-building text-blue-500 mr-1"></i> Company
                             </th>
-                            <th class="p-3 text-sm font-semibold">
-                                <i class="fas fa-phone text-blue-400"></i> Phone
+                            <th class="p-3 text-left">
+                                <i class="fas fa-phone text-blue-500 mr-1"></i> Phone
                             </th>
-                            <th class="p-3 text-sm font-semibold">
-                                <i class="fas fa-envelope text-blue-400"></i> Email
+                            <th class="p-3 text-left">
+                                <i class="fas fa-envelope text-blue-500 mr-1"></i> Email
                             </th>
-                            <th class="p-3 text-sm font-semibold text-center w-28">
-                                <i class="fas fa-cogs text-blue-400"></i> Actions
+                            <th class="p-3 text-center w-32">
+                                <i class="fas fa-cogs text-blue-500 mr-1"></i> Actions
                             </th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($referees as $referee)
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="p-3 text-sm text-gray-800 text-center">{{ $loop->iteration }}</td>
-                                <td class="p-3 text-sm font-medium text-gray-900">{{ $referee->full_name }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $referee->job_title }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $referee->company }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $referee->phone }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $referee->email }}</td>
-                                <td class="p-3 text-sm text-center">
-                                    <div class="flex justify-center space-x-3">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-center text-gray-800">{{ $loop->iteration }}</td>
+                                <td class="p-3 font-medium text-gray-900 whitespace-nowrap">{{ $referee->full_name }}
+                                </td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $referee->job_title }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $referee->company }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $referee->phone }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $referee->email }}</td>
+                                <td class="p-3 text-center">
+                                    <div class="flex justify-center items-center gap-4">
+                                        <!-- Edit Button -->
                                         <button
                                             @click="$dispatch('open-modal', { modal: 'edit-referee', referee: {{ json_encode($referee) }} })"
-                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200 ease-in-out">
+                                            class="text-blue-500 hover:text-blue-700 flex items-center gap-1 transition-all duration-200">
                                             <i class="fas fa-edit"></i> Edit
                                         </button>
+                                        <!-- Delete Button -->
                                         <form id="delete-form-{{ $referee->id }}"
-                                              action="{{ route('referees.destroy', $referee->id) }}"
-                                              method="POST">
+                                            action="{{ route('referees.destroy', $referee->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"
@@ -75,18 +78,21 @@
                         @empty
                             <tr>
                                 <td colspan="7" class="p-4 text-center">
-                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
-                                        <p class="mt-1 text-sm">No Referees Added Yet. Click <strong>Add Referee</strong></p>
+                                        <p class="mt-1 text-sm">No Referees Added Yet. Click <strong>Add
+                                                Referee</strong></p>
                                     </div>
                                 </td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
+
             </div>
 
 
@@ -136,7 +142,8 @@
                             <i class="fas fa-info-circle"></i>
                             <span>Information</span>
                         </h4>
-                        <p class="mt-5 text-sm items-center text-center">{{ __('No Referees Added Yet. Click Add Referee') }} </p>
+                        <p class="mt-5 text-sm items-center text-center">
+                            {{ __('No Referees Added Yet. Click Add Referee') }} </p>
                     </div>
                 @endforelse
             </div>

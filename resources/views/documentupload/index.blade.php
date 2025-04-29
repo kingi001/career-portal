@@ -17,22 +17,26 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @php
                         $documentTypes = [
-                            ['name' => 'application_letter', 'label' => 'Application Letter (Required)', 'required' => true],
+                            [
+                                'name' => 'application_letter',
+                                'label' => 'Application Letter (Required)',
+                                'required' => true,
+                            ],
                             ['name' => 'id_passport', 'label' => 'ID / Passport (Required)', 'required' => true],
                             // ['name' => 'testimonials', 'label' => 'Testimonials (Optional)', 'required' => true]
                         ];
                     @endphp
 
                     @foreach ($documentTypes as $doc)
-                        <div class="relative border border-gray-300 rounded-lg shadow-sm p-3 hover:border-blue-400 transition">
+                        <div
+                            class="relative border border-gray-300 rounded-lg shadow-sm p-3 hover:border-blue-400 transition">
                             <label class="block text-sm font-medium text-gray-700 flex items-center gap-2">
                                 <i class="fas fa-file-alt text-blue-500"></i> {{ __($doc['label']) }}
                             </label>
                             <div class="mt-2 flex items-center space-x-3">
                                 <input type="file"
-                                    name="{{ $doc['name'] }}{{ $doc['multiple'] ?? false ? '[]' : '' }}"
-                                    accept=".pdf" {{ $doc['required'] ?? false ? 'required' : '' }}
-                                    class="hidden file-input"
+                                    name="{{ $doc['name'] }}{{ $doc['multiple'] ?? false ? '[]' : '' }}" accept=".pdf"
+                                    {{ $doc['required'] ?? false ? 'required' : '' }} class="hidden file-input"
                                     multiple="{{ $doc['multiple'] ?? false ? 'multiple' : '' }}"
                                     onchange="updateFileName(this, '{{ $doc['name'] }}Name')">
 
@@ -40,10 +44,12 @@
                                 <button type="button"
                                     onclick="document.querySelector('[name={{ $doc['name'] }}{{ $doc['multiple'] ?? false ? '\[\]' : '' }}]').click()"
                                     class="px-4 py-1 text-sm bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition flex items-center gap-2">
-                                    <i class="fas fa-cloud-upload-alt"></i> Choose File{{ $doc['multiple'] ?? false ? '(s)' : '' }}
+                                    <i class="fas fa-cloud-upload-alt"></i> Choose
+                                    File{{ $doc['multiple'] ?? false ? '(s)' : '' }}
                                 </button>
 
-                                <span id="{{ $doc['name'] }}Name" class="text-sm text-gray-600">No file selected</span>
+                                <span id="{{ $doc['name'] }}Name" class="text-sm text-gray-600">No file
+                                    selected</span>
 
                                 <!-- Clear Button -->
                                 <button type="button"
@@ -72,50 +78,73 @@
 
         <!-- Uploaded Documents -->
         <div class="mt-4 p-6 bg-white border border-gray-200 rounded-lg">
-            <h2 class="text-base font-medium text-indigo-700"><i class="fa fa-cloud-upload mr-2 text-blue-500"></i>{{ __('Uploaded Documents') }}</h2>
+            <h2 class="text-base font-medium text-indigo-700"><i
+                    class="fa fa-cloud-upload mr-2 text-blue-500"></i>{{ __('Uploaded Documents') }}</h2>
 
             <!-- Table for Desktop -->
             <div class="hidden md:block overflow-x-auto mt-4">
-                <table class="min-w-full bg-white rounded-lg shadow-md">
-                    <thead class="bg-blue-50 border-gray-200">
-                        <tr class="text-gray-700">
-                            <th class="p-3 text-sm font-semibold text-left">Document Name</th>
-                            <th class="p-3 text-sm font-semibold text-left">Category</th>
-                            <th class="p-3 text-sm font-semibold text-left">Size</th>
-                            <th class="p-3 text-center">Actions</th>
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md text-sm">
+                    <thead
+                        class="bg-blue-100 text-indigo-800 uppercase text-xs font-semibold tracking-wider border-b-2 border-gray-200">
+                        <tr>
+                            <th class="p-3 text-left">
+                                <i class="fas fa-file-alt text-blue-500 mr-1"></i> Document Name
+                            </th>
+                            <th class="p-3 text-left">
+                                <i class="fas fa-layer-group text-blue-500 mr-1"></i> Category
+                            </th>
+                            <th class="p-3 text-left">
+                                <i class="fas fa-weight text-blue-500 mr-1"></i> Size
+                            </th>
+                            <th class="p-3 text-center w-32">
+                                <i class="fas fa-cogs text-blue-500 mr-1"></i> Actions
+                            </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-200">
                         @forelse($documents as $document)
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $document->label ?? 'Unknown' }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ $document->category ?? 'N/A' }}</td>
-                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ number_format(($document->size ?? 0) / 1024, 2) }} KB</td>
-                                <td class="p-3 flex justify-center gap-4 text-sm text-gray-700 whitespace-nowrap">
-                                    <a href="{{ Storage::url($document->file_path ?? '') }}" target="_blank" class="text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                                        <i class="fas fa-eye"></i> View
-                                    </a>
-                                    <form id="delete-form-{{ $document->id }}" action="{{ route('documents.destroy', $document->id) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="text-red-500 hover:text-red-700 flex items-center gap-1"
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-gray-800 whitespace-nowrap">{{ $document->label ?? 'Unknown' }}
+                                </td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">{{ $document->category ?? 'N/A' }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    {{ number_format(($document->size ?? 0) / 1024, 2) }} KB</td>
+                                <td class="p-3 text-center whitespace-nowrap">
+                                    <div class="flex justify-center items-center gap-4">
+                                        <a href="{{ Storage::url($document->file_path ?? '') }}" target="_blank"
+                                            class="text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all duration-150 ease-in-out">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <form id="delete-form-{{ $document->id }}"
+                                            action="{{ route('documents.destroy', $document->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="text-red-500 hover:text-red-700 flex items-center gap-1"
                                                 onclick="confirmDelete({{ $document->id }})">
-                                            <i class="fas fa-trash-alt"></i> Delete
-                                        </button>
-                                    </form>
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="4" class="p-4 text-center text-gray-500"><div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                <h4 class="text-md font-semibold flex items-center space-x-2">
-                                    <i class="fas fa-info-circle"></i>
-                                    <span>Information</span>
-                                </h4>
-                                <p class="mt-5 text-sm items-center text-center">{{ __('No Docuent Uploaded Yet. Please Upload') }} </p>
-                            </div></td></tr>
+                            <tr>
+                                <td colspan="4" class="p-4 text-center">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
+                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Information</span>
+                                        </h4>
+                                        <p class="mt-1 text-sm">No Document Uploaded Yet. Please Upload</p>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
+
             </div>
 
             <!-- Card View for Mobile -->
@@ -124,12 +153,15 @@
                     <div class="p-4 border border-gray-300 rounded-lg shadow-sm bg-white">
                         <h3 class="text-sm font-semibold text-gray-900">{{ $document->label ?? 'Unknown' }}</h3>
                         <p class="text-xs text-gray-600">Category: {{ $document->category ?? 'N/A' }}</p>
-                        <p class="text-xs text-gray-600">Size: {{ number_format(($document->size ?? 0) / 1024, 2) }} KB</p>
+                        <p class="text-xs text-gray-600">Size: {{ number_format(($document->size ?? 0) / 1024, 2) }} KB
+                        </p>
                         <div class="mt-2 flex justify-between text-sm">
-                            <a href="{{ Storage::url($document->file_path ?? '') }}" target="_blank" class="text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                            <a href="{{ Storage::url($document->file_path ?? '') }}" target="_blank"
+                                class="text-blue-600 hover:text-blue-700 flex items-center gap-1">
                                 <i class="fas fa-eye"></i> View
                             </a>
-                            <form action="{{ route('documents.destroy', ['document' => $document->id]) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                            <form action="{{ route('documents.destroy', ['document' => $document->id]) }}"
+                                method="POST" onsubmit="return confirm('Are you sure?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:text-red-700 flex items-center gap-1">

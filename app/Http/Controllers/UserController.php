@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SendOtpMail;
+use App\Exports\UsersExport;
 use App\Models\User;
-use App\Models\UserInformation;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -48,7 +48,6 @@ class UserController extends Controller
             'phone' => 'nullable|string|unique:users,phone',
             'roles' => 'required'
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -136,5 +135,32 @@ class UserController extends Controller
         $user->forceDelete();
 
         return redirect()->route('users.index')->with('success', 'User permanently deleted.');
+    }
+
+    public function exportUsersPdf()
+    {
+        $users = User::withTrashed()->with('roles')->get(); // Include both soft-deletes and roles
+        $pdf = Pdf::loadView('pdfs.users', compact('users'));
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->download('users_report_' . date('Y-m-d') . '.pdf');
+    }
+    public function exportUsersExcel()
+    {
+        // Implement Excel export logic here
+        return Excel::download(new UsersExport, 'users_list_' . date('Y-m-d') . '.xlsx');
+    }
+    public function exportUsersCsv()
+    {
+        // Implement CSV export logic here
+        return Excel::download(new UsersExport, 'users.csv', \Maatwebsite\Excel\Excel::CSV);
+    }
+    public function printUsersPdf()
+    {
+        $users = User::withTrashed()->with('roles')->get();
+
+        $pdf = Pdf::loadView('pdfs.users', compact('users'));
+
+        // Stream the PDF in-browser instead of downloading
+        return $pdf->stream('users_report.pdf');
     }
 }
