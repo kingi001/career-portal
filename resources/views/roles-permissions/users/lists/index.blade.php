@@ -111,7 +111,8 @@
                             <th class="p-3 text-left"><i class="fas fa-user mr-1 text-gray-500"></i>Name</th>
                             <th class="p-3 text-left"><i class="fas fa-envelope mr-1 text-gray-500"></i>Email</th>
                             <th class="p-3 text-left"><i class="fas fa-phone-alt mr-1 text-gray-500"></i>Telephone</th>
-                            <th class="p-3 text-center"><i class="fas fa-user-shield mr-1 text-gray-500"></i>User Role</th>
+                            <th class="p-3 text-center"><i class="fas fa-user-shield mr-1 text-gray-500"></i>User Role
+                            </th>
                             <th class="p-3 text-center"><i class="fas fa-toggle-on mr-1 text-gray-500"></i>Status</th>
                             <th class="p-3 text-center"><i class="fas fa-cogs mr-1 text-gray-500"></i>Actions</th>
                         </tr>
@@ -130,17 +131,20 @@
                                     {{ $user->phone ?? 'N/A' }}
                                 </td>
                                 <td class="p-3 text-center">
-                                    <span class="inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full">
                                         {{ $user->roles->first()->name ?? 'N/A' }}
                                     </span>
                                 </td>
                                 <td class="p-3 text-center">
                                     @if (is_null($user->deleted_at))
-                                        <span class="bg-green-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
+                                        <span
+                                            class="bg-green-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
                                             <i class="fa fa-check"></i> Active
                                         </span>
                                     @else
-                                        <span class="bg-red-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
+                                        <span
+                                            class="bg-red-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
                                             <i class="fa fa-times"></i> Deleted
                                         </span>
                                     @endif
@@ -156,12 +160,11 @@
 
                                         <!-- Delete Button -->
                                         <form id="delete-form-{{ $user->id }}"
-                                            action="{{ route('users.destroy', $user->id) }}"
-                                            method="POST" class="inline">
+                                            action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                            class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button"
-                                                onclick="confirmDelete({{ $user->id }})"
+                                            <button type="button" onclick="confirmDelete({{ $user->id }})"
                                                 class="text-red-500 hover:text-red-700 flex items-center gap-1">
                                                 <i class="fas fa-trash-alt"></i> {{ __('Delete') }}
                                             </button>
@@ -172,7 +175,8 @@
                         @empty
                             <tr>
                                 <td colspan="7" class="p-4 text-center">
-                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                                    <div
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-sm">
                                         <h4 class="text-md font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
@@ -208,10 +212,10 @@
                         <div x-show="exportOpen" @click.away="exportOpen = false" x-transition
                             class="absolute mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20">
                             <a href="{{ route('export-users-pdf') }}"
-                            class="flex items-center px-4 py-1 text-sm text-gray-600 hover:bg-gray-50 transition rounded-md"
-                            target="_blank" download>
-                            <i class="fas fa-file-pdf mr-2"></i> Export as PDF
-                        </a>
+                                class="flex items-center px-4 py-1 text-sm text-gray-600 hover:bg-gray-50 transition rounded-md"
+                                target="_blank" download>
+                                <i class="fas fa-file-pdf mr-2"></i> Export as PDF
+                            </a>
                             <a href="{{ route('export-users-csv') }}"
                                 class="flex items-center px-4 py-1 text-sm text-blue-600 hover:bg-blue-50 transition rounded-md">
                                 <i class="fas fa-file-csv mr-2"></i> Export as CSV
@@ -227,7 +231,7 @@
 
                     <!-- Print and Import Buttons -->
                     <div class="flex gap-2">
-                        <a href="{{route('users.print')}}"
+                        <a href="{{ route('users.print') }}"
                             class="inline-flex items-center px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition">
                             <i class="fas fa-print mr-2"></i> Print
                         </a>
@@ -238,12 +242,14 @@
                         </a>
                     </div>
                 </div>
+                @can('create user')
+                    <button @click="$dispatch('open-modal', { modal: 'add-user' })"
+                        class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                        <i class="fas fa-user-plus text-sm"></i>
+                        {{ __('Add System User') }}
+                    </button>
+                @endcan
 
-                <button @click="$dispatch('open-modal', { modal: 'add-user' })"
-                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                    <i class="fas fa-user-plus text-sm"></i>
-                    {{ __('Add System User') }}
-                </button>
             </div>
 
 
