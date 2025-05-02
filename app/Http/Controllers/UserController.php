@@ -61,12 +61,15 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $user = User::withTrashed()->findOrFail($id); // get even deleted
+        $user = User::with(['roles'])->withTrashed()->findOrFail($id); // Load roles relationship
 
-        $userRole = $user->roles->pluck('name')->first(); // Assuming single role
-        $user->role = $userRole;
+        // Get all available roles
+        $roles = Role::all();
 
-        $roles = Role::pluck('name')->all();
+        // Get the user's first role name and role ID (assuming one role per user)
+        $userRole = $user->roles->first(); // Role model or null
+        $user->role = $userRole?->name;
+        $user->user_role_id = $userRole?->id;
 
         return response()->json([
             'user' => $user,
@@ -141,8 +144,8 @@ class UserController extends Controller
     {
         $users = User::withTrashed()->with('roles')->get(); // Include both soft-deletes and roles
         $pdf = Pdf::loadView('pdfs.users', compact('users'));
-        $pdf->setPaper('a4', 'portrait');
-        return $pdf->download('users_report_' . date('Y-m-d') . '.pdf');
+        // $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream('users_report_' . date('Y-m-d') . '.pdf');
     }
     public function exportUsersExcel()
     {

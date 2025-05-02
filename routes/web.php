@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CvGeneratorController;
 use App\Http\Controllers\DocumentUploadController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmploymentHistoryController;
@@ -36,7 +38,7 @@ Route::resource('memberships', MembershipController::class);
 Route::resource('employment', EmploymentHistoryController::class);
 Route::resource('referees', RefereeController::class);
 Route::resource('documents', DocumentUploadController::class);
-Route::resource('permissions', PermissionController::class);
+// Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
 Route::get('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
 Route::put('/roles/{role}/give-permission', [RoleController::class, 'givePermissionToRole']);
@@ -47,6 +49,8 @@ Route::get('/export-users-pdf', [UserController::class, 'exportUsersPdf'])->name
 Route::get('/export-users-excel', [UserController::class, 'exportUsersExcel'])->name('export-users-excel');
 Route::get('/export-users-csv', [UserController::class, 'exportUsersCsv'])->name('export-users-csv');
 Route::get('/users/print', [UserController::class, 'printUsersPdf'])->name('users.print');
+Route::get('/download-cv', [CvGeneratorController::class, 'generate'])->name('download-cv');
+
 
 
 Route::resource('users', UserController::class);

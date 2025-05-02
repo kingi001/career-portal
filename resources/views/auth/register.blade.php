@@ -16,12 +16,14 @@
     </div>
 
     <!-- Processing Notification -->
-    <div id="registerProcessingMessage" class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-3 shadow-md">
+    <div id="registerProcessingMessage"
+        class="hidden text-center bg-blue-200 text-blue-800 p-2 rounded-md mt-3 shadow-md">
         <i class="fas fa-spinner fa-spin"></i> Processing... Creating your account, please wait.
     </div>
 
     <!-- Registration Form -->
-    <form id="registerForm" method="POST" action="{{ route('register') }}" class="mt-1 space-y-4 p-6 bg-white rounded-lg max-w-lg mx-auto">
+    <form id="registerForm" method="POST" action="{{ route('register') }}"
+        class="mt-0 space-y-2 p-4 bg-white rounded-lg max-w-lg mx-auto">
         @csrf
 
         <!-- Full Name -->
@@ -31,8 +33,10 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-user"></i>
                 </span>
-                <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"
-                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your full name" />
+                <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus
+                    autocomplete="name"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Enter your full name" />
             </div>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -44,10 +48,26 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-envelope"></i>
                 </span>
-                <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username"
-                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your email address" />
+                <x-text-input id="email" type="email" name="email" :value="old('email')" required
+                    autocomplete="username"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Enter your email address" />
             </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Phone Number -->
+        <div class="relative">
+            <x-input-label for="phone" value="Mobile Number" class="font-semibold" />
+            <div class="relative">
+                <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <x-text-input id="phone" type="text" name="phone" :value="old('phone')" required autocomplete="tel"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Enter your phone number" />
+            </div>
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -58,8 +78,10 @@
                     <i class="fas fa-lock"></i>
                 </span>
                 <x-text-input id="password" type="password" name="password" required autocomplete="new-password"
-                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Create a strong password" />
-                <button type="button" id="togglePassword" class="absolute inset-y-0 right-3 flex items-center text-gray-500 focus:outline-none">
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Create a strong password" />
+                <button type="button" id="togglePassword"
+                    class="absolute inset-y-0 right-3 flex items-center text-gray-500 focus:outline-none">
                     <i class="fas fa-eye"></i>
                 </button>
             </div>
@@ -80,14 +102,16 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-key"></i>
                 </span>
-                <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
-                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Re-enter your password" />
+                <x-text-input id="password_confirmation" type="password" name="password_confirmation" required
+                    autocomplete="new-password"
+                    class="block mt-1 w-full text-sm pl-10 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Re-enter your password" />
             </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-          <!-- Register & Login Links -->
-          <div class="mt-5 flex flex-col gap-3">
+        <!-- Register & Login Links -->
+        <div class="mt-5 flex flex-col gap-3">
             <!-- Register Button -->
             <button type="submit" id="registerButton"
                 class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white text-sm py-2 rounded-lg font-semibold
@@ -111,7 +135,7 @@
 
     <!-- JavaScript -->
     <script>
-        document.getElementById("registerForm").addEventListener("submit", function (event) {
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
             event.preventDefault();
             document.getElementById("registerProcessingMessage").classList.remove("hidden");
 
@@ -123,7 +147,7 @@
         });
 
         // Toggle Password Visibility
-        document.getElementById("togglePassword").addEventListener("click", function () {
+        document.getElementById("togglePassword").addEventListener("click", function() {
             let passwordField = document.getElementById("password");
             if (passwordField.type === "password") {
                 passwordField.type = "text";
@@ -135,7 +159,7 @@
         });
 
         // Password Strength Indicator
-        document.getElementById("password").addEventListener("input", function () {
+        document.getElementById("password").addEventListener("input", function() {
             let password = this.value;
             let strengthBar = document.getElementById("password-strength-bar");
             let strengthIndicator = document.getElementById("password-strength");

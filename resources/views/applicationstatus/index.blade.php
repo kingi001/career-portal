@@ -35,9 +35,12 @@
                     <i class="fas fa-file-pdf text-red-500"></i> Generate CV (Preview Mode)
                 </h3>
                 <p class="text-sm text-gray-600">Click below to generate a CV based on your input.</p>
-                <button class="mt-3 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2">
-                    <i class="fas fa-download"></i> Download CV (Preview)
-                </button>
+                <form action="{{ route('download-cv') }}" method="GET" target="_blank">
+                    <button type="submit"
+                        class="mt-3 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2">
+                        <i class="fas fa-download"></i> Download CV (Preview)
+                    </button>
+                </form>
             </div>
 
             <!-- Application Status -->

@@ -15,7 +15,7 @@
                 @csrf
                 @method('POST')
 
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1 py-2">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 py-2">
                     <!-- Salutation -->
                     <div>
                         <x-input-label for="salutation" :value="__('Salutation')"

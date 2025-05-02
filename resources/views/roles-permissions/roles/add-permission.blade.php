@@ -18,7 +18,7 @@
                     <h3 class="text-sm font-medium text-gray-600 mb-3 flex items-center">
                         <i class="fas fa-key text-yellow-500 mr-2"></i> Available Permissions:
                     </h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-1 border p-1 rounded-lg text-sm bg-gray-50">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-1 border p-1 rounded-lg text-sm bg-gray-50">
                         @foreach($permissions as $permission)
                             <label class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100">
                                 <input type="checkbox" name="permissions[]" value="{{ $permission->name }}"

@@ -101,79 +101,68 @@
                     </div>
                 </div>
             </div>
-            {{-- <!-- Flash Message -->
-            @if (session('status'))
-                <div class="mt-4">
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
-                        role="alert">
-                        <strong class="font-bold">Success!</strong>
-                        <span class="block sm:inline">{{ session('status') }}</span>
-                    </div>
-                </div>   --}}
+
             <!-- Desktop Table -->
             <div class="overflow-auto rounded-lg shadow mt-1 hidden md:block">
-                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-blue-50 border-b-2 border-gray-200">
+                <table class="w-full border-collapse text-sm bg-white rounded-lg overflow-hidden shadow-sm">
+                    <thead class="bg-indigo-50 text-indigo-800 uppercase text-xs font-medium tracking-wider">
                         <tr>
-                            <th class="p-3 text-sm font-semibold text-left">#</th>
-                            <th class="p-3 text-sm font-semibold text-left">Name</th>
-                            <th class="p-3 text-sm font-semibold text-left">Email</th>
-                            <th class="p-3 text-sm font-semibold text-left">Telephone</th>
-                            <th class="p-3 text-sm font-semibold text-center">User Role</th>
-                            <th class="p-3 text-sm font-semibold text-center">Status</th>
-                            <th class="p-3 text-sm font-semibold text-center">Actions</th>
+                            <th class="p-3 text-center"><i class="fas fa-hashtag"></i></th>
+                            <th class="p-3 text-left"><i class="fas fa-user mr-1 text-gray-500"></i>Name</th>
+                            <th class="p-3 text-left"><i class="fas fa-envelope mr-1 text-gray-500"></i>Email</th>
+                            <th class="p-3 text-left"><i class="fas fa-phone-alt mr-1 text-gray-500"></i>Telephone</th>
+                            <th class="p-3 text-center"><i class="fas fa-user-shield mr-1 text-gray-500"></i>User Role</th>
+                            <th class="p-3 text-center"><i class="fas fa-toggle-on mr-1 text-gray-500"></i>Status</th>
+                            <th class="p-3 text-center"><i class="fas fa-cogs mr-1 text-gray-500"></i>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($users as $key => $user)
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="p-3 text-sm text-gray-700">{{ $key + 1 }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $user->name }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $user->email ?? 'N/A' }}</td>
-                                <td class="p-3 text-sm text-gray-700">{{ $user->phone ?? 'N/A' }}</td>
-
-
-                                <td class="p-3 text-sm text-center">
-                                    <span
-                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 text-center text-gray-800">{{ $key + 1 }}</td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    {{ $user->name }}
+                                </td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    {{ $user->email ?? 'N/A' }}
+                                </td>
+                                <td class="p-3 text-gray-700 whitespace-nowrap">
+                                    {{ $user->phone ?? 'N/A' }}
+                                </td>
+                                <td class="p-3 text-center">
+                                    <span class="inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full">
                                         {{ $user->roles->first()->name ?? 'N/A' }}
-
                                     </span>
                                 </td>
-                                <td class="p-3 text-sm text-center">
+                                <td class="p-3 text-center">
                                     @if (is_null($user->deleted_at))
-                                        <span
-                                            class="bg-green-600 rounded-full justify-center items-center text-xs font-semibold px-2 py-1 text-white inline-flex gap-1">
-                                            <i class="fa fa-check" aria-hidden="true"></i>
-                                            Active
+                                        <span class="bg-green-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
+                                            <i class="fa fa-check"></i> Active
                                         </span>
                                     @else
-                                        <span
-                                            class="bg-red-600 rounded-full justify-center items-center text-xs font-semibold px-2 py-1 text-white inline-flex gap-1">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                            Deleted / Inactive
+                                        <span class="bg-red-600 rounded-full text-xs font-semibold px-2 py-1 text-white inline-flex gap-1 items-center">
+                                            <i class="fa fa-times"></i> Deleted
                                         </span>
                                     @endif
                                 </td>
-                                <td class="p-3 text-sm text-center">
+                                <td class="p-3 text-center">
                                     <div class="flex justify-center gap-4 flex-wrap">
                                         <!-- Edit Button -->
-
                                         <button
                                             @click="$dispatch('open-modal', { modal: 'edit-user', user: {{ json_encode($user) }} })"
                                             class="text-yellow-500 hover:text-yellow-600 flex items-center gap-1 transition-all duration-200 ease-in-out">
-                                            <i class="fas fa-edit"></i> {{ __('Update') }}
+                                            <i class="fas fa-edit"></i> {{ __('Edit') }}
                                         </button>
 
                                         <!-- Delete Button -->
                                         <form id="delete-form-{{ $user->id }}"
-                                            action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                            class="inline">
+                                            action="{{ route('users.destroy', $user->id) }}"
+                                            method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"
-                                                class="text-red-500 text-sm hover:text-red-700 transition flex items-center gap-1"
-                                                onclick="confirmDelete({{ $user->id }})">
+                                                onclick="confirmDelete({{ $user->id }})"
+                                                class="text-red-500 hover:text-red-700 flex items-center gap-1">
                                                 <i class="fas fa-trash-alt"></i> {{ __('Delete') }}
                                             </button>
                                         </form>
@@ -182,22 +171,20 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="8" class="p-4 text-center text-gray-500">
-                                    <div
-                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-md">
-                                        <h4 class="text-md font-semibold flex items-center justify-center space-x-2">
+                                <td colspan="7" class="p-4 text-center">
+                                    <div class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>Information</span>
                                         </h4>
-                                        <p class="mt-5 text-sm items-center text-center">
-                                            {{ __('Query submitted returned no user.') }}
-                                        </p>
+                                        <p class="mt-1 text-sm">No user records found in the system.</p>
                                     </div>
                                 </td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
+
 
                 @include('roles-permissions.users.modals.add-user')
                 @include('roles-permissions.users.modals.edit-user')
