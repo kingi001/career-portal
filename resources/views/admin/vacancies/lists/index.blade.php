@@ -128,9 +128,9 @@
                                     </td>
                                     <td class="px-4 py-3 whitespace-nowrap">{{ $vacancy->position }}</td>
                                     <td class="px-4 py-3">{{ $vacancy->job_grade }}</td>
-                                    <td class="px-4 py-3"> {{ Str::limit($vacancy->requirements, 20, '...') }}
+                                    <td class="px-4 py-3"> {{ Str::limit($vacancy->requirements, 40, '...') }}
                                     </td>
-                                    <td class="px-4 py-3">{{ Str::limit($vacancy->duties, 20, '...') }}</td>
+                                    <td class="px-4 py-3">{{ Str::limit($vacancy->duties, 40, '...') }}</td>
                                     <td class="px-4 py-3 whitespace-nowrap">
                                         @php
                                             $isOpen = strtolower($vacancy->status) === 'open';
