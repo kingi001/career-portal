@@ -9,6 +9,7 @@
                 <h3 class="text-base font-semibold text-indigo-700 flex items-center gap-2">
                     <i class="fas fa-users-cog text-blue-600 text-xl"></i>
                     {{ __('System Users') }}
+                    <p class="text-sm text-gray-300">....Manage System Users</p>
                 </h3>
             </div>
             <div x-data="{ showForm: false }" class="w-full">
@@ -242,7 +243,7 @@
                         </a>
                     </div>
                 </div>
-                @can('create user')
+                @can('create users')
                     <button @click="$dispatch('open-modal', { modal: 'add-user' })"
                         class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 text-sm rounded-md flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
                         <i class="fas fa-user-plus text-sm"></i>

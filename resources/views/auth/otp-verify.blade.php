@@ -2,8 +2,8 @@
     <div class="text-center">
         <!-- Logo -->
          <!-- Desktop Logo -->
-         <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
-         class="hidden md:block mx-auto w-50 h-50 mb-1 animate-fade-in">
+         <img src="{{ asset('images/logo3.png') }}" alt="Bandari Maritime Academy Logo"
+         class="hidden md:block mx-auto mb-1 animate-fade-in">
 
      <!-- Mobile Logo -->
      <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
@@ -73,8 +73,8 @@
             @csrf
             <button type="submit" id="resend-otp" disabled
                 class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700
-                text-white font-semibold py-2 px-4 rounded-full flex items-center shadow-lg transition-all duration-300 disabled:opacity-50">
-                <i class="fa-solid fa-sync-alt"></i> Resend
+                text-white font-semibold py-1 px-4 rounded-md flex items-center shadow-lg transition-all duration-300 disabled:opacity-50">
+                <i class="fa-solid fa-sync-alt mr-2"></i> Resend
             </button>
         </form>
     </div>
@@ -83,8 +83,8 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit"
-                class="flex items-center gap-2 bg-gradient-to-r from-gray-600 to-gray-800
-            hover:from-gray-700 hover:to-black text-white font-semibold py-2.5 px-6 rounded-full
+                class="flex items-center gap-1 bg-gradient-to-r from-gray-600 to-gray-800
+            hover:from-gray-700 hover:to-black text-white font-semibold py-1 px-2 rounded-md
             shadow-md transition-all duration-300 transform hover:scale-105">
                 <i class="fas fa-arrow-left"></i> <span>Back to Login</span>
             </button>

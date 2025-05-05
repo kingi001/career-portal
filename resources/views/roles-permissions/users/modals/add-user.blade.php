@@ -6,7 +6,7 @@
         x-transition.opacity>
 
         <!-- Modal Content -->
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md transform transition-all duration-300 scale-95"
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-2xl transform transition-all duration-300 scale-95"
             x-show="open" x-transition.scale.90>
 
             <!-- Modal Header -->

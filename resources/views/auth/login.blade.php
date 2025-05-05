@@ -1,9 +1,10 @@
 <x-guest-layout>
+
     <div class="text-center mt-1 animate-fade-in">
         <!-- Logo -->
         <!-- Desktop Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
-            class="hidden md:block mx-auto w-50 h-50 mb-1 animate-fade-in">
+        <img src="{{ asset('images/logo3.png') }}" alt="Bandari Maritime Academy Logo"
+            class="hidden md:block mx-auto mb-1 animate-fade-in">
 
         <!-- Mobile Logo -->
         <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
@@ -11,7 +12,7 @@
 
 
         <!-- Portal Title -->
-        <h2 class="text-2xl font-semibold text-gray-800">Bandari Maritime Academy</h2>
+        <h2 class="text-1xl font-bold text-gray-800 leading-snug">Bandari Maritime Academy</h2>
         <p class="text-sm font-semibold text-blue-500">E-Recruitment Portal</p>
     </div>
 
@@ -26,9 +27,8 @@
 
     <!-- Login Form -->
     <form method="POST" action="{{ route('login') }}"
-        class="mt-1 mx-auto max-w-md bg-white p-6 rounded-lg animate-fade-in" id="loginForm">
+        class="mt-1 mx-auto max-w-md bg-white p-6 shadow-md rounded-md animate-fade-in" id="loginForm">
         @csrf
-
         <!-- Email Address -->
         <div class="relative">
             <x-input-label for="email" value="Email Address" class="font-semibold" />

@@ -6,7 +6,7 @@
                 <!-- Logo and Branding -->
                 <a href="{{ route('dashboard') }}"
                     class="flex items-center space-x-3 hover:text-blue-600 transition duration-300 ease-in-out">
-                    <img src="{{ asset('images/logo.png') }}" alt="BMA Logo" class="h-8 w-auto" />
+                    <img src="{{ asset('images/logo7.png') }}" alt="BMA Logo" class="h-8 w-auto" />
                     <span
                         class="text-sm sm:text-base font-semibold text-indigo-700 tracking-wider uppercase sm:hidden animate-fade-in">
                         BMA E-RECRUITMENT PORTAL
@@ -34,7 +34,7 @@
                     @endcan
 
                     @can('manage jobs')
-                        <x-nav-link :href="route('employment.index')" :active="request()->routeIs('employment.index')">
+                        <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
                             <i class="fas fa-briefcase text-blue-600"></i>
                             <span class="ml-1 text-sm font-normal text-gray-700">Vacancies</span>
                         </x-nav-link>
@@ -68,7 +68,7 @@
                         </x-nav-link>
                     @endcan
 
-                    <div class="relative">
+                    {{-- <div class="relative">
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <button class="flex items-center text-gray-700 hover:text-blue-700 focus:outline-none"
@@ -146,7 +146,37 @@
                                 </div>
                             </x-slot>
                         </x-dropdown>
+                    </div> --}}
+                    <x-nav-link>
+                        <i class="fas fa-check-circle text-purple-600"></i>
+                        <span class="ml-1 text-sm font-normal text-gray-700">Selection</span>
+                    </x-nav-link>
+
+                    <div x-data="{ open: false }" class="relative">
+                        <x-nav-link @click="open = !open"
+                            class="cursor-pointer flex items-center justify-between w-full">
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-line text-green-600"></i>
+                                <span class="ml-1 text-sm font-normal text-gray-700">Reports</span>
+                            </div>
+                            <i :class="open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
+                                class="text-gray-500 text-xs ml-2"></i>
+                        </x-nav-link>
+
+                        <div x-show="open" @click.away="open = false" x-transition
+                            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+                            <a href=" " class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-users mr-1 text-gray-700"></i> User Reports
+                            </a>
+                            <a href=" " class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-briefcase mr-1 text-gray-700"></i> Vacancy Reports
+                            </a>
+                            <a href=" " class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-file-alt mr-1 text-gray-00"></i> Application Reports
+                            </a>
+                        </div>
                     </div>
+
 
 
 
@@ -212,6 +242,17 @@
                     @endcan
                 </div>
 
+                <a href=" " class="relative inline-flex items-center text-gray-600 hover:text-indigo-600">
+                    <i class="fas fa-bell text-lg"></i>
+                    <!-- Notification badge -->
+                    <!-- Smaller Notification Badge -->
+                    <span
+                        class="absolute -top-1 -right-1 h-3 w-3 text-[10px] font-bold text-white bg-red-600 rounded-full flex items-center justify-center">
+                        3
+                    </span>
+
+                </a>
+
 
                 <!-- Settings Dropdown -->
                 <div class="relative">
@@ -244,6 +285,9 @@
                                 <x-dropdown-link class="flex items-center px-3 py-1 hover:bg-gray-100">
                                     <i class="fas fa-sms mr-2 text-gray-700"></i> Bulk SMS
                                 </x-dropdown-link>
+                                <x-dropdown-link class="flex items-center px-3 py-1 hover:bg-gray-100">
+                                    <i class="fas fa-user-clock mr-2 text-gray-700"></i> User Activity
+                                </x-dropdown-link>
 
                                 <x-dropdown-link :href="route('profile.edit')"
                                     class="flex items-center px-3 py-1 hover:bg-gray-100 ">
@@ -262,6 +306,8 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
+
+
 
             </div>
 

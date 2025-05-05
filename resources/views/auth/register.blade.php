@@ -2,16 +2,16 @@
     <div class="text-center">
         <!-- Logo -->
         <!-- Desktop Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
-            class="hidden md:block mx-auto w-50 h-50 mb-1 animate-fade-in">
+        <img src="{{ asset('images/logo3.png') }}" alt="Bandari Maritime Academy Logo"
+            class="hidden md:block mx-auto mb-1 animate-fade-in">
 
         <!-- Mobile Logo -->
-        <img src="{{ asset('images/logo.png') }}" alt="Bandari Maritime Academy Logo"
-            class="block md:hidden mx-auto w-24 h-24 mb-1 animate-fade-in">
+        <img src="{{ asset('images/logo3.png') }}" alt="Bandari Maritime Academy Logo"
+            class="block md:hidden mx-auto  mb-1 animate-fade-in">
 
 
         <!-- Portal Title -->
-        <h2 class="text-2xl font-semibold text-gray-800">Bandari Maritime Academy</h2>
+        <h2 class="text-1xl font-semibold text-gray-800">Bandari Maritime Academy</h2>
         <p class="text-sm font-semibold text-blue-500">E-Recruitment Portal</p>
     </div>
 
@@ -23,12 +23,12 @@
 
     <!-- Registration Form -->
     <form id="registerForm" method="POST" action="{{ route('register') }}"
-        class="mt-0 space-y-2 p-4 bg-white rounded-lg max-w-lg mx-auto">
+        class="mt-0 space-y-2 p-4 bg-white shadow-md rounded-md max-w-lg mx-auto">
         @csrf
 
         <!-- Full Name -->
         <div class="relative">
-            <x-input-label for="name" value="Full Name" class="font-semibold" />
+            <x-input-label for="name" value="Full Name" class="font-medium text-sm" />
             <div class="relative">
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-user"></i>
@@ -43,7 +43,7 @@
 
         <!-- Email Address -->
         <div class="relative">
-            <x-input-label for="email" value="Email Address" class="font-semibold" />
+            <x-input-label for="email" value="Email Address" class="font-medium" />
             <div class="relative">
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-envelope"></i>
@@ -58,7 +58,7 @@
 
         <!-- Phone Number -->
         <div class="relative">
-            <x-input-label for="phone" value="Mobile Number" class="font-semibold" />
+            <x-input-label for="phone" value="Mobile Number" class="font-medium" />
             <div class="relative">
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-phone"></i>
@@ -72,7 +72,7 @@
 
         <!-- Password -->
         <div class="relative">
-            <x-input-label for="password" value="Password" class="font-semibold" />
+            <x-input-label for="password" value="Password" class="font-medium" />
             <div class="relative">
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-lock"></i>
@@ -97,7 +97,7 @@
 
         <!-- Confirm Password -->
         <div class="relative">
-            <x-input-label for="password_confirmation" value="Confirm Password" class="font-semibold" />
+            <x-input-label for="password_confirmation" value="Confirm Password" class="font-medium" />
             <div class="relative">
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
                     <i class="fas fa-key"></i>

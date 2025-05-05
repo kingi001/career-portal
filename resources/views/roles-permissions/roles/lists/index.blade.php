@@ -12,8 +12,8 @@
 
             <!-- Roles Table -->
             <div class="overflow-auto rounded-lg shadow mt-4 hidden md:block">
-                <table class="min-w-full bg-white border border-gray-300 rounded-lg">
-                    <thead class="bg-indigo-50 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg text-sm">
+                    <thead class="bg-indigo-50 text-indigo-800 uppercase font-semibold tracking-wider">
                         <tr>
                             <th class="p-3 text-center"><i class="fas fa-hashtag"></i></th>
                             <th class="p-3 text-left">Role Name</th>
@@ -28,7 +28,7 @@
                                     <i class="fas fa-user-shield text-gray-500 mr-1"></i>{{ $role->name }}
                                 </td>
                                 <td class="p-3 text-center">
-                                    <div class="flex justify-center gap-4 flex-wrap">
+                                    <div class="flex justify-center gap-2 flex-wrap">
                                         <!-- Permissions -->
                                         <button
                                             onclick="window.location.href='{{ route('roles.givePermissions', $role->id) }}'"
@@ -61,8 +61,8 @@
                             <tr>
                                 <td colspan="3" class="p-4 text-center">
                                     <div
-                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-sm">
-                                        <h4 class="text-md font-semibold flex items-center justify-center gap-2">
+                                        class="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-3 rounded-lg shadow-sm text-sm">
+                                        <h4 class="font-semibold flex items-center justify-center gap-2">
                                             <i class="fas fa-info-circle"></i>
                                             <span>No roles found.</span>
                                         </h4>
@@ -73,6 +73,7 @@
                     </tbody>
                 </table>
             </div>
+
 
             @include('roles-permissions.roles.modals.add-role')
             @include('roles-permissions.roles.modals.edit-role')

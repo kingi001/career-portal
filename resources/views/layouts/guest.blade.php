@@ -19,10 +19,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen font-sans text-gray-900 antialiased"
-    style="background-image: url('{{ asset('images/bgpattern.gif') }}');
+<body class="min-h-screen font-sans text-gray-900 antialiased">
+    {{-- style="background-image: url('{{ asset('images/bgpattern.gif') }}');
     background-repeat: repeat;
-    background-attachment: fixed;">
+    background-attachment: fixed;"> --}}
 
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-10 sm:pt-0 rounded-lg">
         <div class="w-full sm:max-w-md  mt-2 px-6 py-4 bg-white  overflow-hidden sm:rounded-lg">

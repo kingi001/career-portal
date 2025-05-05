@@ -13,11 +13,12 @@ use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInformationController;
+use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
-
-
 //Guest User Routes
+
+
 require __DIR__ . '/auth.php';
 Route::get('/get-counties', [UserInformationController::class, 'getCounties']);
 Route::get('/get-subcounties/{countyId}', [UserInformationController::class, 'getSubCounties']);
@@ -44,12 +45,6 @@ Route::middleware(['auth', 'otp_verified'])->group(function () {
         Route::resource('referees', RefereeController::class);
         Route::resource('documents', DocumentUploadController::class);
     });
-
-    Route::middleware('role:admin|super-admin')->group(function () {
-
-    });
-
-
     // Route::resource('permissions', PermissionController::class);
     Route::resource('roles', RoleController::class);
     Route::get('/roles/{role}/give-permission', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
@@ -70,4 +65,9 @@ Route::middleware(['auth', 'otp_verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('vacancies', VacancyController::class);
+    });
 });
