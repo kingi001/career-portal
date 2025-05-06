@@ -159,7 +159,7 @@
                         </div>
                         <div class="bg-white shadow rounded-xl p-4 border-l-4 border-red-500">
                             <h3 class="text-sm text-gray-500">Rejected</h3>
-                            <p class="text-2xl font-bold text-red-600">0</p>
+                            <p class="text-2xl font-bold text-red-600">{{ $rejectedCount }}</p>
                         </div>
                     </div>
 
@@ -212,7 +212,6 @@
                                         <td class="px-4 py-3 text-gray-800 whitespace-nowrap">
                                             {{ $loop->iteration }}
                                         </td>
-
                                         <td class="px-4 py-3 font-semibold text-blue-600 whitespace-nowrap">
                                             <a
                                                 href="{{ route('vacancies.show', $vacancy->id) }}">{{ $vacancy->refno }}</a>
@@ -234,10 +233,6 @@
                                                 {{ ucfirst($vacancy->status) }}
                                             </span>
                                         </td>
-
-                                        {{-- <td class="px-4 py-3 whitespace-nowrap">
-                                            {{ \Carbon\Carbon::parse($vacancy->posted_date)->format('d/m/Y') }}
-                                        </td> --}}
                                         <td class="px-4 py-3 whitespace-nowrap">
                                             {{ \Carbon\Carbon::parse($vacancy->application_deadline)->format('d/m/Y') }}
                                         </td>
@@ -325,58 +320,81 @@
                     {{ __('My Job Applications') }}
                 </div>
 
-                <!-- Table -->
-                <div class="overflow-x-auto hidden md:block">
-                    <table class="min-w-full text-sm text-left border-collapse">
-                        <thead class="bg-indigo-50 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
-                            <tr>
-                                <th class="p-4">Ref No</th>
-                                <th class="p-4">Position</th>
-                                <th class="p-4">Description</th>
-                                {{-- <th class="p-4">Posted</th> --}}
-                                <th class="p-4">Deadline</th>
-                                <th class="p-4">Status</th>
-                                <th class="p-4">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            @forelse($applications as $application)
-                                <tr class="hover:bg-gray-50 transition">
-                                    <td class="p-4 font-semibold text-blue-600 whitespace-nowrap">
-                                        <a href="#"
-                                            class="hover:underline">{{ $application->vacancy->refno ?? 'N/A' }}</a>
-                                    </td>
-                                    <td class="p-4 text-gray-800 whitespace-nowrap">
-                                        {{ $application->vacancy->position ?? 'N/A' }}</td>
-                                    <td class="p-4 text-gray-600">
-                                        {{ Str::limit($application->vacancy->requirements ?? 'N/A', 80) }}</td>
-                                    {{-- <td class="p-4 text-gray-500 whitespace-nowrap">
-                                        {{ $application->vacancy->created_at}}</td> --}}
-                                    <td class="p-4 text-gray-500 whitespace-nowrap">
-                                        {{ $application->vacancy->application_deadline }}</td>
-                                    <td class="p-4 whitespace-nowrap">
-                                        <span
-                                            class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">
-                                            {{ ucfirst($application->status ?? 'applied') }}
-                                        </span>
-                                    </td>
-                                    <td class="p-4 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-blue-600 hover:underline font-medium flex items-center space-x-1">
-                                            <span>View Details</span>
-                                            <i class="fas fa-arrow-right text-sm"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @empty
+                <div class="overflow-x-auto hidden md:block mt-1">
+                    @if ($applications->isEmpty())
+                        <div
+                            class="text-center py-8 px-4 bg-gray-50 border border-dashed border-gray-300 rounded-lg shadow-sm">
+                            <div class="flex justify-center mb-3">
+                                <i class="fas fa-briefcase-slash text-1xl text-gray-400"></i>
+                            </div>
+                            <h3 class="text-base font-semibold text-gray-700">You haven’t submitted any job applications yet.</h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                Your job applications will be displayed here.
+                            </p>
+                        </div>
+                    @else
+                        <!-- Table -->
+                        <table class="min-w-full text-sm text-left border-collapse">
+                            <thead class="bg-indigo-50 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
                                 <tr>
-                                    <td colspan="7" class="text-center py-4 text-gray-500">You haven’t applied for
-                                        any jobs yet.</td>
+                                    <th class="p-4">Ref No</th>
+                                    <th class="p-4">Position</th>
+                                    <th class="p-4">Description</th>
+                                    {{-- <th class="p-4">Posted</th> --}}
+                                    <th class="p-4">Deadline</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4">Action</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                @foreach ($applications as $application)
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="p-4 font-semibold text-blue-600 whitespace-nowrap">
+                                            <a href="#" class="hover:underline">
+                                                {{ $application->vacancy->refno ?? 'N/A' }}
+                                            </a>
+                                        </td>
+                                        <td class="p-4 text-gray-800 whitespace-nowrap">
+                                            {{ $application->vacancy->position ?? 'N/A' }}
+                                        </td>
+                                        <td class="p-4 text-gray-600">
+                                            {{ Str::limit($application->vacancy->requirements ?? 'N/A', 80) }}
+                                        </td>
+                                        <td class="p-4 text-gray-500 whitespace-nowrap">
+                                            {{ $application->vacancy->application_deadline }}
+                                        </td>
+                                        @php
+                                            $status = strtolower($application->status ?? 'applied');
+                                            $badgeStyles = [
+                                                'applied' => 'bg-yellow-100 text-yellow-800',
+                                                'pending' => 'bg-blue-100 text-blue-800',
+                                                'shortlisted' => 'bg-green-100 text-green-800',
+                                                'interviewed' => 'bg-indigo-100 text-indigo-800',
+                                                'rejected' => 'bg-red-100 text-red-800',
+                                                'offered' => 'bg-purple-100 text-purple-800',
+                                            ];
+                                            $badgeClass = $badgeStyles[$status] ?? 'bg-gray-100 text-gray-800';
+                                        @endphp
+                                        <td class="p-4 whitespace-nowrap">
+                                            <span
+                                                class="text-xs font-semibold px-3 py-1 rounded-full {{ $badgeClass }}">
+                                                {{ ucfirst($status) }}
+                                            </span>
+                                        </td>
+                                        <td class="p-4 whitespace-nowrap">
+                                            <a href="#"
+                                                class="text-blue-600 hover:underline font-medium flex items-center space-x-1">
+                                                <span>View Details</span>
+                                                <i class="fas fa-arrow-right text-sm"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
+
 
 
                 <!-- Mobile View -->

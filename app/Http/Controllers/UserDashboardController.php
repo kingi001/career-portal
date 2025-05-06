@@ -17,26 +17,31 @@ class UserDashboardController extends Controller
         $totalApplications = Application::where('user_id', Auth::id())->count();
         $pendingApplications = Application::where('status', 'pending')->count();
         $shortlistedCount = Application::where('status', 'shortlisted')->count();
+        $rejectedCount = Application::where('user_id', Auth::id())
+            ->where('status', 'rejected')
+            ->count();
+
         $openVacanciesCount = Vacancy::where('user_id', Auth::id())
             ->where('application_deadline', '>', Carbon::now())
             ->count();
-            $latestApplication = Application::where('user_id', auth()->id())
+        $latestApplication = Application::where('user_id', Auth::id())
             ->latest()
             ->with('vacancy') // optional, if you need vacancy details
             ->first();
 
         $applicationStatus = $latestApplication?->status ?? 'No Application Found';
 
-
         $vacancies = Vacancy::where('user_id', Auth::id())->latest()->paginate(10);
         $applications = Application::with('vacancy')->where('user_id', Auth::id())->latest()->get();
-
-
-        return view('dashboard', compact('vacancies', 'totalApplications',
-        'pendingApplications',
-        'applications',
-        'shortlistedCount',
-        'openVacanciesCount',
-        'applicationStatus'));
+        return view('dashboard', compact(
+            'vacancies',
+            'totalApplications',
+            'pendingApplications',
+            'applications',
+            'shortlistedCount',
+            'openVacanciesCount',
+            'applicationStatus',
+            'rejectedCount',
+        ));
     }
 }

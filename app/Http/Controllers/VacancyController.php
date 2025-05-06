@@ -16,7 +16,11 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        $vacancies = Vacancy::latest()->paginate(10);
+
+        $vacancies = Vacancy::withCount('applications')
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->paginate(10);
 
         return view('admin.vacancies.lists.index', compact('vacancies'));
     }
@@ -24,7 +28,8 @@ class VacancyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'refno' => 'required|string|unique:vacancies,refno',
             'position' => 'required|string|max:255',

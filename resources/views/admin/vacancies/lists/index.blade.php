@@ -149,8 +149,7 @@
                                         <a href="{{ route('vacancies.index', $vacancy->id) }}"
                                             class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-md hover:bg-blue-200 hover:text-blue-900 transition-all">
                                             <i class="fas fa-users mr-1 text-blue-500"></i>
-                                            {{-- <span>{{ $vacancy->applications_count ?? 0 }}</span> --}}
-                                            <span>1500</span>
+                                            <span>{{ $vacancy->applications_count ?? 0 }}</span>
                                         </a>
                                     </td>
                                     <td class="px-4 py-3 whitespace-nowrap">
