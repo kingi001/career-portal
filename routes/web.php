@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CvGeneratorController;
 use App\Http\Controllers\DocumentUploadController;
 use App\Http\Controllers\EducationController;
@@ -12,9 +13,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserInformationController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
+
+
 
 //Guest User Routes
 
@@ -29,9 +33,7 @@ Route::post('/resend-otp', [OTPController::class, 'resend'])->name('otp.resend')
 
 Route::middleware(['auth', 'otp_verified'])->group(function () {
     // Dashboard and Other  Secured Routes
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
     // ✅ Applicant-only routes
     Route::middleware('role:applicant')->group(function () {
@@ -65,6 +67,8 @@ Route::middleware(['auth', 'otp_verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/vacancies/{vacancy}/apply', [ApplicationController::class, 'store'])->name('vacancies.apply');
 
 
     Route::middleware(['role:admin'])->group(function () {

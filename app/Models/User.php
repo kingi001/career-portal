@@ -17,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasApiTokens, Notifiable,HasRoles, SoftDeletes;
+    use HasFactory, HasApiTokens, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -126,5 +126,9 @@ class User extends Authenticatable
     public function referees()
     {
         return $this->hasMany(Referee::class);
+    }
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
     }
 }

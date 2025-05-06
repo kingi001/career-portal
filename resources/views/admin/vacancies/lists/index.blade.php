@@ -98,7 +98,10 @@
                         <thead class="bg-indigo-50 text-indigo-800 uppercase text-xs font-semibold tracking-wider">
                             <tr>
                                 <th class="text-left px-4 py-3">#</th>
-                                <th> <i class="fas fa-check"></i></th>
+                                <th>
+                                    <input type="checkbox" class="form-checkbox rounded-sm h-3 w-3 text-indigo-600"
+                                        id="selectAllCheckbox">
+                                </th>
                                 <th class="text-left px-4 py-3">Ref No</th>
                                 <th class="text-left px-4 py-3">Position</th>
                                 <th class="text-left px-4 py-3">Job Grade</th>
@@ -144,7 +147,7 @@
                                     </td>
                                     <td class="px-4 py-3 whitespace-nowrap text-center">
                                         <a href="{{ route('vacancies.index', $vacancy->id) }}"
-                                           class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-md hover:bg-blue-200 hover:text-blue-900 transition-all">
+                                            class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-md hover:bg-blue-200 hover:text-blue-900 transition-all">
                                             <i class="fas fa-users mr-1 text-blue-500"></i>
                                             {{-- <span>{{ $vacancy->applications_count ?? 0 }}</span> --}}
                                             <span>1500</span>
@@ -170,30 +173,32 @@
                     class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
                     <i class="fas fa-plus-circle text-sm"></i> {{ __('Add New') }}
                 </button>
-
                 <!-- Update Vacancy Button (Blue) -->
                 <button type="button" onclick="handleEditClick()"
                     class="bg-green-600 hover:bg-green-700 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
                     <i class="fas fa-edit text-sm"></i> {{ __('Update') }}
                 </button>
-
                 <!-- Delete Vacancy Button -->
-                <button @click="$dispatch('open-modal', { modal: 'delete-vacancy' })"
-                    class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                <button onclick="handleDeleteClick()"
+                    class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
                     <i class="fas fa-trash-alt text-sm"></i> {{ __('Delete') }}
                 </button>
-
-                <!-- Delete All Vacancies Button -->
-                <button @click="$dispatch('open-modal', { modal: 'delete-all-vacancies' })"
-                    class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
-                    <i class="fas fa-trash-alt text-sm"></i> {{ __('Delete All') }}
+                <button type="button" onclick="handleRestoreClick()"
+                    class="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                    <i class="fas fa-undo-alt text-sm"></i> {{ __('Restore') }}
+                </button>
+                <!-- Delete Permanently Button -->
+                <button type="button" onclick="handleForceDeleteClick()"
+                    class="bg-gray-800 hover:bg-black text-white px-1 py-1 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+                    <i class="fas fa-times-circle text-sm"></i> {{ __('Delete Permanently') }}
                 </button>
             </div>
-
         </div>
     </div>
     @include('admin.vacancies.modals.add-vacancy')
     @include('admin.vacancies.modals.edit-vacancy')
+
+    {{-- javascript to handle edit --}}
     <script>
         async function handleEditClick() {
             const selectedCheckboxes = document.querySelectorAll('.vacancy-checkbox:checked');
@@ -255,6 +260,60 @@
                 });
             }
         }
+    </script>
+
+    {{-- javascript to handle delete --}}
+
+    <script>
+        async function handleDeleteClick() {
+            const selectedCheckboxes = document.querySelectorAll('.vacancy-checkbox:checked');
+
+            if (selectedCheckboxes.length === 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'No Selection',
+                    text: 'Please select a vacancy to delete.',
+                    confirmButtonColor: '#3085d6',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                return;
+            }
+
+            if (selectedCheckboxes.length > 1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Multiple Selections',
+                    text: 'Please select only one vacancy to delete.',
+                    confirmButtonColor: '#d33',
+                    showClass: {
+                        popup: 'animate__animated animate__zoomIn'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__zoomOut'
+                    }
+                });
+                return;
+            }
+        }
+    </script>
+    <script>
+        document.getElementById('selectAllCheckbox').addEventListener('change', function() {
+            const all = document.querySelectorAll('.vacancy-checkbox');
+            all.forEach(cb => cb.checked = this.checked);
+        });
+
+        document.querySelectorAll('.vacancy-checkbox').forEach(cb => {
+            cb.addEventListener('change', function() {
+                const all = document.querySelectorAll('.vacancy-checkbox');
+                const allChecked = Array.from(all).every(checkbox => checkbox.checked);
+                document.getElementById('selectAllCheckbox').checked = allChecked;
+            });
+        });
     </script>
 
 </x-app-layout>

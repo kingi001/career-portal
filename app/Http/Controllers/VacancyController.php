@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Application;
 use App\Models\Vacancy;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -16,6 +17,7 @@ class VacancyController extends Controller
     public function index()
     {
         $vacancies = Vacancy::latest()->paginate(10);
+
         return view('admin.vacancies.lists.index', compact('vacancies'));
     }
 
